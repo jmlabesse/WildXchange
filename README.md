@@ -1,4 +1,4 @@
-WildExchange
+WildXchange
 ============
 ## Projet de plateforme collaborative de la Wild Code School.
 
