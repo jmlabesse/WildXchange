@@ -14,6 +14,7 @@ Cette plateforme ne se veut donc être ni une bibliothèque ni un chat.
 ### Fonctionnalités intégrées à la plateforme
 Le client a clairement identifié les fonctionnalités prioritaires qu'il souhaite :
 + une **page d'accueil** sur laquelle sont visibles les questions/réponses dès le chargement de la page ;
++ une page de **création de nouvelles questions** pour les utilisateurs inscrits ;
 + un **système de connexion/identification** impliquant une page d'inscription avec formulaire ;
 + un **moteur de recherche** thématique intégré (par 'tags' ou filtres) ;
 + une page **'Tableau de bord'** pour visualiser le profil et les statistiques de l'utilisateur.
