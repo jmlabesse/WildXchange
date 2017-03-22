@@ -1,6 +1,7 @@
 Compte-rendu entretien PO
 =========================
 ## Compte-rendu de l'entretien de définition des besoins.
+## Date : 22 mars 2017 à 16h00.
 
 ### Objectifs de la plateforme
 La WCS souhaite lancer une plateforme d'échanges autour d'un **système de questions/réponses**.
@@ -33,6 +34,5 @@ Dans un premier temps, au vu des fonctionnalités indispensables évoquées ci-d
 Pour rappel, le budget global que le client s'est fixé pour cette plateforme est de 10.000 €.
 
 ### Objectif et date du prochain entretien
-Le prochain entretien a été fixé au : **lundi 27 mars à 11h00**.
+Le prochain entretien a été fixé au : **lundi 27 mars 2017 à 11h00**.
 L'objectif pour cet entretien est de **réaliser une maquette de la plateforme** pour la présenter au client.
-
