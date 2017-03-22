@@ -15,3 +15,4 @@ WildXchange
 - [Stéphanie REBUZZI](https://github.com/CSBuzzy)
 - [William HASLAG](https://github.com/bhaslag)
 - [Jean-Marie LABESSE](https://github.com/jmlabesse)
+- [Antoine Thomire](https://github.com/Mystaa)
