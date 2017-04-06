@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block title %} @ wildXchange{% endblock %}</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    {% block stylesheets %}{% endblock %}
+</head>
+
+<body>
+    <nav>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer>
+    </footer>
+</body>
+
+</html>

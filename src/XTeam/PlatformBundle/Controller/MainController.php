@@ -4,10 +4,11 @@ namespace XTeam\PlatformBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class MainController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('XTeamPlatformBundle:Default:index.html.twig');
+        return $this->render('XTeamPlatformBundle:Main:index.html.twig', array());
     }
+
 }
