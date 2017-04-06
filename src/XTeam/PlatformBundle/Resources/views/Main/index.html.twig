@@ -1,0 +1,27 @@
+{% extends "XTeamPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+    Accueil {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class='container'>
+            <div class='row'>
+                <div class='col s6 offset-s6'>
+                    <form>
+                        <div class="input-field">
+                            <input id="search" type="search" required>
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

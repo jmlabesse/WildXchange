@@ -1,0 +1,102 @@
+/* FEUILLE DE STYLE PERSONNALISEE
+********************************* */
+
+/* CHARTE GRAPHIQUE
+*******************
+>> COLORS
+ > ORANGE WILD
+ -- Intense : #F9A02E
+ -- Pastel : #FBA858
+ -- Light : #FFDEA5
+
+ > BLUE WILD
+ -- Intense : #1FA597
+ -- Pastel : #58C4B8
+ -- Light : #80CBC4
+
+ > RED CONTRAST
+ -- #B9184D
+
+ > TEXT
+ -- Main : #35383A
+ -- Secondary : #7B7B7B
+
+ > FONT GREY
+ -- #F1F1F1
+
+>> FONTS
+ - Titre : Alwyn Regular
+ - Sous-titre : Alwyn Bold
+ - Paragraphe : Source Sans Pro Regular
+ - Paragraphe gras : Source Sans Pro Semi-Bold
+
+   font-family: 'Source Sans Pro', Georgia, sans-serif;
+   font-family: 'Alwyn Regular', Georgia, sans-serif;
+   font-family: 'Alwyn Bold', Georgia, sans-serif;
+*/
+
+@font-face {
+    font-family: 'Alwyn Regular';
+    src: url(../fonts/alwyn.ttf);
+}
+@font-face {
+    font-family: 'Alwyn Bold';
+    src: url(../fonts/alwyn-bold.ttf);
+}
+
+/* STYLES PERSONNALISES
+*********************** */
+html {
+    height: 100%;
+}
+body {
+    /*For the sticky footer*/
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    /*---------------------*/
+}
+
+/* BARRE DE NAVIGATION
+====================== */
+.nav-wrapper {
+}
+nav {
+    background-color: #f9a02E;
+}
+nav ul li a {
+    color: white;
+}
+#logo {
+    padding-left: 2em;
+}
+#logo img{
+    width: 1.9em;
+}
+#nav-mobile {
+    margin-left: 32em;
+}
+#nav-mobile li {
+    padding: 0 3em;
+}
+span.nav-title {
+    padding: 0 !important;
+}
+
+/* MAIN CONTENT
+=============== */
+main {
+    /*For the sticky footer*/
+    flex: 1 0 auto;
+    /*----------------------*/
+    background-image: url('../img/backgroundbw.png');
+    background-size: cover;
+    background-position-y: -24px;
+}
+
+/* FOOTER
+========= */
+footer {
+    height: 85px;
+    background-color: #f9a02E !important;
+}
