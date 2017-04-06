@@ -1,0 +1,4 @@
+x_team_platform:
+    resource: "@XTeamPlatformBundle/Resources/config/routing.yml"
+    prefix:   /
+
