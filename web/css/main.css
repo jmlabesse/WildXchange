@@ -59,26 +59,31 @@ body {
 
 /* BARRE DE NAVIGATION
 ====================== */
-.nav-wrapper {
-}
+
 nav {
-    background-color: #f9a02E;
+    background-color: #f9a02E !important;
 }
+
 nav ul li a {
     color: white;
 }
+
 #logo {
     padding-left: 2em;
 }
+
 #logo img{
     width: 1.9em;
 }
+
 #nav-mobile {
     margin-left: 32em;
 }
+
 #nav-mobile li {
     padding: 0 3em;
 }
+
 span.nav-title {
     padding: 0 !important;
 }
@@ -88,10 +93,22 @@ span.nav-title {
 main {
     /*For the sticky footer*/
     flex: 1 0 auto;
-    /*----------------------*/
-    background-image: url('../img/backgroundbw.png');
+    /*-------------------------*/
+    background-image: url("../img/backgroundbw.png");
     background-size: cover;
-    background-position-y: -24px;
+    background-position-y: -53px;
+}
+
+#lvl1 {
+    height: 5em;
+}
+
+#lvl2 {
+    height: 22em;
+}
+
+.nav-wrapper.search {
+    background-color: #ffffff !important;
 }
 
 /* FOOTER
