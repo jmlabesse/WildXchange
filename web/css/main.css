@@ -44,6 +44,59 @@
     src: url(../fonts/alwyn-bold.ttf);
 }
 
-h1 {
-    font-family: 'Alwyn Regular', Georgia, sans-serif;
+/* STYLES PERSONNALISES
+*********************** */
+html {
+    height: 100%;
+}
+body {
+    /*For the sticky footer*/
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    /*---------------------*/
+}
+
+/* BARRE DE NAVIGATION
+====================== */
+.nav-wrapper {
+}
+nav {
+    background-color: #f9a02E;
+}
+nav ul li a {
+    color: white;
+}
+#logo {
+    padding-left: 2em;
+}
+#logo img{
+    width: 1.9em;
+}
+#nav-mobile {
+    margin-left: 32em;
+}
+#nav-mobile li {
+    padding: 0 3em;
+}
+span.nav-title {
+    padding: 0 !important;
+}
+
+/* MAIN CONTENT
+=============== */
+main {
+    /*For the sticky footer*/
+    flex: 1 0 auto;
+    /*----------------------*/
+    background-image: url('../img/backgroundbw.png');
+    background-size: cover;
+    background-position-y: -24px;
+}
+
+/* FOOTER
+========= */
+footer {
+    height: 85px;
+    background-color: #f9a02E !important;
 }

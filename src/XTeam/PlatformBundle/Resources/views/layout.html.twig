@@ -4,20 +4,54 @@
 <head>
     <title>{% block title %} @ wildXchange{% endblock %}</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    {# Feuilles de style Materialize #}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+
+    {# Fonts de Materialize et de la charte graphique #}
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+
     {% block stylesheets %}{% endblock %}
 </head>
 
 <body>
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!">one</a></li>
+        <li><a href="#!">two</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">three</a></li>
+    </ul>
     <nav>
+        <div class="nav-content">
+            <div class="nav-wrapper">
+                <a href="#" class="left brand-logo black-text" id="logo"><img src="{{ asset('img/logo1.png') }}"></a>
+                <ul id="nav-mobile" class="hide-on-med-and-down">
+                    <li><a href="">Resources</a></li>
+                    <li><a href="">Forums</a></li>
+                    <li><a href="">Login/Register</a></li>
+                    <li id="dropdown"><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
     {% block content %}
     {% endblock %}
 
-    <footer>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                </div>
+            </div>
+        </div>
     </footer>
+
+    {# Scripts Materialize #}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 </body>
 
 </html>
