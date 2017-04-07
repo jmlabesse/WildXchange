@@ -82,21 +82,35 @@ nav {
 
 }
 
+nav.nav-wrapper {
+    position: relative;
+    height: 100%;
+}
+
 nav ul li a {
     color: #FFFFFF;
 }
 
 #logo {
-    padding-left: 2em;
+    left: 2%;
 }
 
 #logo img{
-    width: 1.9em;
+    width: 1.7em;
+    margin-bottom: -4px;
 }
 
-#logo h3 {
+nav .brand-logo.center {
+    left: 29% !important;
+}
+
+#title h3 {
     color: #FFFFFF;
-    display: inline;
+    display: inline-block;
+}
+
+h3 {
+    margin: 0.46rem 0 1.168rem 0 !important;
 }
 
 .special-x {
@@ -104,11 +118,11 @@ nav ul li a {
 }
 
 #nav-mobile {
-    margin-left: 32em;
+    margin-left: 0em;
 }
 
 #nav-mobile li {
-    padding: 0 3em;
+    padding-left: 1em;
 }
 
 span.nav-title {
@@ -143,5 +157,10 @@ main {
 ========= */
 footer {
     height: 85px;
+    padding: 1em !important;
     background-color: var(--orange-intense) !important;
+}
+
+.page-footer {
+    padding: 0 !important;
 }
