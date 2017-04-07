@@ -22,9 +22,21 @@
  -- Secondary : #7B7B7B
 
  > FONT GREY
- -- #F1F1F1
+ -- #F1F1F1             */
 
->> FONTS
+:root {
+    --orange-intense: #F9A02E;
+    --orange-pastel: #FBA858;
+    --orange-light: #FFDEA5;
+    --blue-intense: #1FA597;
+    --blue-pastel: #58C4B8;
+    --blue-light: #80CBC4;
+    --red-contrast: #B9184D;
+    --text-main: #35383A;
+    --text-secondary: #7B7B7B;
+    --font-grey: #F1F1F1;
+}
+/*>> FONTS
  - Titre : Alwyn Regular
  - Sous-titre : Alwyn Bold
  - Paragraphe : Source Sans Pro Regular
@@ -32,8 +44,7 @@
 
    font-family: 'Source Sans Pro', Georgia, sans-serif;
    font-family: 'Alwyn Regular', Georgia, sans-serif;
-   font-family: 'Alwyn Bold', Georgia, sans-serif;
-*/
+   font-family: 'Alwyn Bold', Georgia, sans-serif;          */
 
 @font-face {
     font-family: 'Alwyn Regular';
@@ -46,57 +57,110 @@
 
 /* STYLES PERSONNALISES
 *********************** */
+/* GENERALITES
+=============== */
 html {
     height: 100%;
 }
 body {
-    /*For the sticky footer*/
-    display: flex;
-    min-height: 100%;
-    flex-direction: column;
-    /*---------------------*/
+    display: flex;             /*For the sticky footer*/
+    min-height: 100%;          /*---------------------*/
+    flex-direction: column;    /*---------------------*/
+    font-family: 'Source Sans Pro', Georgia, sans-serif;
+}
+h1, h2 {
+    font-family: 'Alwyn Regular', Georgia, sans-serif;
+}
+h3, h4, h5, h6 {
+    font-family: 'Alwyn Bold', Georgia, sans-serif;
 }
 
 /* BARRE DE NAVIGATION
 ====================== */
-.nav-wrapper {
-}
 nav {
-    background-color: #f9a02E;
+    background-color: var(--orange-intense) !important;
+
 }
+
+nav.nav-wrapper {
+    position: relative;
+    height: 100%;
+}
+
 nav ul li a {
-    color: white;
+    color: #FFFFFF;
 }
+
 #logo {
-    padding-left: 2em;
+    left: 2%;
 }
+
 #logo img{
-    width: 1.9em;
+    width: 1.7em;
+    margin-bottom: -4px;
 }
+
+nav .brand-logo.center {
+    left: 29% !important;
+}
+
+#title h3 {
+    color: #FFFFFF;
+    display: inline-block;
+}
+
+h3 {
+    margin: 0.46rem 0 1.168rem 0 !important;
+}
+
+.special-x {
+    color: var(--text-secondary) !important;
+}
+
 #nav-mobile {
-    margin-left: 32em;
+    margin-left: 0em;
 }
+
 #nav-mobile li {
-    padding: 0 3em;
+    padding-left: 1em;
 }
+
 span.nav-title {
     padding: 0 !important;
 }
-
+.nav-link {
+    font-weight: bold;
+}
 /* MAIN CONTENT
 =============== */
 main {
-    /*For the sticky footer*/
-    flex: 1 0 auto;
-    /*----------------------*/
-    background-image: url('../img/backgroundbw.png');
+
+    flex: 1 0 auto; /*For the sticky footer*/
+    background-image: url("../img/backgroundbw.png");
     background-size: cover;
-    background-position-y: -24px;
+    background-position-y: -53px;
+}
+
+#lvl1 {
+    height: 5em;
+}
+
+#lvl2 {
+    height: 22em;
+}
+
+.nav-wrapper.search {
+    background-color: #ffffff !important;
 }
 
 /* FOOTER
 ========= */
 footer {
     height: 85px;
-    background-color: #f9a02E !important;
+    padding: 1em !important;
+    background-color: var(--orange-intense) !important;
+}
+
+.page-footer {
+    padding: 0 !important;
 }
