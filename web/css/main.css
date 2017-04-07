@@ -166,6 +166,7 @@ footer {
 }
 
 i {
+<<<<<<< HEAD
    margin-left: 8px;
    margin-right: 8px;
 }
@@ -173,3 +174,13 @@ i {
 #icons {
   margin-top: 25px;
 }
+=======
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+#icons {
+    margin-top: 25px;
+}
+
+>>>>>>> 66d0b15b2dedc1e8f5d63ccda4a2375413569b5e
