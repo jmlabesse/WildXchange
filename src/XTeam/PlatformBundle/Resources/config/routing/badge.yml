@@ -1,0 +1,24 @@
+badge_index:
+    path:     /
+    defaults: { _controller: "XTeamPlatformBundle:badge:index" }
+    methods:  GET
+
+badge_show:
+    path:     /{id}/show
+    defaults: { _controller: "XTeamPlatformBundle:badge:show" }
+    methods:  GET
+
+badge_new:
+    path:     /new
+    defaults: { _controller: "XTeamPlatformBundle:badge:new" }
+    methods:  [GET, POST]
+
+badge_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "XTeamPlatformBundle:badge:edit" }
+    methods:  [GET, POST]
+
+badge_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "XTeamPlatformBundle:badge:delete" }
+    methods:  DELETE

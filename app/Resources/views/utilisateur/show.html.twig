@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Utilisateur</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ utilisateur.id }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ utilisateur.username }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ utilisateur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ utilisateur.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ utilisateur.email }}</td>
+            </tr>
+            <tr>
+                <th>Profession</th>
+                <td>{{ utilisateur.profession }}</td>
+            </tr>
+            <tr>
+                <th>Business</th>
+                <td>{{ utilisateur.business }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ utilisateur.statut }}</td>
+            </tr>
+            <tr>
+                <th>Promo</th>
+                <td>{{ utilisateur.promo }}</td>
+            </tr>
+            <tr>
+                <th>Gitaccount</th>
+                <td>{{ utilisateur.gitaccount }}</td>
+            </tr>
+            <tr>
+                <th>Linkedinaccount</th>
+                <td>{{ utilisateur.linkedinaccount }}</td>
+            </tr>
+            <tr>
+                <th>Twitteraccount</th>
+                <td>{{ utilisateur.twitteraccount }}</td>
+            </tr>
+            <tr>
+                <th>Fbaccount</th>
+                <td>{{ utilisateur.fbaccount }}</td>
+            </tr>
+            <tr>
+                <th>Avatar</th>
+                <td>{{ utilisateur.avatar }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('utilisateur_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('utilisateur_edit', { 'id': utilisateur.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

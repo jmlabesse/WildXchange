@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Stats list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Questioncount</th>
+                <th>Responsecount</th>
+                <th>Bestresponsecount</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for stat in stats %}
+            <tr>
+                <td><a href="{{ path('stat_show', { 'id': stat.id }) }}">{{ stat.id }}</a></td>
+                <td>{{ stat.questionCount }}</td>
+                <td>{{ stat.responseCount }}</td>
+                <td>{{ stat.bestresponseCount }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('stat_show', { 'id': stat.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('stat_edit', { 'id': stat.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('stat_new') }}">Create a new stat</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,15 @@
+XTeam\PlatformBundle\Entity\tag:
+    type: entity
+    table: null
+    repositoryClass: XTeam\PlatformBundle\Repository\tagRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        tagname:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
