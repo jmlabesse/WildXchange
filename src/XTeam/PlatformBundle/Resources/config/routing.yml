@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 x_team_platform_user:
         resource: "@XTeamPlatformBundle/Resources/config/routing/user.yml"
         prefix:   /user
 
-=======
->>>>>>> 4176f22e146cae34fbd180723456b5da0b9c2335
 xteam_platform_accueil:
     path:     /
     defaults: { _controller: XTeamPlatformBundle:Main:index }
