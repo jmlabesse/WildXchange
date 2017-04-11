@@ -1,0 +1,18 @@
+XTeam\PlatformBundle\Entity\techno:
+    type: entity
+    table: null
+    repositoryClass: XTeam\PlatformBundle\Repository\technoRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+        icon:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
