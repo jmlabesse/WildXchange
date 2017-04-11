@@ -1,0 +1,21 @@
+XTeam\PlatformBundle\Entity\stat:
+    type: entity
+    table: null
+    repositoryClass: XTeam\PlatformBundle\Repository\statRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        questionCount:
+            type: integer
+            column: question_count
+        responseCount:
+            type: integer
+            column: response_count
+        bestresponseCount:
+            type: integer
+            column: bestresponse_count
+    lifecycleCallbacks: {  }

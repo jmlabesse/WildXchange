@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Technos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Icon</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for techno in technos %}
+            <tr>
+                <td><a href="{{ path('techno_show', { 'id': techno.id }) }}">{{ techno.id }}</a></td>
+                <td>{{ techno.nom }}</td>
+                <td>{{ techno.icon }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('techno_show', { 'id': techno.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('techno_edit', { 'id': techno.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('techno_new') }}">Create a new techno</a>
+        </li>
+    </ul>
+{% endblock %}
