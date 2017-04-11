@@ -1,3 +1,7 @@
+xteam_platform_docs:
+    path:     /docs
+    defaults: { _controller: XTeamPlatformBundle:Main:docs }
+
 x_team_platform_user:
         resource: "@XTeamPlatformBundle/Resources/config/routing/user.yml"
         prefix:   /user
