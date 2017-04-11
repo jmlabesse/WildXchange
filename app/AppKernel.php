@@ -37,5 +37,4 @@ class AppKernel extends Kernel
         date_default_timezone_set( 'Europe/Paris' );
         parent::__construct($environment, $debug);
     }
-
 }
