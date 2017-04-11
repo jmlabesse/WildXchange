@@ -33,3 +33,4 @@ x_team_platform_techno:
 x_team_platform_stat:
         resource: "@XTeamPlatformBundle/Resources/config/routing/stat.yml"
         prefix:   /stat
+
