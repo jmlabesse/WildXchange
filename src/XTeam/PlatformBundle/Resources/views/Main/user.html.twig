@@ -1,0 +1,62 @@
+{% extends "XTeamPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+    Accueil {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <!-- begin page-content container and row -->
+        <div class='container'>
+            <div class='row'>
+                <!-- begin main column -->
+                <div class="col s8">
+                    <!-- begin name and badge row -->
+                    <div class="row" id="user">
+
+                    </div>
+                    <!-- end name and badge row -->
+                    <!-- begin stats/achievement row -->
+                    <div class="row">
+                        <!-- begin stats column -->
+                        <div class="col s6">
+
+                        </div>
+                        <!-- end stats column -->
+                        <!-- begin achievement column -->
+                        <div class="col s6">
+
+                        </div>
+                        <!-- end achievement column -->
+                        <!-- end stats/achievement row -->
+                    </div>
+                    <!-- begin info/skills row -->
+                    <div class="row">
+                        <!-- begin info column -->
+                        <div class="col s6">
+
+                        </div>
+                        <!-- end info column -->
+                        <!-- begin skills column -->
+                        <div class="col s6">
+
+                        </div>
+                        <!-- end skills column -->
+                    </div>
+                </div>
+                <!-- end main column -->
+                <!-- begin side history column-->
+                <div class="col s4">
+
+                </div>
+                <!-- end side history column-->
+
+                <!-- end page-content container and row -->
+            </div>
+        </div>
+    </main>
+{% endblock %}

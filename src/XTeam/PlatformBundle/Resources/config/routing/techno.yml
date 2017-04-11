@@ -1,0 +1,24 @@
+techno_index:
+    path:     /
+    defaults: { _controller: "XTeamPlatformBundle:techno:index" }
+    methods:  GET
+
+techno_show:
+    path:     /{id}/show
+    defaults: { _controller: "XTeamPlatformBundle:techno:show" }
+    methods:  GET
+
+techno_new:
+    path:     /new
+    defaults: { _controller: "XTeamPlatformBundle:techno:new" }
+    methods:  [GET, POST]
+
+techno_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "XTeamPlatformBundle:techno:edit" }
+    methods:  [GET, POST]
+
+techno_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "XTeamPlatformBundle:techno:delete" }
+    methods:  DELETE

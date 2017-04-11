@@ -1,7 +1,31 @@
-x_team_platform_utilisateur:
-        resource: "@XTeamPlatformBundle/Resources/config/routing/utilisateur.yml"
-        prefix:   /utilisateur
+x_team_platform_user:
+        resource: "@XTeamPlatformBundle/Resources/config/routing/user.yml"
+        prefix:   /user
 
 xteam_platform_accueil:
-    path:     /
+    path: /
     defaults: { _controller: XTeamPlatformBundle:Main:index }
+
+xteam_platform_newQ:
+    path: /newQ
+    defaults: {_controller: XTeamPlatformBundle:Main:newQ }
+
+x_team_platform_question:
+        resource: "@XTeamPlatformBundle/Resources/config/routing/question.yml"
+        prefix:   /question
+
+x_team_platform_tag:
+        resource: "@XTeamPlatformBundle/Resources/config/routing/tag.yml"
+        prefix:   /tag
+
+x_team_platform_badge:
+        resource: "@XTeamPlatformBundle/Resources/config/routing/badge.yml"
+        prefix:   /badge
+
+x_team_platform_techno:
+        resource: "@XTeamPlatformBundle/Resources/config/routing/techno.yml"
+        prefix:   /techno
+
+x_team_platform_stat:
+        resource: "@XTeamPlatformBundle/Resources/config/routing/stat.yml"
+        prefix:   /stat
