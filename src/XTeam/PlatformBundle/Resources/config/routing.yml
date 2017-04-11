@@ -1,3 +1,7 @@
 xteam_platform_accueil:
-    path:     /
+    path: /
     defaults: { _controller: XTeamPlatformBundle:Main:index }
+
+xteam_platform_newQ:
+    path: /newQ
+    defaults: {_controller: XTeamPlatformBundle:Main:newQ }
