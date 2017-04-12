@@ -41,28 +41,34 @@ class Question
      * @ORM\Column(name="is_resolved", type="boolean", nullable=false)
      */
     private $isResolved;
+
     /**
-     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="tags")
-     * @ORM\JoinTable(name="question_has_tag")
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="questions")
+     * @ORM\JoinTable(name="question_has_tag",)
+     * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
      */
-    private $questions;
+    private $tags;
 
     /**
-    * @ORM\OneToMany(targetEntity="History", mappedBy="questions")
-    */
-    private $history;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Response", mappedBy="question")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="questions")
      */
-    private $responses;
+    private $user;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -73,6 +79,7 @@ class Question
      * Set date
      *
      * @param \DateTime $date
+     *
      * @return Question
      */
     public function setDate($date)
@@ -85,7 +92,7 @@ class Question
     /**
      * Get date
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDate()
     {
@@ -96,6 +103,7 @@ class Question
      * Set intitule
      *
      * @param string $intitule
+     *
      * @return Question
      */
     public function setIntitule($intitule)
@@ -108,7 +116,7 @@ class Question
     /**
      * Get intitule
      *
-     * @return string 
+     * @return string
      */
     public function getIntitule()
     {
@@ -119,6 +127,7 @@ class Question
      * Set isResolved
      *
      * @param boolean $isResolved
+     *
      * @return Question
      */
     public function setIsResolved($isResolved)
@@ -131,142 +140,78 @@ class Question
     /**
      * Get isResolved
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsResolved()
     {
         return $this->isResolved;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->questions = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Add questions
+     * Add tag
      *
-     * @param \XTeam\PlatformBundle\Entity\Badge $questions
+     * @param \XTeam\PlatformBundle\Entity\Tag $tag
+     *
      * @return Question
      */
-    public function addQuestion(\XTeam\PlatformBundle\Entity\Badge $questions)
+    public function addTag(\XTeam\PlatformBundle\Entity\Tag $tag)
     {
-        $this->questions[] = $questions;
+        $this->tag[] = $tag;
 
         return $this;
     }
 
     /**
-     * Remove questions
+     * Remove tag
      *
-     * @param \XTeam\PlatformBundle\Entity\Badge $questions
+     * @param \XTeam\PlatformBundle\Entity\Tag $tag
      */
-    public function removeQuestion(\XTeam\PlatformBundle\Entity\Badge $questions)
+    public function removeTag(\XTeam\PlatformBundle\Entity\Tag $tag)
     {
-        $this->questions->removeElement($questions);
+        $this->tag->removeElement($tag);
     }
 
     /**
-     * Get questions
+     * Get tag
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getQuestions()
+    public function getTag()
     {
-        return $this->questions;
+        return $this->tag;
     }
 
     /**
-     * Set questions
+     * Set user
      *
-     * @param \XTeam\PlatformBundle\Entity\History $questions
+     * @param \XTeam\PlatformBundle\Entity\User $user
+     *
      * @return Question
      */
-    public function setQuestions(\XTeam\PlatformBundle\Entity\History $questions = null)
+    public function setUser(\XTeam\PlatformBundle\Entity\User $user = null)
     {
-        $this->questions = $questions;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Add history
+     * Get user
      *
-     * @param \XTeam\PlatformBundle\Entity\History $history
-     * @return Question
+     * @return \XTeam\PlatformBundle\Entity\User
      */
-    public function addHistory(\XTeam\PlatformBundle\Entity\History $history)
+    public function getUser()
     {
-        $this->history[] = $history;
-
-        return $this;
+        return $this->user;
     }
 
     /**
-     * Remove history
+     * Get tags
      *
-     * @param \XTeam\PlatformBundle\Entity\History $history
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function removeHistory(\XTeam\PlatformBundle\Entity\History $history)
+    public function getTags()
     {
-        $this->history->removeElement($history);
-    }
-
-    /**
-     * Get history
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getHistory()
-    {
-        return $this->history;
-    }
-
-    /**
-     * Set responses
-     *
-     * @param \XTeam\PlatformBundle\Entity\Response $responses
-     * @return Question
-     */
-    public function setResponses(\XTeam\PlatformBundle\Entity\Response $responses = null)
-    {
-        $this->responses = $responses;
-
-        return $this;
-    }
-
-    /**
-     * Get responses
-     *
-     * @return \XTeam\PlatformBundle\Entity\Response 
-     */
-    public function getResponses()
-    {
-        return $this->responses;
-    }
-
-    /**
-     * Add responses
-     *
-     * @param \XTeam\PlatformBundle\Entity\Response $responses
-     * @return Question
-     */
-    public function addResponse(\XTeam\PlatformBundle\Entity\Response $responses)
-    {
-        $this->responses[] = $responses;
-
-        return $this;
-    }
-
-    /**
-     * Remove responses
-     *
-     * @param \XTeam\PlatformBundle\Entity\Response $responses
-     */
-    public function removeResponse(\XTeam\PlatformBundle\Entity\Response $responses)
-    {
-        $this->responses->removeElement($responses);
+        return $this->tags;
     }
 }

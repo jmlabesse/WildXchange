@@ -7,49 +7,55 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Comment
  *
- * @ORM\Table(name="comment")
- * @ORM\Entity(repositoryClass="XTeam\PlatformBundle\Repository\CommentRepository")
+ * @ORM\Table(name="comment", indexes={@ORM\Index(name="IDX_9474526CFBF32840", columns={"response_id"})})
+ * @ORM\Entity
  */
 class Comment
 {
     /**
-     * @var int
+     * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="date", type="datetime", nullable=false)
      */
     private $date;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="string", length=255)
+     * @ORM\Column(name="content", type="string", length=255, nullable=false)
      */
     private $content;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Response", inversedBy="comments")
+     * @var \Response
+     *
+     * @ORM\ManyToOne(targetEntity="Response")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="response_id", referencedColumnName="id")
+     * })
      */
     private $response;
 
     /**
-     * @ORM\OneToMany(targetEntity="History", mappedBy="comments")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
      */
-    private $history;
+    private $user;
+
 
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -60,6 +66,7 @@ class Comment
      * Set date
      *
      * @param \DateTime $date
+     *
      * @return Comment
      */
     public function setDate($date)
@@ -72,7 +79,7 @@ class Comment
     /**
      * Get date
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDate()
     {
@@ -83,6 +90,7 @@ class Comment
      * Set content
      *
      * @param string $content
+     *
      * @return Comment
      */
     public function setContent($content)
@@ -95,57 +103,18 @@ class Comment
     /**
      * Get content
      *
-     * @return string 
+     * @return string
      */
     public function getContent()
     {
         return $this->content;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->response = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add response
-     *
-     * @param \XTeam\PlatformBundle\Entity\Response $response
-     * @return Comment
-     */
-    public function addResponse(\XTeam\PlatformBundle\Entity\Response $response)
-    {
-        $this->response[] = $response;
-
-        return $this;
-    }
-
-    /**
-     * Remove response
-     *
-     * @param \XTeam\PlatformBundle\Entity\Response $response
-     */
-    public function removeResponse(\XTeam\PlatformBundle\Entity\Response $response)
-    {
-        $this->response->removeElement($response);
-    }
-
-    /**
-     * Get response
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getResponse()
-    {
-        return $this->response;
     }
 
     /**
      * Set response
      *
      * @param \XTeam\PlatformBundle\Entity\Response $response
+     *
      * @return Comment
      */
     public function setResponse(\XTeam\PlatformBundle\Entity\Response $response = null)
@@ -153,5 +122,39 @@ class Comment
         $this->response = $response;
 
         return $this;
+    }
+
+    /**
+     * Get response
+     *
+     * @return \XTeam\PlatformBundle\Entity\Response
+     */
+    public function getResponse()
+    {
+        return $this->response;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \XTeam\PlatformBundle\Entity\User $user
+     *
+     * @return Comment
+     */
+    public function setUser(\XTeam\PlatformBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \XTeam\PlatformBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

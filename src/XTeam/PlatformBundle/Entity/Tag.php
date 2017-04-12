@@ -7,8 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Tag
  *
- * @ORM\Table(name="tag")
  * @ORM\Entity
+ * @ORM\Table(name="tag")
+ *
  */
 class Tag
 {
@@ -27,15 +28,27 @@ class Tag
      * @ORM\Column(name="tagname", type="string", length=255, nullable=false)
      */
     private $tagname;
+
     /**
-     * @ORM\ManyToMany(targetEntity="Question", mappedBy="questions")
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Question", mappedBy="tags")
      */
-    private $tags;
+    private $questions;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->question = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -46,6 +59,7 @@ class Tag
      * Set tagname
      *
      * @param string $tagname
+     *
      * @return Tag
      */
     public function setTagname($tagname)
@@ -58,50 +72,54 @@ class Tag
     /**
      * Get tagname
      *
-     * @return string 
+     * @return string
      */
     public function getTagname()
     {
         return $this->tagname;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Add tags
+     * Add question
      *
-     * @param \XTeam\PlatformBundle\Entity\Question $tags
+     * @param \XTeam\PlatformBundle\Entity\Question $question
+     *
      * @return Tag
      */
-    public function addTag(\XTeam\PlatformBundle\Entity\Question $tags)
+    public function addQuestion(\XTeam\PlatformBundle\Entity\Question $question)
     {
-        $this->tags[] = $tags;
+        $this->question[] = $question;
 
         return $this;
     }
 
     /**
-     * Remove tags
+     * Remove question
      *
-     * @param \XTeam\PlatformBundle\Entity\Question $tags
+     * @param \XTeam\PlatformBundle\Entity\Question $question
      */
-    public function removeTag(\XTeam\PlatformBundle\Entity\Question $tags)
+    public function removeQuestion(\XTeam\PlatformBundle\Entity\Question $question)
     {
-        $this->tags->removeElement($tags);
+        $this->question->removeElement($question);
     }
 
     /**
-     * Get tags
+     * Get question
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getTags()
+    public function getQuestion()
     {
-        return $this->tags;
+        return $this->question;
+    }
+
+    /**
+     * Get questions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
     }
 }

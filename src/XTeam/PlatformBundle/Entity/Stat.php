@@ -42,12 +42,17 @@ class Stat
      */
     private $bestresponseCount;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="stats")
+     */
+    private $user;
+
 
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -58,6 +63,7 @@ class Stat
      * Set questionCount
      *
      * @param integer $questionCount
+     *
      * @return Stat
      */
     public function setQuestionCount($questionCount)
@@ -70,7 +76,7 @@ class Stat
     /**
      * Get questionCount
      *
-     * @return integer 
+     * @return integer
      */
     public function getQuestionCount()
     {
@@ -81,6 +87,7 @@ class Stat
      * Set responseCount
      *
      * @param integer $responseCount
+     *
      * @return Stat
      */
     public function setResponseCount($responseCount)
@@ -93,7 +100,7 @@ class Stat
     /**
      * Get responseCount
      *
-     * @return integer 
+     * @return integer
      */
     public function getResponseCount()
     {
@@ -104,6 +111,7 @@ class Stat
      * Set bestresponseCount
      *
      * @param integer $bestresponseCount
+     *
      * @return Stat
      */
     public function setBestresponseCount($bestresponseCount)
@@ -116,10 +124,34 @@ class Stat
     /**
      * Get bestresponseCount
      *
-     * @return integer 
+     * @return integer
      */
     public function getBestresponseCount()
     {
         return $this->bestresponseCount;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \XTeam\PlatformBundle\Entity\User $user
+     *
+     * @return Stat
+     */
+    public function setUser(\XTeam\PlatformBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \XTeam\PlatformBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

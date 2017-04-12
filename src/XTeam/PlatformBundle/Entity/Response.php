@@ -7,68 +7,65 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Response
  *
- * @ORM\Table(name="response")
- * @ORM\Entity(repositoryClass="XTeam\PlatformBundle\Repository\ResponseRepository")
+ * @ORM\Table(name="response", indexes={@ORM\Index(name="IDX_3E7B0BFB1E27F6BF", columns={"question_id"})})
+ * @ORM\Entity
  */
 class Response
 {
     /**
-     * @var int
+     * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="date", type="datetime", nullable=false)
      */
     private $date;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="string", length=100)
+     * @ORM\Column(name="content", type="string", length=100, nullable=false)
      */
     private $content;
 
     /**
-     * @var bool
+     * @var boolean
      *
-     * @ORM\Column(name="is_correct", type="boolean")
+     * @ORM\Column(name="is_correct", type="boolean", nullable=false)
      */
     private $isCorrect;
 
     /**
-     * @var int
+     * @var integer
      *
-     * @ORM\Column(name="vote", type="integer")
+     * @ORM\Column(name="vote", type="integer", nullable=false)
      */
     private $vote;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Question", inversedBy="responses")
+     * @var \Question
+     *
+     * @ORM\ManyToOne(targetEntity="Question")
+     * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
      */
     private $question;
 
     /**
-     * @ORM\OneToMany(targetEntity="History", mappedBy="responses")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="responses")
      */
-    private $history;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="response")
-     */
-    private $comments;
-
+    private $user;
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -79,6 +76,7 @@ class Response
      * Set date
      *
      * @param \DateTime $date
+     *
      * @return Response
      */
     public function setDate($date)
@@ -91,7 +89,7 @@ class Response
     /**
      * Get date
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDate()
     {
@@ -102,6 +100,7 @@ class Response
      * Set content
      *
      * @param string $content
+     *
      * @return Response
      */
     public function setContent($content)
@@ -114,7 +113,7 @@ class Response
     /**
      * Get content
      *
-     * @return string 
+     * @return string
      */
     public function getContent()
     {
@@ -125,6 +124,7 @@ class Response
      * Set isCorrect
      *
      * @param boolean $isCorrect
+     *
      * @return Response
      */
     public function setIsCorrect($isCorrect)
@@ -137,7 +137,7 @@ class Response
     /**
      * Get isCorrect
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsCorrect()
     {
@@ -148,6 +148,7 @@ class Response
      * Set vote
      *
      * @param integer $vote
+     *
      * @return Response
      */
     public function setVote($vote)
@@ -160,103 +161,18 @@ class Response
     /**
      * Get vote
      *
-     * @return integer 
+     * @return integer
      */
     public function getVote()
     {
         return $this->vote;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->questions = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add questions
-     *
-     * @param \XTeam\PlatformBundle\Entity\Question $questions
-     * @return Response
-     */
-    public function addQuestion(\XTeam\PlatformBundle\Entity\Question $questions)
-    {
-        $this->questions[] = $questions;
-
-        return $this;
-    }
-
-    /**
-     * Remove questions
-     *
-     * @param \XTeam\PlatformBundle\Entity\Question $questions
-     */
-    public function removeQuestion(\XTeam\PlatformBundle\Entity\Question $questions)
-    {
-        $this->questions->removeElement($questions);
-    }
-
-    /**
-     * Get questions
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getQuestions()
-    {
-        return $this->questions;
-    }
-
-    /**
-     * Add responses
-     *
-     * @param \XTeam\PlatformBundle\Entity\Question $responses
-     * @return Response
-     */
-    public function addResponse(\XTeam\PlatformBundle\Entity\Question $responses)
-    {
-        $this->responses[] = $responses;
-
-        return $this;
-    }
-
-    /**
-     * Remove responses
-     *
-     * @param \XTeam\PlatformBundle\Entity\Question $responses
-     */
-    public function removeResponse(\XTeam\PlatformBundle\Entity\Question $responses)
-    {
-        $this->responses->removeElement($responses);
-    }
-
-    /**
-     * Get responses
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getResponses()
-    {
-        return $this->responses;
-    }
-
-    /**
-     * Set responses
-     *
-     * @param \XTeam\PlatformBundle\Entity\Question $responses
-     * @return Response
-     */
-    public function setResponses(\XTeam\PlatformBundle\Entity\Question $responses = null)
-    {
-        $this->responses = $responses;
-
-        return $this;
     }
 
     /**
      * Set question
      *
      * @param \XTeam\PlatformBundle\Entity\Question $question
+     *
      * @return Response
      */
     public function setQuestion(\XTeam\PlatformBundle\Entity\Question $question = null)
@@ -269,7 +185,7 @@ class Response
     /**
      * Get question
      *
-     * @return \XTeam\PlatformBundle\Entity\Question 
+     * @return \XTeam\PlatformBundle\Entity\Question
      */
     public function getQuestion()
     {
@@ -277,81 +193,26 @@ class Response
     }
 
     /**
-     * Add history
+     * Set user
      *
-     * @param \XTeam\PlatformBundle\Entity\History $history
+     * @param \XTeam\PlatformBundle\Entity\User $user
+     *
      * @return Response
      */
-    public function addHistory(\XTeam\PlatformBundle\Entity\History $history)
+    public function setUser(\XTeam\PlatformBundle\Entity\User $user = null)
     {
-        $this->history[] = $history;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Remove history
+     * Get user
      *
-     * @param \XTeam\PlatformBundle\Entity\History $history
+     * @return \XTeam\PlatformBundle\Entity\User
      */
-    public function removeHistory(\XTeam\PlatformBundle\Entity\History $history)
+    public function getUser()
     {
-        $this->history->removeElement($history);
-    }
-
-    /**
-     * Get history
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getHistory()
-    {
-        return $this->history;
-    }
-
-    /**
-     * Set comments
-     *
-     * @param \XTeam\PlatformBundle\Entity\Comment $comments
-     * @return Response
-     */
-    public function setComments(\XTeam\PlatformBundle\Entity\Comment $comments = null)
-    {
-        $this->comments = $comments;
-
-        return $this;
-    }
-
-    /**
-     * Get comments
-     *
-     * @return \XTeam\PlatformBundle\Entity\Comment 
-     */
-    public function getComments()
-    {
-        return $this->comments;
-    }
-
-    /**
-     * Add comments
-     *
-     * @param \XTeam\PlatformBundle\Entity\Comment $comments
-     * @return Response
-     */
-    public function addComment(\XTeam\PlatformBundle\Entity\Comment $comments)
-    {
-        $this->comments[] = $comments;
-
-        return $this;
-    }
-
-    /**
-     * Remove comments
-     *
-     * @param \XTeam\PlatformBundle\Entity\Comment $comments
-     */
-    public function removeComment(\XTeam\PlatformBundle\Entity\Comment $comments)
-    {
-        $this->comments->removeElement($comments);
+        return $this->user;
     }
 }

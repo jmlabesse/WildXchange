@@ -7,17 +7,17 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * History
  *
- * @ORM\Table(name="history")
- * @ORM\Entity(repositoryClass="XTeam\PlatformBundle\Repository\HistoryRepository")
+ * @ORM\Table(name="history", indexes={@ORM\Index(name="IDX_27BA704BBCB134CE", columns={"questions_id"}), @ORM\Index(name="IDX_27BA704B91560F9D", columns={"responses_id"}), @ORM\Index(name="IDX_27BA704B63379586", columns={"comments_id"})})
+ * @ORM\Entity
  */
 class History
 {
     /**
-     * @var int
+     * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
@@ -36,25 +36,46 @@ class History
     private $actionText;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Question", inversedBy="history")
+     * @var \Comment
+     *
+     * @ORM\ManyToOne(targetEntity="Comment")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="comments_id", referencedColumnName="id")
+     * })
      */
-    private $questions;
+    private $comments;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Response", inversedBy="history")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="histories")
+     */
+    private $user;
+
+    /**
+     * @var \Response
+     *
+     * @ORM\ManyToOne(targetEntity="Response")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="responses_id", referencedColumnName="id")
+     * })
      */
     private $responses;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Comment", inversedBy="history")
+     * @var \Question
+     *
+     * @ORM\ManyToOne(targetEntity="Question")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="questions_id", referencedColumnName="id")
+     * })
      */
-    private $comments;
+    private $questions;
+
 
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -65,6 +86,7 @@ class History
      * Set icon
      *
      * @param string $icon
+     *
      * @return History
      */
     public function setIcon($icon)
@@ -77,7 +99,7 @@ class History
     /**
      * Get icon
      *
-     * @return string 
+     * @return string
      */
     public function getIcon()
     {
@@ -88,6 +110,7 @@ class History
      * Set actionText
      *
      * @param string $actionText
+     *
      * @return History
      */
     public function setActionText($actionText)
@@ -100,93 +123,42 @@ class History
     /**
      * Get actionText
      *
-     * @return string 
+     * @return string
      */
     public function getActionText()
     {
         return $this->actionText;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->history = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Add history
+     * Set comments
      *
-     * @param \XTeam\PlatformBundle\Entity\Question $history
+     * @param \XTeam\PlatformBundle\Entity\Comment $comments
+     *
      * @return History
      */
-    public function addHistory(\XTeam\PlatformBundle\Entity\Question $history)
+    public function setComments(\XTeam\PlatformBundle\Entity\Comment $comments = null)
     {
-        $this->history[] = $history;
+        $this->comments = $comments;
 
         return $this;
     }
 
     /**
-     * Remove history
+     * Get comments
      *
-     * @param \XTeam\PlatformBundle\Entity\Question $history
+     * @return \XTeam\PlatformBundle\Entity\Comment
      */
-    public function removeHistory(\XTeam\PlatformBundle\Entity\Question $history)
+    public function getComments()
     {
-        $this->history->removeElement($history);
-    }
-
-    /**
-     * Get history
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getHistory()
-    {
-        return $this->history;
-    }
-
-    /**
-     * Set history
-     *
-     * @param \XTeam\PlatformBundle\Entity\Question $history
-     * @return History
-     */
-    public function setHistory(\XTeam\PlatformBundle\Entity\Question $history = null)
-    {
-        $this->history = $history;
-
-        return $this;
-    }
-
-    /**
-     * Set questions
-     *
-     * @param \XTeam\PlatformBundle\Entity\Question $questions
-     * @return History
-     */
-    public function setQuestions(\XTeam\PlatformBundle\Entity\Question $questions = null)
-    {
-        $this->questions = $questions;
-
-        return $this;
-    }
-
-    /**
-     * Get questions
-     *
-     * @return \XTeam\PlatformBundle\Entity\Question 
-     */
-    public function getQuestions()
-    {
-        return $this->questions;
+        return $this->comments;
     }
 
     /**
      * Set responses
      *
      * @param \XTeam\PlatformBundle\Entity\Response $responses
+     *
      * @return History
      */
     public function setResponses(\XTeam\PlatformBundle\Entity\Response $responses = null)
@@ -199,10 +171,58 @@ class History
     /**
      * Get responses
      *
-     * @return \XTeam\PlatformBundle\Entity\Response 
+     * @return \XTeam\PlatformBundle\Entity\Response
      */
     public function getResponses()
     {
         return $this->responses;
+    }
+
+    /**
+     * Set questions
+     *
+     * @param \XTeam\PlatformBundle\Entity\Question $questions
+     *
+     * @return History
+     */
+    public function setQuestions(\XTeam\PlatformBundle\Entity\Question $questions = null)
+    {
+        $this->questions = $questions;
+
+        return $this;
+    }
+
+    /**
+     * Get questions
+     *
+     * @return \XTeam\PlatformBundle\Entity\Question
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \XTeam\PlatformBundle\Entity\User $user
+     *
+     * @return History
+     */
+    public function setUser(\XTeam\PlatformBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \XTeam\PlatformBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
