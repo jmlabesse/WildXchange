@@ -1,11 +1,6 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
-
-{% block title %}
-    Connexion {{ parent() }}
-{% endblock %}
+{% extends "FOSUserBundle::layout_min.html.twig" %}
 
 {% block fos_user_content %}
-    <h1>Connexion</h1>
 {% if error %}
     <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
 {% endif %}
