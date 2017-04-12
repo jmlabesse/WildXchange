@@ -5,8 +5,33 @@
 {% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/qr.css') }}">
 {% endblock %}
 
+
+
+
+
 {% block content %}
+    <div class="carousel">
+        <a class="carousel-item" href="#"><img src={{ asset('img/logo/HTML5.png') }}></a>
+        <a class="carousel-item" href="#"><img src={{ asset('img/logo/css.png') }}></a>
+        <a class="carousel-item" href="#"><img src={{ asset('img/logo/Js.png') }}></a>
+        <a class="carousel-item" href="#"><img src={{ asset('img/logo/PHP.png') }}></a>
+        <a class="carousel-item" href="#"><img src={{ asset('img/logo/jquery.png') }}></a>
+    </div>
+
+    <div class="carousel">
+        <a class="carousel-item" href="#"><img src={{ asset('img/logo/HTML5.png') }}></a>
+        <a class="carousel-item" href="#"><img src={{ asset('img/logo/css.png') }}></a>
+        <a class="carousel-item" href="#"><img src={{ asset('img/logo/Js.png') }}></a>
+        <a class="carousel-item" href="#"><img src={{ asset('img/logo/PHP.png') }}></a>
+        <a class="carousel-item" href="#"><img src={{ asset('img/logo/jquery.png') }}></a>
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+<script src={{ asset('JS/carousel.js') }}></script>
 {% endblock %}
