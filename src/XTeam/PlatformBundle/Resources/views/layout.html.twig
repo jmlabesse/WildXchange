@@ -21,10 +21,9 @@
 
 <body>
 <ul id="dropdown1" class="dropdown-content">
-    <li><a href="#!">Se connecter avec Github</a></li>
-    <li><a href="#!">Se connecter avec wXc</a></li>
+    <li><a href="{{ path('fos_user_security_login') }}">Se connecter avec wXc</a></li>
     <li class="divider"></li>
-    <li><a href="#!">S'inscrire</a></li>
+    <li><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></li>
 </ul>
 <nav>
     <div class="nav-wrapper">
@@ -78,7 +77,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 
-<script src='JS/qr.js'></script>
+{% block scripts %}
+<script src={{ asset('JS/qr.js') }}></script>
+{% endblock %}
+
 </body>
 
 </html>
