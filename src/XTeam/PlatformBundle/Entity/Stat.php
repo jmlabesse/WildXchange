@@ -5,29 +5,43 @@ namespace XTeam\PlatformBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * stat
+ * Stat
+ *
+ * @ORM\Table(name="stat")
+ * @ORM\Entity
  */
-class stat
+class Stat
 {
     /**
-     * @var int
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @var int
+     * @var integer
+     *
+     * @ORM\Column(name="question_count", type="integer", nullable=false)
      */
     private $questionCount;
 
     /**
-     * @var int
+     * @var integer
+     *
+     * @ORM\Column(name="response_count", type="integer", nullable=false)
      */
     private $responseCount;
 
     /**
-     * @var int
+     * @var integer
+     *
+     * @ORM\Column(name="bestresponse_count", type="integer", nullable=false)
      */
     private $bestresponseCount;
+
 
 
     /**
@@ -44,7 +58,7 @@ class stat
      * Set questionCount
      *
      * @param integer $questionCount
-     * @return stat
+     * @return Stat
      */
     public function setQuestionCount($questionCount)
     {
@@ -67,7 +81,7 @@ class stat
      * Set responseCount
      *
      * @param integer $responseCount
-     * @return stat
+     * @return Stat
      */
     public function setResponseCount($responseCount)
     {
@@ -90,7 +104,7 @@ class stat
      * Set bestresponseCount
      *
      * @param integer $bestresponseCount
-     * @return stat
+     * @return Stat
      */
     public function setBestresponseCount($bestresponseCount)
     {

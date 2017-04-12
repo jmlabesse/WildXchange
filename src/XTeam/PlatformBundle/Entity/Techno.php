@@ -5,24 +5,36 @@ namespace XTeam\PlatformBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * techno
+ * Techno
+ *
+ * @ORM\Table(name="techno")
+ * @ORM\Entity
  */
-class techno
+class Techno
 {
     /**
-     * @var int
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255, nullable=false)
      */
     private $nom;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="icon", type="string", length=255, nullable=false)
      */
     private $icon;
+
 
 
     /**
@@ -39,7 +51,7 @@ class techno
      * Set nom
      *
      * @param string $nom
-     * @return techno
+     * @return Techno
      */
     public function setNom($nom)
     {
@@ -62,7 +74,7 @@ class techno
      * Set icon
      *
      * @param string $icon
-     * @return techno
+     * @return Techno
      */
     public function setIcon($icon)
     {
