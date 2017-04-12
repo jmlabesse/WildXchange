@@ -158,10 +158,6 @@ main {
     border:1px solid black;
 }
 
-#question.qr{
-
-}
-
 .fabbtn-wrapper{
     position: relative;
     height: 40px;
@@ -176,6 +172,18 @@ main {
 
 #response.qr{
 margin-top: 3em;
+}
+
+#commentaire {
+    margin-top: 20px;
+}
+
+#formSpacer {
+    margin-top: 50px;
+}
+
+.dividerMargin {
+    margin: 3em 0;
 }
 
 .rightCol {

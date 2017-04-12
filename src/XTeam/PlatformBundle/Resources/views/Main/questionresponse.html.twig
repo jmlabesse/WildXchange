@@ -36,9 +36,12 @@
                                     <div class="col s12">
                                         <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
                                         <div class="fabbtn-wrapper" id="asker">
+                                            <a class="btn-floating btn-large teal tooltipped" href="#responseForm" data-position="right" data-delay="50" data-tooltip="Give an answer to this question">
+                                                <i class="large material-icons">reply</i>
+                                            </a>
                                             <div class="fixed-action-btn horizontal click-to-toggle" id="fabBtn">
                                                 <a class="btn-floating btn-large teal">
-                                                    <i class="large material-icons">reply</i>
+                                                    <i class="large material-icons">menu</i>
                                                 </a>
                                                 <ul>
                                                     <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
@@ -52,6 +55,26 @@
                                 </div>
                             </div>
                         </div>
+                        <ul class="collapsible popout" data-collapsible="accordion" id="commentaire">
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">format_quote</i>Comment</div>
+                                <div class="collapsible-body">
+                                    <div class="row">
+                                        <form class="col s12">
+                                            <div class="row">
+                                                <div class="input-field col s12">
+                                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                    <label for="textarea1">Textarea</label>
+                                                </div>
+                                            </div>
+                                            <button class="btn" type="submit" name="commentSubmit">Comment
+                                                <i class="material-icons right">send</i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
 
                     <!--begin user avatar column -->
@@ -88,8 +111,45 @@
                                 </div>
                             </div>
                         </div>
+                        <ul class="collapsible popout" data-collapsible="accordion" id="commentaire">
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">format_quote</i>Comment</div>
+                                <div class="collapsible-body">
+                                    <div class="row">
+                                        <form class="col s12">
+                                            <div class="row">
+                                                <div class="input-field col s12">
+                                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                    <label for="textarea1">Textarea</label>
+                                                </div>
+                                            </div>
+                                            <button class="btn" type="submit" name="commentSubmit">Comment
+                                                <i class="material-icons right">send</i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-
+                    <div class="divider dividerMargin" id="formSpacer"></div>
+                    <h4>Your answer</h4>
+                        <div id="responseForm" class="section scrollspy">
+                            <div class="row">
+                                <form class="col s12">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                            <label for="textarea1">Textarea</label>
+                                        </div>
+                                        <button class="btn waves-effect waves-light" type="submit" name="answerSubmit">Submit
+                                            <i class="material-icons right">send</i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    <div class="divider dividerMargin"></div>
                 </div>
                 <!--end left content column-->
                 <!--begin user info column-->
@@ -111,4 +171,5 @@
             </div>
         </div>
     </main>
+    <script src="../JS/questionresponse.js"></script>
 {% endblock %}
