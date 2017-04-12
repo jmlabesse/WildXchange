@@ -50,26 +50,27 @@ class Response
     private $vote;
 
     /**
-     * @var \Question
-     *
-     * @ORM\ManyToOne(targetEntity="Question")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="question_id", referencedColumnName="id")
-     * })
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="response")
+     */
+    private $comments;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Question", inversedBy="responses")
      */
     private $question;
 
     /**
-     * @var \FosUser
-     *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="responses")
      */
     private $user;
 
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -178,6 +179,40 @@ class Response
     }
 
     /**
+     * Add comment
+     *
+     * @param \XTeam\PlatformBundle\Entity\Comment $comment
+     *
+     * @return Response
+     */
+    public function addComment(\XTeam\PlatformBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \XTeam\PlatformBundle\Entity\Comment $comment
+     */
+    public function removeComment(\XTeam\PlatformBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
      * Set question
      *
      * @param \XTeam\PlatformBundle\Entity\Question $question
@@ -204,11 +239,11 @@ class Response
     /**
      * Set user
      *
-     * @param \XTeam\PlatformBundle\Entity\FosUser $user
+     * @param \XTeam\PlatformBundle\Entity\User $user
      *
      * @return Response
      */
-    public function setUser(\XTeam\PlatformBundle\Entity\FosUser $user = null)
+    public function setUser(\XTeam\PlatformBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
@@ -218,7 +253,7 @@ class Response
     /**
      * Get user
      *
-     * @return \XTeam\PlatformBundle\Entity\FosUser
+     * @return \XTeam\PlatformBundle\Entity\User
      */
     public function getUser()
     {

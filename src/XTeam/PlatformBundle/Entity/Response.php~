@@ -50,25 +50,18 @@ class Response
     private $vote;
 
     /**
-     * @var \Question
-     *
-     * @ORM\ManyToOne(targetEntity="Question")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="question_id", referencedColumnName="id")
-     * })
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="response")
+     */
+    private $comments;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Question", inversedBy="responses")
      */
     private $question;
 
     /**
-     * @var \FosUser
-     *
-     * @ORM\ManyToOne(targetEntity="FosUser")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="responses")
      */
     private $user;
 
-
 }
-

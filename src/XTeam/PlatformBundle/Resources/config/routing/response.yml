@@ -1,0 +1,24 @@
+response_index:
+    path:     /
+    defaults: { _controller: "XTeamPlatformBundle:Response:index" }
+    methods:  GET
+
+response_show:
+    path:     /{id}/show
+    defaults: { _controller: "XTeamPlatformBundle:Response:show" }
+    methods:  GET
+
+response_new:
+    path:     /new
+    defaults: { _controller: "XTeamPlatformBundle:Response:new" }
+    methods:  [GET, POST]
+
+response_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "XTeamPlatformBundle:Response:edit" }
+    methods:  [GET, POST]
+
+response_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "XTeamPlatformBundle:Response:delete" }
+    methods:  DELETE

@@ -53,7 +53,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="statut", type="string", length=255, nullable=false)
+     * @ORM\Column(name="statut", type="string", length=255, nullable=true)
      */
     private $statut;
 
@@ -67,7 +67,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="git", type="string", length=255, nullable=false)
+     * @ORM\Column(name="git", type="string", length=255, nullable=true)
      */
     private $git;
 
@@ -88,14 +88,14 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="linkedin", type="string", length=255, nullable=false)
+     * @ORM\Column(name="linkedin", type="string", length=255, nullable=true)
      */
     private $linkedin;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="avatar", type="string", length=255, nullable=false)
+     * @ORM\Column(name="avatar", type="string", length=255, nullable=true)
      */
     private $avatar;
 
@@ -110,31 +110,29 @@ class User extends BaseUser
     private $questions;
 
     /**
-     * @ORM\OneToMany(targetEntity="Question", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Response", mappedBy="user")
      */
     private $responses;
 
     /**
-     * @ORM\OneToMany(targetEntity="Question", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="user")
      */
     private $comments;
 
     /**
-     * @ORM\OneToMany(targetEntity="Question", mappedBy="user")
-     */
-    private $histories;
-
-    /**
+     * Many Users have Many Badges.
      * @ORM\ManyToMany(targetEntity="Badge", inversedBy="users")
-     * @ORM\JoinTable(name="user_has_badge")
+     * @ORM\JoinTable(name="users_badges")
      */
     private $badges;
 
     /**
+     * Many Users have Many Technos.
      * @ORM\ManyToMany(targetEntity="Techno", inversedBy="users")
-     * @ORM\JoinTable(name="user_has_techno")
+     * @ORM\JoinTable(name="users_technos")
      */
     private $technos;
+
 
     /**
      * Set nom
@@ -435,30 +433,6 @@ class User extends BaseUser
     }
 
     /**
-     * Set question
-     *
-     * @param \XTeam\PlatformBundle\Entity\Question $question
-     *
-     * @return User
-     */
-    public function setQuestion(\XTeam\PlatformBundle\Entity\Question $question = null)
-    {
-        $this->question = $question;
-
-        return $this;
-    }
-
-    /**
-     * Get question
-     *
-     * @return \XTeam\PlatformBundle\Entity\Question
-     */
-    public function getQuestion()
-    {
-        return $this->question;
-    }
-
-    /**
      * Add question
      *
      * @param \XTeam\PlatformBundle\Entity\Question $question
@@ -495,11 +469,11 @@ class User extends BaseUser
     /**
      * Add response
      *
-     * @param \XTeam\PlatformBundle\Entity\Question $response
+     * @param \XTeam\PlatformBundle\Entity\Response $response
      *
      * @return User
      */
-    public function addResponse(\XTeam\PlatformBundle\Entity\Question $response)
+    public function addResponse(\XTeam\PlatformBundle\Entity\Response $response)
     {
         $this->responses[] = $response;
 
@@ -509,9 +483,9 @@ class User extends BaseUser
     /**
      * Remove response
      *
-     * @param \XTeam\PlatformBundle\Entity\Question $response
+     * @param \XTeam\PlatformBundle\Entity\Response $response
      */
-    public function removeResponse(\XTeam\PlatformBundle\Entity\Question $response)
+    public function removeResponse(\XTeam\PlatformBundle\Entity\Response $response)
     {
         $this->responses->removeElement($response);
     }
@@ -529,11 +503,11 @@ class User extends BaseUser
     /**
      * Add comment
      *
-     * @param \XTeam\PlatformBundle\Entity\Question $comment
+     * @param \XTeam\PlatformBundle\Entity\Comment $comment
      *
      * @return User
      */
-    public function addComment(\XTeam\PlatformBundle\Entity\Question $comment)
+    public function addComment(\XTeam\PlatformBundle\Entity\Comment $comment)
     {
         $this->comments[] = $comment;
 
@@ -543,9 +517,9 @@ class User extends BaseUser
     /**
      * Remove comment
      *
-     * @param \XTeam\PlatformBundle\Entity\Question $comment
+     * @param \XTeam\PlatformBundle\Entity\Comment $comment
      */
-    public function removeComment(\XTeam\PlatformBundle\Entity\Question $comment)
+    public function removeComment(\XTeam\PlatformBundle\Entity\Comment $comment)
     {
         $this->comments->removeElement($comment);
     }
@@ -558,40 +532,6 @@ class User extends BaseUser
     public function getComments()
     {
         return $this->comments;
-    }
-
-    /**
-     * Add history
-     *
-     * @param \XTeam\PlatformBundle\Entity\Question $history
-     *
-     * @return User
-     */
-    public function addHistory(\XTeam\PlatformBundle\Entity\Question $history)
-    {
-        $this->histories[] = $history;
-
-        return $this;
-    }
-
-    /**
-     * Remove history
-     *
-     * @param \XTeam\PlatformBundle\Entity\Question $history
-     */
-    public function removeHistory(\XTeam\PlatformBundle\Entity\Question $history)
-    {
-        $this->histories->removeElement($history);
-    }
-
-    /**
-     * Get histories
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getHistories()
-    {
-        return $this->histories;
     }
 
     /**

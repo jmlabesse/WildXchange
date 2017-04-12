@@ -8,8 +8,9 @@
             <tr>
                 <th>Id</th>
                 <th>Date</th>
-                <th>Intitule</th>
+                <th>Question</th>
                 <th>Isresolved</th>
+                <th>Titre</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -18,8 +19,9 @@
             <tr>
                 <td><a href="{{ path('question_show', { 'id': question.id }) }}">{{ question.id }}</a></td>
                 <td>{% if question.date %}{{ question.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ question.intitule }}</td>
+                <td>{{ question.question }}</td>
                 <td>{% if question.isResolved %}Yes{% else %}No{% endif %}</td>
+                <td>{{ question.titre }}</td>
                 <td>
                     <ul>
                         <li>
