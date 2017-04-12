@@ -2,162 +2,85 @@
 
 namespace XTeam\PlatformBundle\Entity;
 
+use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * User
- *
- * @ORM\Table(name="user")
- * @ORM\Entity
+ * fos_user
  */
-class User
+class User extends BaseUser
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @var int
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="username", type="string", length=255, nullable=false)
-     */
-    private $username;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nom", type="string", length=255, nullable=false)
      */
     private $nom;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="prenom", type="string", length=255, nullable=false)
      */
     private $prenom;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255, nullable=false)
-     */
-    private $password;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255, nullable=false)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="profession", type="string", length=255, nullable=true)
      */
     private $profession;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="business", type="string", length=255, nullable=true)
      */
     private $business;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="statut", type="string", length=255, nullable=false)
      */
     private $statut;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="promo", type="string", length=255, nullable=true)
      */
     private $promo;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="git", type="string", length=255, nullable=false)
      */
     private $git;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="twitter", type="string", length=255, nullable=true)
      */
     private $twitter;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="facebook", type="string", length=255, nullable=true)
      */
     private $facebook;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="linkedin", type="string", length=255, nullable=false)
      */
     private $linkedin;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="avatar", type="string", length=255, nullable=false)
      */
     private $avatar;
 
 
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
+    public function __construct()
     {
-        return $this->id;
-    }
-
-    /**
-     * Set username
-     *
-     * @param string $username
-     * @return User
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * Get username
-     *
-     * @return string 
-     */
-    public function getUsername()
-    {
-        return $this->username;
+        parent::__construct();
     }
 
     /**
      * Set nom
      *
      * @param string $nom
+     *
      * @return User
      */
     public function setNom($nom)
@@ -170,7 +93,7 @@ class User
     /**
      * Get nom
      *
-     * @return string 
+     * @return string
      */
     public function getNom()
     {
@@ -181,6 +104,7 @@ class User
      * Set prenom
      *
      * @param string $prenom
+     *
      * @return User
      */
     public function setPrenom($prenom)
@@ -193,7 +117,7 @@ class User
     /**
      * Get prenom
      *
-     * @return string 
+     * @return string
      */
     public function getPrenom()
     {
@@ -201,55 +125,10 @@ class User
     }
 
     /**
-     * Set password
-     *
-     * @param string $password
-     * @return User
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string 
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
      * Set profession
      *
      * @param string $profession
+     *
      * @return User
      */
     public function setProfession($profession)
@@ -262,7 +141,7 @@ class User
     /**
      * Get profession
      *
-     * @return string 
+     * @return string
      */
     public function getProfession()
     {
@@ -273,6 +152,7 @@ class User
      * Set business
      *
      * @param string $business
+     *
      * @return User
      */
     public function setBusiness($business)
@@ -285,7 +165,7 @@ class User
     /**
      * Get business
      *
-     * @return string 
+     * @return string
      */
     public function getBusiness()
     {
@@ -296,6 +176,7 @@ class User
      * Set statut
      *
      * @param string $statut
+     *
      * @return User
      */
     public function setStatut($statut)
@@ -308,7 +189,7 @@ class User
     /**
      * Get statut
      *
-     * @return string 
+     * @return string
      */
     public function getStatut()
     {
@@ -319,6 +200,7 @@ class User
      * Set promo
      *
      * @param string $promo
+     *
      * @return User
      */
     public function setPromo($promo)
@@ -331,7 +213,7 @@ class User
     /**
      * Get promo
      *
-     * @return string 
+     * @return string
      */
     public function getPromo()
     {
@@ -342,6 +224,7 @@ class User
      * Set git
      *
      * @param string $git
+     *
      * @return User
      */
     public function setGit($git)
@@ -354,7 +237,7 @@ class User
     /**
      * Get git
      *
-     * @return string 
+     * @return string
      */
     public function getGit()
     {
@@ -365,6 +248,7 @@ class User
      * Set twitter
      *
      * @param string $twitter
+     *
      * @return User
      */
     public function setTwitter($twitter)
@@ -377,7 +261,7 @@ class User
     /**
      * Get twitter
      *
-     * @return string 
+     * @return string
      */
     public function getTwitter()
     {
@@ -388,6 +272,7 @@ class User
      * Set facebook
      *
      * @param string $facebook
+     *
      * @return User
      */
     public function setFacebook($facebook)
@@ -400,7 +285,7 @@ class User
     /**
      * Get facebook
      *
-     * @return string 
+     * @return string
      */
     public function getFacebook()
     {
@@ -411,6 +296,7 @@ class User
      * Set linkedin
      *
      * @param string $linkedin
+     *
      * @return User
      */
     public function setLinkedin($linkedin)
@@ -423,7 +309,7 @@ class User
     /**
      * Get linkedin
      *
-     * @return string 
+     * @return string
      */
     public function getLinkedin()
     {
@@ -434,6 +320,7 @@ class User
      * Set avatar
      *
      * @param string $avatar
+     *
      * @return User
      */
     public function setAvatar($avatar)
@@ -446,7 +333,7 @@ class User
     /**
      * Get avatar
      *
-     * @return string 
+     * @return string
      */
     public function getAvatar()
     {
