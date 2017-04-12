@@ -120,10 +120,6 @@ h3 {
     color: var(--text-secondary) !important;
 }
 
-#nav-mobile {
-    margin-left: 0em;
-}
-
 #nav-mobile li {
     padding-left: 1em;
 }
@@ -137,24 +133,80 @@ span.nav-title {
 /* MAIN CONTENT
 =============== */
 main {
-
     flex: 1 0 auto; /*For the sticky footer*/
-    background-image: url("../img/backgroundbw.png");
-    background-size: cover;
-    background-position-y: -53px;
+    width: 100%;
 }
 
-#lvl1 {
-    height: 5em;
+@media only screen and (min-width: 993px){
+    .container {
+        width: 90%;
+    }
 }
 
-#lvl2 {
-    height: 22em;
+#avatar {
+    max-height: 100%;
+    height: 8em;
+    margin-left: 1em;
 }
 
-.nav-wrapper.search {
-    background-color: #ffffff !important;
+.usrCol {
+    margin-top: 3em;
+    padding-right:3em;
 }
+
+.qr{
+    border:1px solid black;
+}
+
+#question.qr{
+
+}
+
+.fabbtn-wrapper{
+    position: relative;
+    height: 40px;
+}
+
+#fabBtn {
+    position: absolute;
+    display: inline-block;
+    right: 4em;
+    top: 0em;
+}
+
+#response.qr{
+margin-top: 3em;
+}
+
+.rightCol {
+    padding-top: 3em;
+    float: right  !important;
+}
+
+.infoCol {
+    border:1px solid black;
+    background-color: #FFDEA5;
+    position: relative;
+    margin-top: 3em;
+}
+
+/* PushPin Element Styling
+========= */
+/*Class for when element is above threshold*/
+.pin-top {
+    position: relative;
+}
+
+/* Class for when element is below threshold */
+.pin-bottom {
+    position: relative;
+}
+
+/* Class for when element is pinned*/
+.pinned {
+    position: fixed !important;
+}
+
 
 /* FOOTER
 ========= */
@@ -168,12 +220,12 @@ footer {
 }
 
 i {
-   margin-left: 8px;
-   margin-right: 8px;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 #icons {
-  margin-top: 25px;
+    margin-top: 25px;
 }
 
 #icons {
