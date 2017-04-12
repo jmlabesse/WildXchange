@@ -1,8 +1,15 @@
 {% extends 'XTeamPlatformBundle::layout.html.twig' %}
 
+{% block title %}
+    Inscription {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+{% endblock %}
+
 {% block content %}
 <body>
-<p>TEMPLATE MODIFIE</p>
 <div>
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
         {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
