@@ -28,4 +28,9 @@ class MainController extends Controller
     {
         return $this->render('XTeamPlatformBundle:Main:faq.html.twig', array());
     }
+
+    public function showContactAction()
+    {
+        return $this->render('XTeamPlatformBundle:Main:contact.html.twig', array());
+    }
 }
