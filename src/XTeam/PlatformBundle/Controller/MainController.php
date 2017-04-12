@@ -24,4 +24,8 @@ class MainController extends Controller
         return $this->render('XTeamPlatformBundle:Main:questionresponse.html.twig', array());
     }
 
+    public function showFaqAction()
+    {
+        return $this->render('XTeamPlatformBundle:Main:faq.html.twig', array());
+    }
 }
