@@ -1,0 +1,57 @@
+{% extends "XTeamPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+    newQ {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/qr.css') }}">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <!-- begin page-content container -->
+        <div class='container'>
+            <div class='row'>
+                <!-- begin left content column -->
+                <div class="col s10 m7 l8 left usrCol">
+                    <!--begin question input row -->
+                    <div class="row">
+                        <!--begin user info column -->
+                        <div class="col s3">
+                            <p>TestTestTestTestTest</p>
+                            <p>Test</p><br>
+                            <p>Test</p><br>
+                            <p>Test</p><br>
+                            <p>Test</p><br>
+                        </div>
+                        <!--end user info column -->
+                        <!--begin question column -->
+                        <div class="col s9 qForm">
+
+                        </div>
+                    </div>
+                    <!--end left content column-->
+                </div>
+
+
+                <!--begin user info column-->
+                <div class="col hide-on-small-only m4 l3 rightCol">
+                    <div class="infoCol">
+                        <form>
+                            <div class="input-field">
+                                <input id="search" type="search" required>
+                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                <i class="material-icons">close</i>
+                            </div>
+                        </form>
+                        <p>Test</p><br>
+                        <p>Test</p><br>
+                    </div>
+                    <!--end user info column-->
+                </div>
+                <!-- end page-content container -->
+            </div>
+        </div>
+    </main>
+{% endblock %}

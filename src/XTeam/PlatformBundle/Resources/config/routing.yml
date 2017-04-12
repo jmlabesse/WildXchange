@@ -2,9 +2,9 @@ xteam_platform_docs:
     path:     /docs
     defaults: { _controller: XTeamPlatformBundle:Main:docs }
 
-x_team_platform_user:
-        resource: "@XTeamPlatformBundle/Resources/config/routing/user.yml"
-        prefix:   /user
+xteam_platform_questionresponse:
+    path: /questionresponse
+    defaults: { _controller: XTeamPlatformBundle:Main:questionresponse }
 
 xteam_platform_accueil:
     path: /
@@ -33,3 +33,7 @@ x_team_platform_techno:
 x_team_platform_stat:
         resource: "@XTeamPlatformBundle/Resources/config/routing/stat.yml"
         prefix:   /stat
+
+x_team_platform_user:
+        resource: "@XTeamPlatformBundle/Resources/config/routing/user.yml"
+        prefix:   /user

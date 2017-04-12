@@ -15,8 +15,13 @@ class MainController extends Controller
         return $this->render('XTeamPlatformBundle:Main:docs.html.twig', array());
     }
 
-    public Function newqAction() {
+    public function newqAction() {
         return $this->render('XTeamPlatformBundle:Main:newQ.html.twig', array());
+    }
+
+    public function questionresponseAction()
+    {
+        return $this->render('XTeamPlatformBundle:Main:questionresponse.html.twig', array());
     }
 
 }
