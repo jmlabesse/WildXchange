@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Response
  *
- * @ORM\Table(name="response", indexes={@ORM\Index(name="IDX_3E7B0BFB1E27F6BF", columns={"question_id"})})
+ * @ORM\Table(name="response", indexes={@ORM\Index(name="IDX_3E7B0BFB1E27F6BF", columns={"question_id"}), @ORM\Index(name="IDX_3E7B0BFBA76ED395", columns={"user_id"})})
  * @ORM\Entity
  */
 class Response
@@ -53,14 +53,23 @@ class Response
      * @var \Question
      *
      * @ORM\ManyToOne(targetEntity="Question")
-     * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="question_id", referencedColumnName="id")
+     * })
      */
     private $question;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="responses")
+     * @var \FosUser
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
      */
     private $user;
+
+
 
     /**
      * Get id
@@ -195,11 +204,11 @@ class Response
     /**
      * Set user
      *
-     * @param \XTeam\PlatformBundle\Entity\User $user
+     * @param \XTeam\PlatformBundle\Entity\FosUser $user
      *
      * @return Response
      */
-    public function setUser(\XTeam\PlatformBundle\Entity\User $user = null)
+    public function setUser(\XTeam\PlatformBundle\Entity\FosUser $user = null)
     {
         $this->user = $user;
 
@@ -209,7 +218,7 @@ class Response
     /**
      * Get user
      *
-     * @return \XTeam\PlatformBundle\Entity\User
+     * @return \XTeam\PlatformBundle\Entity\FosUser
      */
     public function getUser()
     {
