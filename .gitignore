@@ -12,3 +12,4 @@
 /composer.phar
 .DS_Store
 web/ .DS_Store
+/src/XTeam/PlatformBundle/Entity/*.php~
