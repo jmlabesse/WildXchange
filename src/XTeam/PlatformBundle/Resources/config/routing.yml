@@ -37,3 +37,7 @@ x_team_platform_stat:
 x_team_platform_user:
         resource: "@XTeamPlatformBundle/Resources/config/routing/user.yml"
         prefix:   /user
+
+x_team_platform_charte:
+    path: /charte
+    defaults: {_controller: XTeamPlatformBundle:Main:viewCharte}
