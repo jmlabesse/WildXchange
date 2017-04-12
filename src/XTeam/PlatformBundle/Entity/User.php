@@ -2,22 +2,18 @@
 
 namespace XTeam\PlatformBundle\Entity;
 
+use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * user
+ * fos_user
  */
-class user
+class User extends BaseUser
 {
     /**
      * @var int
      */
-    private $id;
-
-    /**
-     * @var string
-     */
-    private $username;
+    protected $id;
 
     /**
      * @var string
@@ -28,16 +24,6 @@ class user
      * @var string
      */
     private $prenom;
-
-    /**
-     * @var string
-     */
-    private $password;
-
-    /**
-     * @var string
-     */
-    private $email;
 
     /**
      * @var string
@@ -85,44 +71,17 @@ class user
     private $avatar;
 
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
+    public function __construct()
     {
-        return $this->id;
-    }
-
-    /**
-     * Set username
-     *
-     * @param string $username
-     * @return user
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * Get username
-     *
-     * @return string 
-     */
-    public function getUsername()
-    {
-        return $this->username;
+        parent::__construct();
     }
 
     /**
      * Set nom
      *
      * @param string $nom
-     * @return user
+     *
+     * @return User
      */
     public function setNom($nom)
     {
@@ -134,7 +93,7 @@ class user
     /**
      * Get nom
      *
-     * @return string 
+     * @return string
      */
     public function getNom()
     {
@@ -145,7 +104,8 @@ class user
      * Set prenom
      *
      * @param string $prenom
-     * @return user
+     *
+     * @return User
      */
     public function setPrenom($prenom)
     {
@@ -157,7 +117,7 @@ class user
     /**
      * Get prenom
      *
-     * @return string 
+     * @return string
      */
     public function getPrenom()
     {
@@ -165,56 +125,11 @@ class user
     }
 
     /**
-     * Set password
-     *
-     * @param string $password
-     * @return user
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string 
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return user
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
      * Set profession
      *
      * @param string $profession
-     * @return user
+     *
+     * @return User
      */
     public function setProfession($profession)
     {
@@ -226,7 +141,7 @@ class user
     /**
      * Get profession
      *
-     * @return string 
+     * @return string
      */
     public function getProfession()
     {
@@ -237,7 +152,8 @@ class user
      * Set business
      *
      * @param string $business
-     * @return user
+     *
+     * @return User
      */
     public function setBusiness($business)
     {
@@ -249,7 +165,7 @@ class user
     /**
      * Get business
      *
-     * @return string 
+     * @return string
      */
     public function getBusiness()
     {
@@ -260,7 +176,8 @@ class user
      * Set statut
      *
      * @param string $statut
-     * @return user
+     *
+     * @return User
      */
     public function setStatut($statut)
     {
@@ -272,7 +189,7 @@ class user
     /**
      * Get statut
      *
-     * @return string 
+     * @return string
      */
     public function getStatut()
     {
@@ -283,7 +200,8 @@ class user
      * Set promo
      *
      * @param string $promo
-     * @return user
+     *
+     * @return User
      */
     public function setPromo($promo)
     {
@@ -295,7 +213,7 @@ class user
     /**
      * Get promo
      *
-     * @return string 
+     * @return string
      */
     public function getPromo()
     {
@@ -306,7 +224,8 @@ class user
      * Set git
      *
      * @param string $git
-     * @return user
+     *
+     * @return User
      */
     public function setGit($git)
     {
@@ -318,7 +237,7 @@ class user
     /**
      * Get git
      *
-     * @return string 
+     * @return string
      */
     public function getGit()
     {
@@ -329,7 +248,8 @@ class user
      * Set twitter
      *
      * @param string $twitter
-     * @return user
+     *
+     * @return User
      */
     public function setTwitter($twitter)
     {
@@ -341,7 +261,7 @@ class user
     /**
      * Get twitter
      *
-     * @return string 
+     * @return string
      */
     public function getTwitter()
     {
@@ -352,7 +272,8 @@ class user
      * Set facebook
      *
      * @param string $facebook
-     * @return user
+     *
+     * @return User
      */
     public function setFacebook($facebook)
     {
@@ -364,7 +285,7 @@ class user
     /**
      * Get facebook
      *
-     * @return string 
+     * @return string
      */
     public function getFacebook()
     {
@@ -375,7 +296,8 @@ class user
      * Set linkedin
      *
      * @param string $linkedin
-     * @return user
+     *
+     * @return User
      */
     public function setLinkedin($linkedin)
     {
@@ -387,7 +309,7 @@ class user
     /**
      * Get linkedin
      *
-     * @return string 
+     * @return string
      */
     public function getLinkedin()
     {
@@ -398,7 +320,8 @@ class user
      * Set avatar
      *
      * @param string $avatar
-     * @return user
+     *
+     * @return User
      */
     public function setAvatar($avatar)
     {
@@ -410,7 +333,7 @@ class user
     /**
      * Get avatar
      *
-     * @return string 
+     * @return string
      */
     public function getAvatar()
     {
