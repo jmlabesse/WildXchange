@@ -5,84 +5,120 @@ namespace XTeam\PlatformBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * user
+ * User
+ *
+ * @ORM\Table(name="user")
+ * @ORM\Entity
  */
-class user
+class User
 {
     /**
-     * @var int
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=255, nullable=false)
      */
     private $username;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255, nullable=false)
      */
     private $nom;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=255, nullable=false)
      */
     private $prenom;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=255, nullable=false)
      */
     private $password;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
     private $email;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="profession", type="string", length=255, nullable=true)
      */
     private $profession;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="business", type="string", length=255, nullable=true)
      */
     private $business;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="statut", type="string", length=255, nullable=false)
      */
     private $statut;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="promo", type="string", length=255, nullable=true)
      */
     private $promo;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="git", type="string", length=255, nullable=false)
      */
     private $git;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="twitter", type="string", length=255, nullable=true)
      */
     private $twitter;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="facebook", type="string", length=255, nullable=true)
      */
     private $facebook;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="linkedin", type="string", length=255, nullable=false)
      */
     private $linkedin;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="avatar", type="string", length=255, nullable=false)
      */
     private $avatar;
+
 
 
     /**
@@ -99,7 +135,7 @@ class user
      * Set username
      *
      * @param string $username
-     * @return user
+     * @return User
      */
     public function setUsername($username)
     {
@@ -122,7 +158,7 @@ class user
      * Set nom
      *
      * @param string $nom
-     * @return user
+     * @return User
      */
     public function setNom($nom)
     {
@@ -145,7 +181,7 @@ class user
      * Set prenom
      *
      * @param string $prenom
-     * @return user
+     * @return User
      */
     public function setPrenom($prenom)
     {
@@ -168,7 +204,7 @@ class user
      * Set password
      *
      * @param string $password
-     * @return user
+     * @return User
      */
     public function setPassword($password)
     {
@@ -191,7 +227,7 @@ class user
      * Set email
      *
      * @param string $email
-     * @return user
+     * @return User
      */
     public function setEmail($email)
     {
@@ -214,7 +250,7 @@ class user
      * Set profession
      *
      * @param string $profession
-     * @return user
+     * @return User
      */
     public function setProfession($profession)
     {
@@ -237,7 +273,7 @@ class user
      * Set business
      *
      * @param string $business
-     * @return user
+     * @return User
      */
     public function setBusiness($business)
     {
@@ -260,7 +296,7 @@ class user
      * Set statut
      *
      * @param string $statut
-     * @return user
+     * @return User
      */
     public function setStatut($statut)
     {
@@ -283,7 +319,7 @@ class user
      * Set promo
      *
      * @param string $promo
-     * @return user
+     * @return User
      */
     public function setPromo($promo)
     {
@@ -306,7 +342,7 @@ class user
      * Set git
      *
      * @param string $git
-     * @return user
+     * @return User
      */
     public function setGit($git)
     {
@@ -329,7 +365,7 @@ class user
      * Set twitter
      *
      * @param string $twitter
-     * @return user
+     * @return User
      */
     public function setTwitter($twitter)
     {
@@ -352,7 +388,7 @@ class user
      * Set facebook
      *
      * @param string $facebook
-     * @return user
+     * @return User
      */
     public function setFacebook($facebook)
     {
@@ -375,7 +411,7 @@ class user
      * Set linkedin
      *
      * @param string $linkedin
-     * @return user
+     * @return User
      */
     public function setLinkedin($linkedin)
     {
@@ -398,7 +434,7 @@ class user
      * Set avatar
      *
      * @param string $avatar
-     * @return user
+     * @return User
      */
     public function setAvatar($avatar)
     {
