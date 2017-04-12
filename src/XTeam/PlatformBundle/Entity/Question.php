@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Question
  *
- * @ORM\Table(name="question")
+ * @ORM\Table(name="question", indexes={@ORM\Index(name="IDX_B6F7494EA76ED395", columns={"user_id"})})
  * @ORM\Entity
  */
 class Question
@@ -31,9 +31,9 @@ class Question
     /**
      * @var string
      *
-     * @ORM\Column(name="intitule", type="string", length=255, nullable=false)
+     * @ORM\Column(name="question", type="string", length=255, nullable=false)
      */
-    private $intitule;
+    private $question;
 
     /**
      * @var boolean
@@ -43,18 +43,36 @@ class Question
     private $isResolved;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var string
      *
-     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="questions")
-     * @ORM\JoinTable(name="question_has_tag",)
-     * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
+     * @ORM\Column(name="titre", type="string", length=255, nullable=true)
      */
-    private $tags;
+    private $titre;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="questions")
+     * @var \FosUser
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
      */
     private $user;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="question")
+     * @ORM\JoinTable(name="question_has_tag",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="question_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $tag;
 
     /**
      * Constructor
@@ -100,27 +118,27 @@ class Question
     }
 
     /**
-     * Set intitule
+     * Set question
      *
-     * @param string $intitule
+     * @param string $question
      *
      * @return Question
      */
-    public function setIntitule($intitule)
+    public function setQuestion($question)
     {
-        $this->intitule = $intitule;
+        $this->question = $question;
 
         return $this;
     }
 
     /**
-     * Get intitule
+     * Get question
      *
      * @return string
      */
-    public function getIntitule()
+    public function getQuestion()
     {
-        return $this->intitule;
+        return $this->question;
     }
 
     /**
@@ -145,6 +163,54 @@ class Question
     public function getIsResolved()
     {
         return $this->isResolved;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     *
+     * @return Question
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \XTeam\PlatformBundle\Entity\FosUser $user
+     *
+     * @return Question
+     */
+    public function setUser(\XTeam\PlatformBundle\Entity\FosUser $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \XTeam\PlatformBundle\Entity\FosUser
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
     /**
@@ -179,39 +245,5 @@ class Question
     public function getTag()
     {
         return $this->tag;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \XTeam\PlatformBundle\Entity\User $user
-     *
-     * @return Question
-     */
-    public function setUser(\XTeam\PlatformBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \XTeam\PlatformBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Get tags
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTags()
-    {
-        return $this->tags;
     }
 }

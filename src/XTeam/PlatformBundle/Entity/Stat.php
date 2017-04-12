@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Stat
  *
- * @ORM\Table(name="stat")
+ * @ORM\Table(name="stat", indexes={@ORM\Index(name="IDX_20B8FF21A76ED395", columns={"user_id"})})
  * @ORM\Entity
  */
 class Stat
@@ -43,7 +43,12 @@ class Stat
     private $bestresponseCount;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="stats")
+     * @var \FosUser
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
      */
     private $user;
 
@@ -134,11 +139,11 @@ class Stat
     /**
      * Set user
      *
-     * @param \XTeam\PlatformBundle\Entity\User $user
+     * @param \XTeam\PlatformBundle\Entity\FosUser $user
      *
      * @return Stat
      */
-    public function setUser(\XTeam\PlatformBundle\Entity\User $user = null)
+    public function setUser(\XTeam\PlatformBundle\Entity\FosUser $user = null)
     {
         $this->user = $user;
 
@@ -148,7 +153,7 @@ class Stat
     /**
      * Get user
      *
-     * @return \XTeam\PlatformBundle\Entity\User
+     * @return \XTeam\PlatformBundle\Entity\FosUser
      */
     public function getUser()
     {
