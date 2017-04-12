@@ -35,12 +35,15 @@ class Techno
      */
     private $icon;
 
-
+    /**
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="technos")
+     */
+    private $users;
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -51,6 +54,7 @@ class Techno
      * Set nom
      *
      * @param string $nom
+     *
      * @return Techno
      */
     public function setNom($nom)
@@ -63,7 +67,7 @@ class Techno
     /**
      * Get nom
      *
-     * @return string 
+     * @return string
      */
     public function getNom()
     {
@@ -74,6 +78,7 @@ class Techno
      * Set icon
      *
      * @param string $icon
+     *
      * @return Techno
      */
     public function setIcon($icon)
@@ -86,10 +91,51 @@ class Techno
     /**
      * Get icon
      *
-     * @return string 
+     * @return string
      */
     public function getIcon()
     {
         return $this->icon;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add user
+     *
+     * @param \XTeam\PlatformBundle\Entity\User $user
+     *
+     * @return Techno
+     */
+    public function addUser(\XTeam\PlatformBundle\Entity\User $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \XTeam\PlatformBundle\Entity\User $user
+     */
+    public function removeUser(\XTeam\PlatformBundle\Entity\User $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }

@@ -43,9 +43,15 @@ class Badge
     private $description;
 
     /**
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="badge")
+     */
+    private $users;
+
+
+    /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -56,6 +62,7 @@ class Badge
      * Set name
      *
      * @param string $name
+     *
      * @return Badge
      */
     public function setName($name)
@@ -68,7 +75,7 @@ class Badge
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -79,6 +86,7 @@ class Badge
      * Set icon
      *
      * @param string $icon
+     *
      * @return Badge
      */
     public function setIcon($icon)
@@ -91,7 +99,7 @@ class Badge
     /**
      * Get icon
      *
-     * @return string 
+     * @return string
      */
     public function getIcon()
     {
@@ -102,6 +110,7 @@ class Badge
      * Set description
      *
      * @param string $description
+     *
      * @return Badge
      */
     public function setDescription($description)
@@ -114,7 +123,7 @@ class Badge
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -125,39 +134,40 @@ class Badge
      */
     public function __construct()
     {
-        $this->badges = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add badges
+     * Add user
      *
-     * @param \XTeam\PlatformBundle\Entity\Question $badges
+     * @param \XTeam\PlatformBundle\Entity\User $user
+     *
      * @return Badge
      */
-    public function addBadge(\XTeam\PlatformBundle\Entity\Question $badges)
+    public function addUser(\XTeam\PlatformBundle\Entity\User $user)
     {
-        $this->badges[] = $badges;
+        $this->users[] = $user;
 
         return $this;
     }
 
     /**
-     * Remove badges
+     * Remove user
      *
-     * @param \XTeam\PlatformBundle\Entity\Question $badges
+     * @param \XTeam\PlatformBundle\Entity\User $user
      */
-    public function removeBadge(\XTeam\PlatformBundle\Entity\Question $badges)
+    public function removeUser(\XTeam\PlatformBundle\Entity\User $user)
     {
-        $this->badges->removeElement($badges);
+        $this->users->removeElement($user);
     }
 
     /**
-     * Get badges
+     * Get users
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getBadges()
+    public function getUsers()
     {
-        return $this->badges;
+        return $this->users;
     }
 }
