@@ -135,8 +135,9 @@ span.nav-title {
 main {
 
     flex: 1 0 auto; /*For the sticky footer*/
-    background-image: url("../img/backgroundbw.png");
-    background-size: cover;
+    /*background-image: url("../img/infographie_big.jpg");*/
+    /*background-size: cover;*/
+    background-repeat: no-repeat;
     background-position-y: -53px;
 }
 
@@ -151,6 +152,29 @@ main {
 .nav-wrapper.search {
     background-color: #ffffff !important;
 }
+
+/* CAROUSEL
+===========*/
+
+ .carousel {
+     height:200px;
+     border-top:1px solid var(--blue-intense);
+     /*display:none;*/
+}
+
+
+.img-carousel{
+    margin-top:50px;
+
+    max-width: 50%;
+    height:auto;
+}
+
+h5{
+    margin:20px;
+    color:var(--orange-intense);
+}
+
 
 /* FOOTER
 ========= */
