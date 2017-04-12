@@ -39,4 +39,9 @@ class MainController extends Controller
         return $this->render('XTeamPlatformBundle:Main:contact.html.twig', array());
     }
 
+    public function showDashboardAction($user)
+    {
+        return $this->render('XTeamPlatformBundle:Main:dashboard.html.twig', array('user'=>$user));
+    }
+
 }

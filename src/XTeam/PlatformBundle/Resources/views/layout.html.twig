@@ -35,7 +35,7 @@
             <li><a href="">Questions / Réponses</a></li>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <li>
-                    <img style="width: 55px" src="{{ asset('img/deer2.fw.png') }}">
+                    <a href="{{ path('xteam_platform_dashboard',{'user': 'jmlabesse'}) }}"><img style="width: 55px" src="{{ asset('img/deer2.fw.png') }}"></a>
                 </li>
             {% else %}
                 <li><a class="waves-effect waves-light btn" href="#modal1">Se connecter / S'inscrire</a></li>

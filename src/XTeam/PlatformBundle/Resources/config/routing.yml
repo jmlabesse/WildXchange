@@ -50,3 +50,6 @@ xteam_platform_contact:
     path: /contact
     defaults: {_controller: XTeamPlatformBundle:Main:showContact}
 
+xteam_platform_dashboard:
+    path: /dashboard/{user}
+    defaults: {_controller: XTeamPlatformBundle:Main:showDashboard}
