@@ -28,16 +28,16 @@
 </ul>
 <nav>
     <div class="nav-wrapper">
-        <a href="#!" class="left brand-logo black-text" id="logo">
+        <a href="{{ path('xteam_platform_accueil') }}" class="left brand-logo black-text" id="logo">
             <img src="{{ asset('img/logo1.png') }}">
         </a>
-        <a href="#!" class="center brand-logo white-text" id="title">
+        <a href="{{ path('xteam_platform_accueil') }}" class="center brand-logo white-text" id="title">
             <h3>wild<span class="special-x">X</span>change</h3>
         </a>
 
         <a href="#!" data-activates="xnav" class="button-collapse right"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down nav-link">
-            <li><a href="">Ressources</a></li>
+            <li><a href="{{ path('xteam_platform_docs') }}">Ressources</a></li>
             <li><a href="">Questions / Réponses</a></li>
             <li id="dropdown"><a class="dropdown-button" href="#!" data-activates="dropdown1">Se connecter / S'inscrire<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
@@ -58,8 +58,8 @@
             <div class="col s4 white-text">
                 <ul>
                     <li>Charte collaborative</li>
-                    <li>FAQ</li>
-                    <li>Nous contacter</li>
+                    <li><a href="{{ path('xteam_platform_faq') }}">F.A.Q.</a></li>
+                    <li><a href="{{ path('xteam_platform_contact') }}">Nous contacter</a></li>
                 </ul>
             </div>
             <div id="icons" class="col s4">

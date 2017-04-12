@@ -37,3 +37,11 @@ x_team_platform_stat:
 x_team_platform_user:
         resource: "@XTeamPlatformBundle/Resources/config/routing/user.yml"
         prefix:   /user
+
+xteam_platform_faq:
+    path: /faq
+    defaults: {_controller: XTeamPlatformBundle:Main:showFaq}
+
+xteam_platform_contact:
+    path: /contact
+    defaults: {_controller: XTeamPlatformBundle:Main:showContact}
