@@ -1,0 +1,16 @@
+{% extends "XTeamPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+    Dashboard {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h1>Dashboard</h1>
+
+    <p>Bienvenue {{ app.user }}</p>
+    <p>Bienvenue {{ user }}</p>
+{% endblock %}
