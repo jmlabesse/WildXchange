@@ -4,7 +4,7 @@ namespace XTeam\PlatformBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class technoControllerTest extends WebTestCase
+class TechnoControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()

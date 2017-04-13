@@ -4,7 +4,7 @@ namespace XTeam\PlatformBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class tagControllerTest extends WebTestCase
+class TagControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
