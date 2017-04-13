@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Response</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ response.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if response.date %}{{ response.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ response.content }}</td>
+            </tr>
+            <tr>
+                <th>Iscorrect</th>
+                <td>{% if response.isCorrect %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Vote</th>
+                <td>{{ response.vote }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('response_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('response_edit', { 'id': response.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -36,25 +36,13 @@ class Comment
     private $content;
 
     /**
-     * @var \FosUser
-     *
-     * @ORM\ManyToOne(targetEntity="FosUser")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
      */
     private $user;
 
     /**
-     * @var \Response
-     *
-     * @ORM\ManyToOne(targetEntity="Response")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="response_id", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="Response", inversedBy="comments")
      */
     private $response;
 
-
 }
-

@@ -50,38 +50,30 @@ class Question
     private $titre;
 
     /**
-     * @var \FosUser
-     *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
+     * @ORM\OneToMany(targetEntity="Response", mappedBy="question")
+     */
+    private $responses;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="questions")
      */
     private $user;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="question")
-     * @ORM\JoinTable(name="question_has_tag",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="question_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
-     *   }
-     * )
+     * Many Questions have Many Tags.
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="questions")
+     * @ORM\JoinTable(name="questions_tags")
      */
-    private $tag;
+    private $tags;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->responses = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -190,13 +182,47 @@ class Question
     }
 
     /**
-     * Set user
+     * Add response
      *
-     * @param \XTeam\PlatformBundle\Entity\FosUser $user
+     * @param \XTeam\PlatformBundle\Entity\Response $response
      *
      * @return Question
      */
-    public function setUser(\XTeam\PlatformBundle\Entity\FosUser $user = null)
+    public function addResponse(\XTeam\PlatformBundle\Entity\Response $response)
+    {
+        $this->responses[] = $response;
+
+        return $this;
+    }
+
+    /**
+     * Remove response
+     *
+     * @param \XTeam\PlatformBundle\Entity\Response $response
+     */
+    public function removeResponse(\XTeam\PlatformBundle\Entity\Response $response)
+    {
+        $this->responses->removeElement($response);
+    }
+
+    /**
+     * Get responses
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getResponses()
+    {
+        return $this->responses;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \XTeam\PlatformBundle\Entity\User $user
+     *
+     * @return Question
+     */
+    public function setUser(\XTeam\PlatformBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
@@ -206,7 +232,7 @@ class Question
     /**
      * Get user
      *
-     * @return \XTeam\PlatformBundle\Entity\FosUser
+     * @return \XTeam\PlatformBundle\Entity\User
      */
     public function getUser()
     {
@@ -222,7 +248,7 @@ class Question
      */
     public function addTag(\XTeam\PlatformBundle\Entity\Tag $tag)
     {
-        $this->tag[] = $tag;
+        $this->tags[] = $tag;
 
         return $this;
     }
@@ -234,16 +260,16 @@ class Question
      */
     public function removeTag(\XTeam\PlatformBundle\Entity\Tag $tag)
     {
-        $this->tag->removeElement($tag);
+        $this->tags->removeElement($tag);
     }
 
     /**
-     * Get tag
+     * Get tags
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getTag()
+    public function getTags()
     {
-        return $this->tag;
+        return $this->tags;
     }
 }

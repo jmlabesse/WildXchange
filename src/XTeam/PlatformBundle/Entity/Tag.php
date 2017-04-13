@@ -29,20 +29,18 @@ class Tag
     private $tagname;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Question", mappedBy="tag")
+     * Many Tags have Many Questions.
+     * @ORM\ManyToMany(targetEntity="Question", mappedBy="tags")
      */
-    private $question;
+    private $questions;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->question = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->questions = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -87,7 +85,7 @@ class Tag
      */
     public function addQuestion(\XTeam\PlatformBundle\Entity\Question $question)
     {
-        $this->question[] = $question;
+        $this->questions[] = $question;
 
         return $this;
     }
@@ -99,16 +97,16 @@ class Tag
      */
     public function removeQuestion(\XTeam\PlatformBundle\Entity\Question $question)
     {
-        $this->question->removeElement($question);
+        $this->questions->removeElement($question);
     }
 
     /**
-     * Get question
+     * Get questions
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getQuestion()
+    public function getQuestions()
     {
-        return $this->question;
+        return $this->questions;
     }
 }

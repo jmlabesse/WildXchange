@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Responses list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Content</th>
+                <th>Iscorrect</th>
+                <th>Vote</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for response in responses %}
+            <tr>
+                <td><a href="{{ path('response_show', { 'id': response.id }) }}">{{ response.id }}</a></td>
+                <td>{% if response.date %}{{ response.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ response.content }}</td>
+                <td>{% if response.isCorrect %}Yes{% else %}No{% endif %}</td>
+                <td>{{ response.vote }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('response_show', { 'id': response.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('response_edit', { 'id': response.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('response_new') }}">Create a new response</a>
+        </li>
+    </ul>
+{% endblock %}

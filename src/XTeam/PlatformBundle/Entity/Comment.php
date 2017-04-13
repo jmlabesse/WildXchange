@@ -36,25 +36,14 @@ class Comment
     private $content;
 
     /**
-     * @var \FosUser
-     *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
      */
     private $user;
 
     /**
-     * @var \Response
-     *
-     * @ORM\ManyToOne(targetEntity="Response")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="response_id", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="Response", inversedBy="comments")
      */
     private $response;
-
 
 
     /**
@@ -118,11 +107,11 @@ class Comment
     /**
      * Set user
      *
-     * @param \XTeam\PlatformBundle\Entity\FosUser $user
+     * @param \XTeam\PlatformBundle\Entity\User $user
      *
      * @return Comment
      */
-    public function setUser(\XTeam\PlatformBundle\Entity\FosUser $user = null)
+    public function setUser(\XTeam\PlatformBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
@@ -132,7 +121,7 @@ class Comment
     /**
      * Get user
      *
-     * @return \XTeam\PlatformBundle\Entity\FosUser
+     * @return \XTeam\PlatformBundle\Entity\User
      */
     public function getUser()
     {

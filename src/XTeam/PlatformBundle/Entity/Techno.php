@@ -36,20 +36,18 @@ class Techno
     private $icon;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="techno")
+     * Many Technos have Many Users.
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="technos")
      */
-    private $user;
+    private $users;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -112,13 +110,13 @@ class Techno
     /**
      * Add user
      *
-     * @param \XTeam\PlatformBundle\Entity\FosUser $user
+     * @param \XTeam\PlatformBundle\Entity\User $user
      *
      * @return Techno
      */
-    public function addUser(\XTeam\PlatformBundle\Entity\FosUser $user)
+    public function addUser(\XTeam\PlatformBundle\Entity\User $user)
     {
-        $this->user[] = $user;
+        $this->users[] = $user;
 
         return $this;
     }
@@ -126,20 +124,20 @@ class Techno
     /**
      * Remove user
      *
-     * @param \XTeam\PlatformBundle\Entity\FosUser $user
+     * @param \XTeam\PlatformBundle\Entity\User $user
      */
-    public function removeUser(\XTeam\PlatformBundle\Entity\FosUser $user)
+    public function removeUser(\XTeam\PlatformBundle\Entity\User $user)
     {
-        $this->user->removeElement($user);
+        $this->users->removeElement($user);
     }
 
     /**
-     * Get user
+     * Get users
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getUser()
+    public function getUsers()
     {
-        return $this->user;
+        return $this->users;
     }
 }

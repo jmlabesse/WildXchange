@@ -43,15 +43,9 @@ class Stat
     private $bestresponseCount;
 
     /**
-     * @var \FosUser
-     *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="stats")
      */
     private $user;
-
 
 
     /**
@@ -139,11 +133,11 @@ class Stat
     /**
      * Set user
      *
-     * @param \XTeam\PlatformBundle\Entity\FosUser $user
+     * @param \XTeam\PlatformBundle\Entity\User $user
      *
      * @return Stat
      */
-    public function setUser(\XTeam\PlatformBundle\Entity\FosUser $user = null)
+    public function setUser(\XTeam\PlatformBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
@@ -153,7 +147,7 @@ class Stat
     /**
      * Get user
      *
-     * @return \XTeam\PlatformBundle\Entity\FosUser
+     * @return \XTeam\PlatformBundle\Entity\User
      */
     public function getUser()
     {
