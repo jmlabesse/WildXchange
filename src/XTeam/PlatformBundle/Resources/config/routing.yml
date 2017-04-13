@@ -53,3 +53,8 @@ x_team_platform_tag:
 x_team_platform_techno:
         resource: "@XTeamPlatformBundle/Resources/config/routing/techno.yml"
         prefix:   /techno
+
+xteam_platform_dashboard:
+    path: /dashboard/{user}
+    defaults: {_controller: XTeamPlatformBundle:Main:showDashboard}
+
