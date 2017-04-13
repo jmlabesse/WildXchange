@@ -75,10 +75,6 @@ h3, h4, h5, h6 {
     font-family: 'Alwyn Bold', Georgia, sans-serif;
 }
 
-i {
-    margin-left: 0.5px !important;
-}
-
 /* BARRE DE NAVIGATION
 ====================== */
 nav {
@@ -139,8 +135,9 @@ span.nav-title {
 main {
 
     flex: 1 0 auto; /*For the sticky footer*/
-    background-image: url("../img/backgroundbw.png");
-    background-size: cover;
+    /*background-image: url("../img/infographie_big.jpg");*/
+    /*background-size: cover;*/
+    background-repeat: no-repeat;
     background-position-y: -53px;
 }
 
@@ -156,6 +153,29 @@ main {
     background-color: #ffffff !important;
 }
 
+/* CAROUSEL
+===========*/
+
+ .carousel {
+     height:200px;
+     border-top:1px solid var(--blue-intense);
+     /*display:none;*/
+}
+
+
+.img-carousel{
+    margin-top:50px;
+
+    max-width: 50%;
+    height:auto;
+}
+
+h5{
+    margin:20px;
+    color:var(--orange-intense);
+}
+
+
 /* FOOTER
 ========= */
 footer {
@@ -168,12 +188,12 @@ footer {
 }
 
 i {
-   margin-left: 8px;
-   margin-right: 8px;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 #icons {
-  margin-top: 25px;
+    margin-top: 25px;
 }
 
 #icons {

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Comment
  *
- * @ORM\Table(name="comment", indexes={@ORM\Index(name="IDX_9474526CFBF32840", columns={"response_id"})})
+ * @ORM\Table(name="comment", indexes={@ORM\Index(name="IDX_9474526CFBF32840", columns={"response_id"}), @ORM\Index(name="IDX_9474526CA76ED395", columns={"user_id"})})
  * @ORM\Entity
  */
 class Comment
@@ -36,6 +36,16 @@ class Comment
     private $content;
 
     /**
+     * @var \FosUser
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+    /**
      * @var \Response
      *
      * @ORM\ManyToOne(targetEntity="Response")
@@ -44,11 +54,6 @@ class Comment
      * })
      */
     private $response;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
-     */
-    private $user;
 
 
 
@@ -111,6 +116,30 @@ class Comment
     }
 
     /**
+     * Set user
+     *
+     * @param \XTeam\PlatformBundle\Entity\FosUser $user
+     *
+     * @return Comment
+     */
+    public function setUser(\XTeam\PlatformBundle\Entity\FosUser $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \XTeam\PlatformBundle\Entity\FosUser
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
      * Set response
      *
      * @param \XTeam\PlatformBundle\Entity\Response $response
@@ -132,29 +161,5 @@ class Comment
     public function getResponse()
     {
         return $this->response;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \XTeam\PlatformBundle\Entity\User $user
-     *
-     * @return Comment
-     */
-    public function setUser(\XTeam\PlatformBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \XTeam\PlatformBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 }

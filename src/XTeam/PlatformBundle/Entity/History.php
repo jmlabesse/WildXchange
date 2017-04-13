@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * History
  *
- * @ORM\Table(name="history", indexes={@ORM\Index(name="IDX_27BA704BBCB134CE", columns={"questions_id"}), @ORM\Index(name="IDX_27BA704B91560F9D", columns={"responses_id"}), @ORM\Index(name="IDX_27BA704B63379586", columns={"comments_id"})})
+ * @ORM\Table(name="history", indexes={@ORM\Index(name="IDX_27BA704BBCB134CE", columns={"questions_id"}), @ORM\Index(name="IDX_27BA704B91560F9D", columns={"responses_id"}), @ORM\Index(name="IDX_27BA704B63379586", columns={"comments_id"}), @ORM\Index(name="IDX_27BA704BA76ED395", columns={"user_id"})})
  * @ORM\Entity
  */
 class History
@@ -46,11 +46,6 @@ class History
     private $comments;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="histories")
-     */
-    private $user;
-
-    /**
      * @var \Response
      *
      * @ORM\ManyToOne(targetEntity="Response")
@@ -59,6 +54,16 @@ class History
      * })
      */
     private $responses;
+
+    /**
+     * @var \FosUser
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
 
     /**
      * @var \Question
@@ -179,6 +184,30 @@ class History
     }
 
     /**
+     * Set user
+     *
+     * @param \XTeam\PlatformBundle\Entity\FosUser $user
+     *
+     * @return History
+     */
+    public function setUser(\XTeam\PlatformBundle\Entity\FosUser $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \XTeam\PlatformBundle\Entity\FosUser
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
      * Set questions
      *
      * @param \XTeam\PlatformBundle\Entity\Question $questions
@@ -200,29 +229,5 @@ class History
     public function getQuestions()
     {
         return $this->questions;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \XTeam\PlatformBundle\Entity\User $user
-     *
-     * @return History
-     */
-    public function setUser(\XTeam\PlatformBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \XTeam\PlatformBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 }

@@ -7,9 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Tag
  *
- * @ORM\Entity
  * @ORM\Table(name="tag")
- *
+ * @ORM\Entity
  */
 class Tag
 {
@@ -32,9 +31,9 @@ class Tag
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Question", mappedBy="tags")
+     * @ORM\ManyToMany(targetEntity="Question", mappedBy="tag")
      */
-    private $questions;
+    private $question;
 
     /**
      * Constructor
@@ -111,15 +110,5 @@ class Tag
     public function getQuestion()
     {
         return $this->question;
-    }
-
-    /**
-     * Get questions
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getQuestions()
-    {
-        return $this->questions;
     }
 }

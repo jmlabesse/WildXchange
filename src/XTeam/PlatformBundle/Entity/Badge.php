@@ -43,9 +43,19 @@ class Badge
     private $description;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
      * @ORM\ManyToMany(targetEntity="User", mappedBy="badge")
      */
-    private $users;
+    private $user;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
@@ -129,24 +139,17 @@ class Badge
     {
         return $this->description;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add user
      *
-     * @param \XTeam\PlatformBundle\Entity\User $user
+     * @param \XTeam\PlatformBundle\Entity\FosUser $user
      *
      * @return Badge
      */
-    public function addUser(\XTeam\PlatformBundle\Entity\User $user)
+    public function addUser(\XTeam\PlatformBundle\Entity\FosUser $user)
     {
-        $this->users[] = $user;
+        $this->user[] = $user;
 
         return $this;
     }
@@ -154,20 +157,20 @@ class Badge
     /**
      * Remove user
      *
-     * @param \XTeam\PlatformBundle\Entity\User $user
+     * @param \XTeam\PlatformBundle\Entity\FosUser $user
      */
-    public function removeUser(\XTeam\PlatformBundle\Entity\User $user)
+    public function removeUser(\XTeam\PlatformBundle\Entity\FosUser $user)
     {
-        $this->users->removeElement($user);
+        $this->user->removeElement($user);
     }
 
     /**
-     * Get users
+     * Get user
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getUsers()
+    public function getUser()
     {
-        return $this->users;
+        return $this->user;
     }
 }
