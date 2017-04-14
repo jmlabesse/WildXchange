@@ -1,0 +1,67 @@
+<?php
+
+namespace XTeam\PlatformBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Response
+ *
+ * @ORM\Table(name="response", indexes={@ORM\Index(name="IDX_3E7B0BFB1E27F6BF", columns={"question_id"}), @ORM\Index(name="IDX_3E7B0BFBA76ED395", columns={"user_id"})})
+ * @ORM\Entity
+ */
+class Response
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="string", length=100, nullable=false)
+     */
+    private $content;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_correct", type="boolean", nullable=false)
+     */
+    private $isCorrect;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="vote", type="integer", nullable=false)
+     */
+    private $vote;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="response")
+     */
+    private $comments;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Question", inversedBy="responses")
+     */
+    private $question;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="responses")
+     */
+    private $user;
+
+}

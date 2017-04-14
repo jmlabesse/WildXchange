@@ -1,0 +1,136 @@
+<?php
+
+namespace XTeam\PlatformBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Entity\User as BaseUser;
+
+/**
+ * User
+ *
+ * @ORM\Table(name="fos_user")
+ * @ORM\Entity
+ */
+class User extends BaseUser
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255, nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=255, nullable=false)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="profession", type="string", length=255, nullable=true)
+     */
+    private $profession;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="business", type="string", length=255, nullable=true)
+     */
+    private $business;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="statut", type="string", length=255, nullable=true)
+     */
+    private $statut;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="promo", type="string", length=255, nullable=true)
+     */
+    private $promo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="git", type="string", length=255, nullable=true)
+     */
+    private $git;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="twitter", type="string", length=255, nullable=true)
+     */
+    private $twitter;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="facebook", type="string", length=255, nullable=true)
+     */
+    private $facebook;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="linkedin", type="string", length=255, nullable=true)
+     */
+    private $linkedin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="avatar", type="string", length=255, nullable=true)
+     */
+    private $avatar;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Stat", mappedBy="user")
+     */
+    private $stats;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Question", mappedBy="user")
+     */
+    private $questions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Response", mappedBy="user")
+     */
+    private $responses;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="user")
+     */
+    private $comments;
+
+    /**
+     * Many Users have Many Badges.
+     * @ORM\ManyToMany(targetEntity="Badge", inversedBy="users")
+     * @ORM\JoinTable(name="users_badges")
+     */
+    private $badges;
+
+    /**
+     * Many Users have Many Technos.
+     * @ORM\ManyToMany(targetEntity="Techno", inversedBy="users")
+     * @ORM\JoinTable(name="users_technos")
+     */
+    private $technos;
+
+}

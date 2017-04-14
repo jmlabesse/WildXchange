@@ -1,0 +1,24 @@
+stat_index:
+    path:     /
+    defaults: { _controller: "XTeamPlatformBundle:Stat:index" }
+    methods:  GET
+
+stat_show:
+    path:     /{id}/show
+    defaults: { _controller: "XTeamPlatformBundle:Stat:show" }
+    methods:  GET
+
+stat_new:
+    path:     /new
+    defaults: { _controller: "XTeamPlatformBundle:Stat:new" }
+    methods:  [GET, POST]
+
+stat_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "XTeamPlatformBundle:Stat:edit" }
+    methods:  [GET, POST]
+
+stat_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "XTeamPlatformBundle:Stat:delete" }
+    methods:  DELETE

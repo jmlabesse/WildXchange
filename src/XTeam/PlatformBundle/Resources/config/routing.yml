@@ -1,3 +1,60 @@
-x_team_platform_homepage:
-    path:     /
-    defaults: { _controller: XTeamPlatformBundle:Default:index }
+xteam_platform_docs:
+    path:     /docs
+    defaults: { _controller: XTeamPlatformBundle:Main:docs }
+
+xteam_platform_questionresponse:
+    path: /questionresponse
+    defaults: { _controller: XTeamPlatformBundle:Main:questionresponse }
+
+xteam_platform_accueil:
+    path: /
+    defaults: { _controller: XTeamPlatformBundle:Main:index }
+
+xteam_platform_newQ:
+    path: /newQ
+    defaults: {_controller: XTeamPlatformBundle:Main:newQ }
+
+x_team_platform_charte:
+    path: /charte
+    defaults: {_controller: XTeamPlatformBundle:Main:viewCharte}
+
+xteam_platform_faq:
+    path: /faq
+    defaults: {_controller: XTeamPlatformBundle:Main:showFaq}
+
+xteam_platform_contact:
+    path: /contact
+    defaults: {_controller: XTeamPlatformBundle:Main:showContact}
+
+x_team_platform_badge:
+    resource: "@XTeamPlatformBundle/Resources/config/routing/badge.yml"
+    prefix:   /badge
+
+x_team_platform_comment:
+        resource: "@XTeamPlatformBundle/Resources/config/routing/comment.yml"
+        prefix:   /comment
+
+x_team_platform_question:
+        resource: "@XTeamPlatformBundle/Resources/config/routing/question.yml"
+        prefix:   /question
+
+x_team_platform_response:
+        resource: "@XTeamPlatformBundle/Resources/config/routing/response.yml"
+        prefix:   /response
+
+x_team_platform_stat:
+        resource: "@XTeamPlatformBundle/Resources/config/routing/stat.yml"
+        prefix:   /stat
+
+x_team_platform_tag:
+        resource: "@XTeamPlatformBundle/Resources/config/routing/tag.yml"
+        prefix:   /tag
+
+x_team_platform_techno:
+        resource: "@XTeamPlatformBundle/Resources/config/routing/techno.yml"
+        prefix:   /techno
+
+xteam_platform_dashboard:
+    path: /dashboard/{user}
+    defaults: {_controller: XTeamPlatformBundle:Main:showDashboard}
+

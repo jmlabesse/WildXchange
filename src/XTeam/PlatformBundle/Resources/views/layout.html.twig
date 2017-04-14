@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block title %} @ wildXchange{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    {# Feuilles de style Materialize #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+
+    {# Fonts de Materialize et de la charte graphique #}
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+
+    {# Fonts de Font Awesome et de la charte graphique #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    {% block stylesheets %}{% endblock %}
+</head>
+
+<body>
+
+<nav>
+    <div class="nav-wrapper">
+        <a href="{{ path('xteam_platform_accueil') }}" class="left brand-logo black-text" id="logo">
+            <img src="{{ asset('img/logo1.png') }}">
+        </a>
+        <a href="{{ path('xteam_platform_accueil') }}" class="center brand-logo white-text" id="title">
+            <h3>wild<span class="special-x">X</span>change</h3>
+        </a>
+
+        <ul id="nav-mobile" class="right nav-link">
+            <li><a href="{{ path('xteam_platform_docs') }}">Ressources</a></li>
+            <li><a href="{{ path('xteam_platform_questionresponse') }}">Questions / Réponses</a></li>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <li><a href="{{ path('xteam_platform_dashboard',{'user': 'jmlabesse'}) }}"><img style="width: 55px" src="{{ asset('img/deer2.fw.png') }}"></a></li>
+            {% else %}
+                <li><a href="#" class="btn button-collapse show-on-large waves-effect waves-light" data-activates="slide-out">Se connecter / S'inscrire</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+<ul id="slide-out" class="side-nav">
+    <li><div class="container">
+        <h4>Se connecter</h4>
+    {{ render(path('fos_user_security_login')) }}
+    <a class="section" href="{{ path('fos_user_registration_register') }}">Pas inscrire? Cliquer ici!</a>
+        </div>
+    </li>
+</ul>
+
+{% block content %}
+{% endblock %}
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col s4 white-text">
+                <p>Copyright WCS
+                    <br>
+                    Made with ♥ by Wild Code School</p>
+            </div>
+            <div class="col s4 white-text">
+                <ul>
+                    <li><a href="{{ path('x_team_platform_charte') }}">Charte collaborative</a></li>
+                    <li><a href="{{ path('xteam_platform_faq') }}">F.A.Q.</a></li>
+                    <li><a href="{{ path('xteam_platform_contact') }}">Nous contacter</a></li>
+                </ul>
+            </div>
+            <div id="icons" class="col s4">
+                <a href="https://www.facebook.com/wildcodeschool" target="_blank"><i
+                            class="fa fa-facebook small"></i></a>
+                <a href="https://fr.linkedin.com/edu/wild-code-school-192048" target="_blank"><i
+                            class="fa fa-linkedin small"></i></a>
+                <a href="https://twitter.com/wildcodeschool?lang=en" target="_blank"><i class="fa fa-twitter small"></i></a>
+                <a href="https://www.youtube.com/channel/UCi99G_0QPx5sYsK8zdvQzfw" target="_blank"><i
+                            class="fa fa-youtube small"></i></a>
+                <a href="https://www.instagram.com/wildcodeschool/" target="_blank"><i
+                            class="fa fa-instagram small"></i></a>
+                <a href="https://github.com/WildCodeSchool" target="_blank"><i class="fa fa-github small"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{# Scripts Materialize #}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+
+{% block scripts %}
+    <script src={{ asset('JS/qr.js') }}></script>
+    <script src={{ asset('JS/layout.js') }}></script>
+    <script src={{ asset('JS/index.js') }}></script>
+{% endblock %}
+
+</body>
+
+</html>

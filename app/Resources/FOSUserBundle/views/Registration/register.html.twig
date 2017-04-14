@@ -1,0 +1,12 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block title %}
+    Inscription {{ parent() }}
+{% endblock %}
+
+
+{% block fos_user_content %}
+    <h1>S'inscrire</h1>
+{% include "FOSUserBundle:Registration:register_content.html.twig" %}
+{% endblock fos_user_content %}
+
