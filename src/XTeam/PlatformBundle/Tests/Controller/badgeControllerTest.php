@@ -4,7 +4,7 @@ namespace XTeam\PlatformBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class badgeControllerTest extends WebTestCase
+class BadgeControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
