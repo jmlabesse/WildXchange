@@ -24,7 +24,7 @@ class Question
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime", nullable=false)
+     * @ORM\Column(name="date", type="datetime", nullable=true)
      */
     private $date;
 
