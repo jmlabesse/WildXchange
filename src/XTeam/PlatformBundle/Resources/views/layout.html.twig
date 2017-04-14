@@ -38,11 +38,19 @@
                     <a href="{{ path('xteam_platform_dashboard',{'user': 'jmlabesse'}) }}"><img style="width: 55px" src="{{ asset('img/deer2.fw.png') }}"></a>
                 </li>
             {% else %}
-                <li><a class="waves-effect waves-light btn" href="#modal1">Se connecter / S'inscrire</a></li>
+                <li><a class="btn button-collapse show-on-large waves-effect waves-light" href="#" data-activates="slide-out">Se connecter / S'inscrire</a></li>
             {% endif %}
         </ul>
     </div>
 </nav>
+
+<ul id="slide-out" class="side-nav">
+    <li><div class="container">
+            <h4>Se connecter</h4>
+            {{ render(path('fos_user_security_login')) }}
+            <a href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
+        </div></li>
+</ul>
 
 <div id="modal1" class="modal">
     <div class="modal-content">
