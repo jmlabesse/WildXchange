@@ -70,6 +70,7 @@ class Response
     public function __construct()
     {
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->setDate(new \DateTime('now'));
     }
 
     /**
