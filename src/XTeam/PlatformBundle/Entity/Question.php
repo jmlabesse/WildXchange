@@ -94,7 +94,6 @@ class Question
      */
     public function setDate($date)
     {
-        $date = new \DateTime();
         $this->date = $date;
 
         return $this;

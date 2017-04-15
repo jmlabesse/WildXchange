@@ -34,6 +34,13 @@ class User extends BaseUser
     protected $prenom;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime", nullable=false)
+     */
+    private $registration_date;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="profession", type="string", length=255, nullable=true)
@@ -133,7 +140,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        // your own logic
+        $this->setRegistrationDate(new \DateTime('now'));
     }
 
     /**
@@ -182,6 +189,30 @@ class User extends BaseUser
     public function getPrenom()
     {
         return $this->prenom;
+    }
+
+    /**
+     * Set registrationDate
+     *
+     * @param \DateTime $registrationDate
+     *
+     * @return User
+     */
+    public function setRegistrationDate($registrationDate)
+    {
+        $this->registration_date = $registrationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get registrationDate
+     *
+     * @return \DateTime
+     */
+    public function getRegistrationDate()
+    {
+        return $this->registration_date;
     }
 
     /**
@@ -603,4 +634,5 @@ class User extends BaseUser
     {
         return $this->technos;
     }
+
 }
