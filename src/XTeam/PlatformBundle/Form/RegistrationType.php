@@ -9,7 +9,8 @@ class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('prenom');
+        $builder->add('nom', 'Symfony\Component\Form\Extension\Core\Type\TextType', array('label' => 'form.lastname', 'translation_domain' => 'FOSUserBundle'))
+                ->add('prenom', 'Symfony\Component\Form\Extension\Core\Type\TextType', array('label' => 'form.firstname', 'translation_domain' => 'FOSUserBundle'));
     }
 
     public function getParent()
