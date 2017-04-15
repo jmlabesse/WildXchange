@@ -13,7 +13,7 @@ class QuestionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('date', 'hidden')->add('question')->add('isResolved')->add('titre')->add('user')->add('tags');
+        $builder->add('question')->add('isResolved')->add('titre')->add('user')->add('tags');
     }
     
     /**
