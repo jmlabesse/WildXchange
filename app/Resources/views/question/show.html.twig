@@ -11,7 +11,7 @@
             </tr>
             <tr>
                 <th>Date</th>
-                <td>{% if question.date %}{{ question.date|date('d/m/Y') }}{% endif %}</td>
+                <td>{% if question.date %}{{ question.date|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Question</th>

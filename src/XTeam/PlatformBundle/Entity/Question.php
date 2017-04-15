@@ -73,6 +73,7 @@ class Question
     {
         $this->responses = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->setDate(new \DateTime('now'));
     }
 
     /**
@@ -94,7 +95,6 @@ class Question
      */
     public function setDate($date)
     {
-        $date = new \DateTime();
         $this->date = $date;
 
         return $this;

@@ -1,5 +1,4 @@
 <?php
-// src/PlatformBundle/Form/RegistrationType.php
 
 namespace XTeam\PlatformBundle\Form;
 
@@ -10,29 +9,21 @@ class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('Nom')
-            ->add('Prenom')
-            ->add('Profession')
-            ->add('Business')
-            ->add('Statut')
-            ->add('Promo')
-            ->add('Git')
-            ->add('Twitter')
-            ->add('Facebook')
-            ->add('LinkedIn')
-            ->add('Avatar')
-            ;
-
+        $builder->add('nom')->add('prenom');
     }
 
     public function getParent()
     {
-        return 'fos_user_registration';
+        return 'FOS\UserBundle\Form\Type\RegistrationFormType';
+    }
+
+    public function getBlockPrefix()
+    {
+        return 'app_user_registration';
     }
 
     public function getName()
     {
-        return 'xteam_user_registration';
+        return $this->getBlockPrefix();
     }
 }

@@ -52,16 +52,6 @@
         </div></li>
 </ul>
 
-<div id="modal1" class="modal">
-    <div class="modal-content">
-        <h4>Se connecter</h4>
-        {{ render(path('fos_user_security_login')) }}
-        <h4>S'inscrire</h4>
-        <a class="waves-effect waves-light btn" href="{{ path('fos_user_registration_register') }}"><i
-                    class="material-icons left">cloud</i>S'inscrire</a>
-    </div>
-</div>
-
 {% block content %}
 {% endblock %}
 
