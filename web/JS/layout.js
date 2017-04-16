@@ -7,4 +7,25 @@ $(document).ready(function(){
             draggable: true // Choose whether you can drag to open on touch screens
         }
     );
+
+    $('.collapsible').collapsible();
+
+// js for chips\tags
+     $('.chips-autocomplete').material_chip({
+        autocompleteOptions: {
+            data: {
+                'Apple': null,
+                'Microsoft': null,
+                'Google': null
+            },
+            limit: Infinity,
+            minLength: 1
+        }
+    });
+    // js data object for tags
+    var chip = {
+        tag: 'chip content',
+        image: '', //optional
+        id: 1, //optional
+    };
 });
