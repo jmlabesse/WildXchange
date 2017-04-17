@@ -32,7 +32,7 @@
 
         <ul id="nav-mobile" class="right hide-on-med-and-down nav-link">
             <li><a href="{{ path('xteam_platform_docs') }}">Ressources</a></li>
-            <li><a href="{{ path('xteam_platform_questionresponse') }}">Questions / Réponses</a></li>
+            <li><a href="{{ path('question_index') }}">Questions / Réponses</a></li>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <li>
                     <a href="{{ path('xteam_platform_dashboard',{'user': 'jmlabesse'}) }}"><img style="width: 55px" src="{{ asset('img/deer2.fw.png') }}"></a>

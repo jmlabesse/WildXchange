@@ -13,7 +13,7 @@ class ResponseType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('content')->add('isCorrect')->add('vote')->add('question')->add('user');
+        $builder->add('content');
     }
     
     /**

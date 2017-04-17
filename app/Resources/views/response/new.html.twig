@@ -1,16 +1,17 @@
-{% extends 'base.html.twig' %}
+{#{% extends 'base.html.twig' %}#}
+{% form_theme form '::fields.html.twig' %}
 
 {% block body %}
-    <h1>Response creation</h1>
+    {#<h1>Response creation</h1>#}
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Poster" class="btn waves-effect waves-light"/>
     {{ form_end(form) }}
 
-    <ul>
+    {#<ul>
         <li>
             <a href="{{ path('response_index') }}">Back to the list</a>
         </li>
-    </ul>
+    </ul>#}
 {% endblock %}
