@@ -5,18 +5,32 @@
 {% endif %}
 
 <form action="{{ path("fos_user_security_check") }}" method="post">
-    {% if csrf_token %}
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-    {% endif %}
+    <div class="row">
+        {% if csrf_token %}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+        {% endif %}
 
-    <label for="username">{{ 'security.login.username'|trans }}</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+        <div class="input-field col s12">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="username" type="text" class="validate" name="_username" value="{{ last_username }}"
+                   required="required">
+            <label for="username">{{ 'security.login.username'|trans }}</label>
+        </div>
 
-    <label for="password">{{ 'security.login.password'|trans }}</label>
-    <input type="password" id="password" name="_password" required="required" />
+        <div class="input-field col s12">
+            <i class="material-icons prefix">vpn_key</i>
+            <input id="password" type="password" class="validate" name="_password" required="required">
+            <label for="password">{{ 'security.login.password'|trans }}</label>
+        </div>
 
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+        <div class="input-field col s12">
+            <input type="checkbox" class="filled-in" id="remember_me" name="_remember_me" value="on"/>
+            <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+        </div>
 
-    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+        <div class="input-field col s12">
+            <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"
+                   class="btn waves-effect waves-light"/>
+        </div>
+    </div>
 </form>
