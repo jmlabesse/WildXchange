@@ -5,10 +5,20 @@
     <div class="input-field col s12">
         {{ form_errors(form) }}
         <i class="material-icons prefix">question_answer</i>
-        <input id="content" type="text" class="materialize-textarea" {{ block('widget_attributes') }} />
-        <label for="content">Ecrivez votre réponse ici ...</label>
+        <input id="response_content" type="text" class="materialize-textarea" {{ block('widget_attributes') }} />
+        <label for="response_content">Ecrivez votre réponse ici ...</label>
     </div>
 {% endblock %}
 
 {{ form_row(form.content) }}
 
+{% block _xteam_platformbundle_comment_content_row %}
+    <div class="input-field col s12">
+        {{ form_errors(form) }}
+        <i class="material-icons prefix">question_answer</i>
+        <input id="content" type="text" class="materialize-textarea" {{ block('widget_attributes') }} />
+        <label for="content">Ecrivez votre commentaire ici ...</label>
+    </div>
+{% endblock %}
+
+{{ form_row(form.content) }}

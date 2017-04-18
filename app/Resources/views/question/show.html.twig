@@ -156,7 +156,7 @@
                                     </div>
                                     <div class="collapsible-body">
                                         <div class="row">
-                                            <form class="col s12">
+                                            <div class="col s12">
                                                 {% for comment in response.comments %}
                                                     <div class="row">
                                                         <div class="card horizontal">
@@ -170,16 +170,13 @@
                                                     </div>
                                                 {% endfor %}
                                                 <div class="row">
-                                                    <div class="input-field col s12">
-                                                        <textarea id="textarea1"
-                                                                  class="materialize-textarea"></textarea>
-                                                        <label for="textarea1">Textarea</label>
-                                                    </div>
+                                                    {#{% form_theme comment_form '::fields.html.twig' %}#}
+                                                    {{ form_start(comment_form) }}
+                                                    {{ form_widget(comment_form) }}
+                                                    <input type="submit" value="Commenter" class="btn waves-effect waves-light"/>
+                                                    {{ form_end(comment_form) }}
                                                 </div>
-                                                <button class="btn" type="submit" name="commentSubmit">Comment
-                                                    <i class="material-icons right">send</i>
-                                                </button>
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
