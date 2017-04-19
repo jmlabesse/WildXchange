@@ -5,12 +5,53 @@
 {% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dash.css') }}">
 {% endblock %}
 
 {% block content %}
-    <h1>Dashboard</h1>
+    <!--begin content container and row-->
+<div class="container">
+    <div class="row">
+        <!--begin left column-->
+        <div class="col s9">
+            <div class="row user">
+<div class="col s5">
+    <img src="../img/fosuser.jpg" id="avatar" alt="Qui est ton pot?" class="circle image-responsive">
+</div>
+                <div class="col s7">
+                    <h1>UserName</h1>
+                </div>
+            </div>
+            <div class="row infos">
+                <div class="col s6">
+                    <div class="section">
+<h3>infos generales</h3>
+                    </div>
+                    <div class="section">
+<h3>stats</h3>
+                    </div>
+                </div>
+                <div class="col s6">
+                    <div class="section">
+                        <h3>achievements</h3>
+                    </div>
+                    <div class="section">
+                        <h3>competences</h3>
+                    </div>
+                </div>
+            </div>
 
-    <p>Bienvenue {{ app.user }}</p>
-    <p>Bienvenue {{ user }}</p>
+            <!--end left column-->
+        </div>
+        <!--begin right column-->
+        <div class="col s3">
+
+            <!--end right column-->
+        </div>
+
+        <!--end content container and row-->
+    </div>
+</div>
+
+
 {% endblock %}

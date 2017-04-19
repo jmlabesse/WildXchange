@@ -67,6 +67,11 @@ class Question
     private $tags;
 
     /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="question")
+     */
+    private $comments;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -277,5 +282,39 @@ class Question
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \XTeam\PlatformBundle\Entity\Comment $comment
+     *
+     * @return Question
+     */
+    public function addComment(\XTeam\PlatformBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \XTeam\PlatformBundle\Entity\Comment $comment
+     */
+    public function removeComment(\XTeam\PlatformBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }
