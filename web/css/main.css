@@ -142,16 +142,11 @@ html {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    background-position-y: 0px;
 }
 
 main {
     flex: 1 0 auto; /*For the sticky footer*/
-}
-
-#accueil {
-    background-image: url("../img/backgroundbw.png");
-    background-size: cover;
-    background-position-y: -53px;
 }
 
 #lvl1 {
