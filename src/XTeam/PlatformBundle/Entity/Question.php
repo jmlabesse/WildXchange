@@ -24,7 +24,7 @@ class Question
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime", nullable=false)
+     * @ORM\Column(name="date", type="datetime", nullable=true)
      */
     private $date;
 
@@ -73,6 +73,12 @@ class Question
     {
         $this->responses = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->setDate(new \DateTime('now'));
+    }
+
+    public function __toString()
+    {
+        return $this->id . ' : ' . $this->titre;
     }
 
     /**

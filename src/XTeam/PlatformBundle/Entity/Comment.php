@@ -47,6 +47,14 @@ class Comment
 
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->setDate(new \DateTime('now'));
+    }
+
+    /**
      * Get id
      *
      * @return integer

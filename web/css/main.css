@@ -145,8 +145,13 @@ html {
 }
 
 main {
-
     flex: 1 0 auto; /*For the sticky footer*/
+}
+
+#accueil {
+    background-image: url("../img/backgroundbw.png");
+    background-size: cover;
+    background-position-y: -53px;
 }
 
 #lvl1 {
