@@ -15,7 +15,7 @@
 
     {# Fonts de Font Awesome et de la charte graphique #}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     {% block stylesheets %}{% endblock %}
 </head>
 
@@ -52,8 +52,10 @@
         </div></li>
 </ul>
 
+<main>
 {% block content %}
 {% endblock %}
+</main>
 
 <footer class="page-footer">
     <div class="container">

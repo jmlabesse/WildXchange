@@ -5,12 +5,10 @@
 {% endblock %}
 
 {% block stylesheets %}
-    {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/questionresponse.css') }}">
 {% endblock %}
 
 {% block content %}
-    <main>
         <!-- begin page-content container -->
         <div class='container'>
             <div class='row'>
@@ -224,16 +222,10 @@
                 <!-- end page-content container -->
             </div>
         </div>
-        <ul>
-            <li>
-
-            </li>
-
-        </ul>
-    </main>
-    <script src="{{ asset('JS/questionresponse.js') }}"></script>
 {% endblock %}
 
 
-
-
+{% block scripts %}
+    {{ parent() }}
+<script src="{{ asset('JS/questionresponse.js') }}"></script>
+{% endblock %}
