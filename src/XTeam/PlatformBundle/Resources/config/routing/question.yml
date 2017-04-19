@@ -6,7 +6,7 @@ question_index:
 question_show:
     path:     /{id}/show
     defaults: { _controller: "XTeamPlatformBundle:Question:show" }
-    methods:  GET
+    methods:  [GET, POST]
 
 question_new:
     path:     /new

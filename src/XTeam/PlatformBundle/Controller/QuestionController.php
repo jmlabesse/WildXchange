@@ -2,9 +2,11 @@
 
 namespace XTeam\PlatformBundle\Controller;
 
+use XTeam\PlatformBundle\Entity\Comment;
 use XTeam\PlatformBundle\Entity\Question;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use XTeam\PlatformBundle\Entity\Response;
 
 /**
  * Question controller.
@@ -55,13 +57,42 @@ class QuestionController extends Controller
      * Finds and displays a question entity.
      *
      */
-    public function showAction(Question $question)
+    public function showAction(Question $question, Request $request)
     {
         $deleteForm = $this->createDeleteForm($question);
+
+        $response = new Response();
+        $addResponseForm = $this->createForm('XTeam\PlatformBundle\Form\ResponseType', $response);
+        $addResponseForm->handleRequest($request);
+
+        $comment = new Comment();
+        $commentForm = $this->createForm('XTeam\PlatformBundle\Form\CommentType', $comment);
+        $commentForm->handleRequest($request);
+
+
+        if ($addResponseForm->isSubmitted() && $addResponseForm->isValid()) {
+            $response->setQuestion($question)->setUser($this->getUser());
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($response);
+            $em->flush();
+
+            return $this->redirectToRoute('question_show', array('id' => $question->getId()));
+        }
+
+        if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+            $comment->setUser($this->getUser());
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+
+            return $this->redirectToRoute('question_show', array('id' => $question->getId()));
+        }
 
         return $this->render('question/show.html.twig', array(
             'question' => $question,
             'delete_form' => $deleteForm->createView(),
+            'addResponse_form' => $addResponseForm->createView(),
+            'comment_form' => $commentForm->createView(),
         ));
     }
 
@@ -120,5 +151,14 @@ class QuestionController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    private function createAddResponseForm()
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('response_new'))
+            ->setMethod('POST')
+            ->getForm()
+            ;
     }
 }
