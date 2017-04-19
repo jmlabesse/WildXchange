@@ -137,40 +137,6 @@ span.nav-title {
 /* MAIN CONTENT
 =============== */
 
-html {
-    background: url("../img/backgroundbw.png") no-repeat center center fixed; /*keeps background image the same size on all screens*/
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position-y: 0px;
-}
-
-
-main {
-    flex: 1 0 auto; /*For the sticky footer*/
-}
-
-
-#lvl1 {
-    height: 14em;
-}
-
-.nav-wrapper.search {
-    background-color: #ffffff !important;
-}
-
-input#search{
-    margin: 0 !important;
-}
-
-#chipBody {
-    background-color: white;
-}
-
-.chips {
-    margin: 0 !important;
-}
 
 
 /* FOOTER
