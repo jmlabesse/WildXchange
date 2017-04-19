@@ -15,7 +15,7 @@
 
     {# Fonts de Font Awesome et de la charte graphique #}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     {% block stylesheets %}{% endblock %}
 </head>
 
@@ -35,7 +35,7 @@
             <li><a href="{{ path('question_index') }}">Questions / Réponses</a></li>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <li>
-                    <a href="{{ path('xteam_platform_dashboard',{'user': 'jmlabesse'}) }}"><img style="width: 55px" src="{{ asset('img/deer2.fw.png') }}"></a>
+                    <a href="{{ path('xteam_platform_dashboard',{'user': app.user}) }}"><img style="width: 55px" src="{{ asset('img/deer2.fw.png') }}"></a>
                 </li>
             {% else %}
                 <li><a class="btn button-collapse show-on-large waves-effect waves-light" href="#" data-activates="slide-out">Se connecter / S'inscrire</a></li>
@@ -52,20 +52,10 @@
         </div></li>
 </ul>
 
-<div id="modal1" class="modal">
-    <div class="modal-content">
-        <h4>Se connecter</h4>
-        {{ render(path('fos_user_security_login')) }}
-        <h4>S'inscrire</h4>
-        <a class="waves-effect waves-light btn" href="{{ path('fos_user_registration_register') }}"><i
-                    class="material-icons left">cloud</i>S'inscrire</a>
-    </div>
-</div>
-
 <main>
-
 {% block content %}
 {% endblock %}
+</main>
 
 </main>
 
