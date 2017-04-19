@@ -1,0 +1,67 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% form_theme form _self %}
+
+{% block _fos_user_registration_form_username_row %}
+    <div class="input-field col s6">
+        {{ form_errors(form) }}
+        <i class="material-icons prefix">account_circle</i>
+        <input id="username" type="text" class="validate" {{ block('widget_attributes') }}>
+        <label for="username">{{ 'form.username'|trans }}</label>
+    </div>
+{% endblock %}
+
+{{ form_row(form.username) }}
+
+{% block _fos_user_registration_form_email_row %}
+    <div class="input-field col s6">
+        {{ form_errors(form) }}
+        <i class="material-icons prefix">email</i>
+        <input id="email" type="email" class="validate" {{ block('widget_attributes') }}>
+        <label for="email">{{ 'form.email'|trans }}</label>
+    </div>
+{% endblock %}
+
+{{ form_row(form.email) }}
+
+{% block _fos_user_registration_form_plainPassword_first_row %}
+    <div class="input-field col s6">
+        {{ form_errors(form) }}
+        <i class="material-icons prefix">vpn_key</i>
+        <input id="password_first" type="password" class="validate" {{ block('widget_attributes') }}>
+        <label for="password_first">{{ 'form.password'|trans }}</label>
+    </div>
+{% endblock %}
+
+{{ form_row(form.plainPassword_first) }}
+
+{% block _fos_user_registration_form_plainPassword_second_row %}
+    <div class="input-field col s6">
+        {{ form_errors(form) }}
+        <i class="material-icons prefix">verified_user</i>
+        <input id="password_second" type="password" class="validate" {{ block('widget_attributes') }}>
+        <label for="password_second">{{ 'form.password_confirmation'|trans }}</label>
+    </div>
+{% endblock %}
+
+{{ form_row(form.plainPassword_second) }}
+
+{% block _fos_user_registration_form_nom_row %}
+    <div class="input-field col s6">
+        {{ form_errors(form) }}
+        <i class="material-icons prefix">supervisor_account</i>
+        <input id="lastname" type="text" class="validate" {{ block('widget_attributes') }}>
+        <label for="lastname">{{ 'form.lastname'|trans }}</label>
+    </div>
+{% endblock %}
+
+{{ form_row(form.nom) }}
+{% block _fos_user_registration_form_prenom_row %}
+    <div class="input-field col s6">
+        {{ form_errors(form) }}
+        <i class="material-icons prefix">perm_identity</i>
+        <input id="firstname" type="text" class="validate" {{ block('widget_attributes') }}>
+        <label for="firstname">{{ 'form.firstname'|trans }}</label>
+    </div>
+{% endblock %}
+
+{{ form_row(form.prenom) }}

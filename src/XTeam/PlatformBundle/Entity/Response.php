@@ -45,7 +45,7 @@ class Response
     /**
      * @var integer
      *
-     * @ORM\Column(name="vote", type="integer", nullable=false)
+     * @ORM\Column(name="vote", type="integer", nullable=true)
      */
     private $vote;
 
@@ -71,6 +71,12 @@ class Response
     {
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->setDate(new \DateTime('now'));
+        $this->isCorrect=false;
+    }
+
+    public function __toString()
+    {
+        return $this->user . ' : ' . $this->content;
     }
 
     /**

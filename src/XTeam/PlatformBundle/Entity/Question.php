@@ -76,6 +76,11 @@ class Question
         $this->setDate(new \DateTime('now'));
     }
 
+    public function __toString()
+    {
+        return $this->id . ' : ' . $this->titre;
+    }
+
     /**
      * Get id
      *
