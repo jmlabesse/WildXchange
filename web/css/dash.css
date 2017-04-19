@@ -140,7 +140,9 @@ main {
     flex: 1 0 auto; /*For the sticky footer*/
 }
 
-
+.user {
+    margin-top: 24px;
+}
 
 /* FOOTER
 ========= */
