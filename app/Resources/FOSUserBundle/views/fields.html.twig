@@ -67,6 +67,17 @@
 
 {{ form_row(form.prenom) }}
 
+{% block _fos_user_registration_form_avatar_row %}
+    <div class="input-field col s6">
+        {{ form_errors(form) }}
+        <i class="material-icons prefix">perm_identity</i>
+        <input id="avatar" type="file" class="validate" {{ block('widget_attributes') }}>
+        <label for="avatar"></label>
+    </div>
+{% endblock %}
+
+{{ form_row(form.avatar) }}
+
 {% block _fos_user_registration_form_profession_row %}
     <div class="input-field col s6">
         {{ form_errors(form) }}

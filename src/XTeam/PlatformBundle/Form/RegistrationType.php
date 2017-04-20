@@ -23,6 +23,7 @@ class RegistrationType extends AbstractType
                 'second_options' => array('label' => 'form.password_confirmation'),
                 'invalid_message' => 'fos_user.password.mismatch',
             ))
+            ->add('avatar', 'Symfony\Component\Form\Extension\Core\Type\FileType',array('label' => 'Avatar'));
             ->add('profession', 'Symfony\Component\Form\Extension\Core\Type\TextType', array('label' => 'profession'))
             ->add('business', 'Symfony\Component\Form\Extension\Core\Type\TextType', array('label' => 'business'))
             ->add('statut', 'Symfony\Component\Form\Extension\Core\Type\TextType', array('label' => 'statut'))
