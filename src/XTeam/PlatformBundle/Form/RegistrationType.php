@@ -24,6 +24,14 @@ class RegistrationType extends AbstractType
                 'invalid_message' => 'fos_user.password.mismatch',
             ))
             ->add('avatar', 'Symfony\Component\Form\Extension\Core\Type\FileType',array('label' => 'Avatar'));
+            ->add('profession', 'Symfony\Component\Form\Extension\Core\Type\TextType', array('label' => 'profession'))
+            ->add('business', 'Symfony\Component\Form\Extension\Core\Type\TextType', array('label' => 'business'))
+            ->add('statut', 'Symfony\Component\Form\Extension\Core\Type\TextType', array('label' => 'statut'))
+            ->add('promo', 'Symfony\Component\Form\Extension\Core\Type\TextType', array('label' => 'promo'))
+            ->add('git', 'Symfony\Component\Form\Extension\Core\Type\TextType', array('label' => 'git'))
+            ->add('twitter', 'Symfony\Component\Form\Extension\Core\Type\TextType', array('label' => 'twitter'))
+            ->add('facebook', 'Symfony\Component\Form\Extension\Core\Type\TextType', array('label' => 'facebook'))
+            ->add('linkedin', 'Symfony\Component\Form\Extension\Core\Type\TextType', array('label' => 'linkedin'));
     }
 
     public function getParent()

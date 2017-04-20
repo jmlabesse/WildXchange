@@ -138,10 +138,6 @@ span.nav-title {
 =============== */
 
 
-main {
-    flex: 1 0 auto; /*For the sticky footer*/
-}
-
 
 /* FOOTER
 ========= */
