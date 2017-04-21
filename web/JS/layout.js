@@ -32,7 +32,19 @@ $(document).ready(function(){
                 'Sonata': null,
                 'Apache': null,
                 'Agile Development': null,
-                'SCRUM': null
+                'SCRUM': null,
+                'MySQL':null,
+                'SQLi':null,
+                'MongoDB':null,
+                'PHPStorm': null,
+                'PHPMyAdmin': null,
+                'GitHub': null,
+                'GitKraken': null,
+                'MacBook': null,
+                'Linux': null,
+                'Ubuntu': null,
+                'Windows': null,
+                'CLI': null
             },
             limit: Infinity,
             minLength: 1
