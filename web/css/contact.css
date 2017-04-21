@@ -21,24 +21,18 @@ main {
     background-color: #ffffff !important;
 }
 
-/* CAROUSEL
+/* CONTACT
 ===========*/
 
- .carousel {
-     height:200px;
-     border-top:1px solid var(--blue-intense);
-
+.card {
+    margin:5px;
+    width:350px;
+    float:left;
 }
 
+/* CHARTE
+===========*/
 
-.img-carousel{
-    margin-top:50px;
+p
 
-    max-width: 50%;
-    height:auto;
-}
 
-h5{
-    margin:20px;
-    color:var(--orange-intense);
-}
