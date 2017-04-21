@@ -26,13 +26,52 @@ main {
 
 .card {
     margin:5px;
-    width:350px;
+    width:400px;
+    height:250px;
     float:left;
+}
+
+.activator {
+    width:350px;
+    height:150px;
 }
 
 /* CHARTE
 ===========*/
 
-p
+h1 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color:var(--blue-intense);
+}
+
+h2 {
+    font-size: 18px;
+    margin-left:20px;
+    color:var(--orange-intense);
+}
+
+p {
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: justify;
+}
+
+strong {
+    color:var(--orange-intense);
+    text-decoration: underline;
+}
+
+.bold {
+    color:black;
+    font-weight: bolder;
+    text-decoration:none;
+}
+
+.name {
+    color: var(--blue-intense);
+    text-decoration:none;
+}
 
 
