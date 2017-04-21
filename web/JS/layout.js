@@ -16,7 +16,23 @@ $(document).ready(function(){
             data: {
                 'Apple': null,
                 'Microsoft': null,
-                'Google': null
+                'Google': null,
+                'Javascript': null,
+                'PHP': null,
+                'JQuery': null,
+                'Git': null,
+                'Symfony': null,
+                'AngularJS': null,
+                'NodeJS': null,
+                'CSS': null,
+                'HTML': null,
+                'Bootstrap': null,
+                'Materialize': null,
+                'Doctrine': null,
+                'Sonata': null,
+                'Apache': null,
+                'Agile Development': null,
+                'SCRUM': null
             },
             limit: Infinity,
             minLength: 1
