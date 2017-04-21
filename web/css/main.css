@@ -159,6 +159,9 @@ i {
   margin-top: 25px;
 }
 
-#icons {
-    margin-top: 25px;
+.layoutavatar {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-top: 7px;
 }

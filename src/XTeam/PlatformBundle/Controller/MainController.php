@@ -41,7 +41,10 @@ class MainController extends Controller
 
     public function dashboardAction()
     {
-        return $this->render('XTeamPlatformBundle:Main:dashboard.html.twig', array());
+        $em = $this->getDoctrine()->getManager();
+        $bestResponse = $em->getRepository('XTeamPlatformBundle:Response')->findBy(['user' => $this->getUser(), 'isCorrect' => 1]);
+        $bestResponseCount = sizeof($bestResponse);
+        return $this->render('XTeamPlatformBundle:Main:dashboard.html.twig', array('bestresponsecount' => $bestResponseCount));
     }
 
 }

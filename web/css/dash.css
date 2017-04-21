@@ -8,3 +8,26 @@ main {
 .user {
     margin-top: 24px;
 }
+.avatar {
+    height:150px;
+    width: 150px;
+    border-radius: 50%;
+}
+.card-title {
+    text-align: center;
+    margin-top: -10px;
+}
+h6 {
+    text-align: center;
+}
+
+#github, #linkedin, #twitter, #facebook {
+    color: white;
+    margin-right: 35px;
+    margin-left: 35px;
+}
+#dashicons {
+    margin-top: 25px;
+    margin-left: 30px;
+}
+
