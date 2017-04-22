@@ -7,6 +7,7 @@ use XTeam\PlatformBundle\Entity\Question;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use XTeam\PlatformBundle\Entity\Response;
+use XTeam\PlatformBundle\Entity\Tag;
 
 /**
  * Question controller.
@@ -137,11 +138,27 @@ class QuestionController extends Controller
         return $this->redirectToRoute('question_index');
     }
 
+    public function searchAction()
+    {
+        $questionsAll=[];
+        $tags = explode(" ",$_GET['q']);
+
+        $em = $this->getDoctrine()->getManager();
+
+        foreach ($tags as $tag)
+        {
+            $questions = $em->getRepository('XTeamPlatformBundle:Question')
+                ->findQuestionsByTags($tag);
+
+            $questionsAll = array_unique(array_merge($questionsAll, $questions));
+        }
+
+        return $this->render(':question:search.html.twig', array('questions'=>$questionsAll));
+    }
+
     /**
      * Creates a form to delete a question entity.
-     *
      * @param Question $question The question entity
-     *
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm(Question $question)
@@ -153,12 +170,4 @@ class QuestionController extends Controller
         ;
     }
 
-    private function createAddResponseForm()
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('response_new'))
-            ->setMethod('POST')
-            ->getForm()
-            ;
-    }
 }

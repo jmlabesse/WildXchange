@@ -17,11 +17,13 @@
             <div class='row lvl3'>
                 <div class="col s12 m8 l8 offset-s2">
                     <div class='nav-wrapper search hoverable'>
+                        <form method="get" action="{{ path('question_search') }}">
                             <div class="input-field" id="search">
-                                <input id="search" type="search" required>
+                                <input id="search" type="search" name="q" required>
                                 <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                                 <i class="material-icons">close</i>
                             </div>
+                        </form>
                         <div class="section scrollspy">
                             <ul class="collapsible popout" data-collapsible="accordion">
                                 <li><div class="collapsible-header"><i class="material-icons">filter_drama</i>Ajoute des tags?</div>
