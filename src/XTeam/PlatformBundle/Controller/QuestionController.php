@@ -143,20 +143,19 @@ class QuestionController extends Controller
 
     public function searchAction()
     {
-        $questionsAll=[];
-        $tags = explode(" ",$_GET['q']);
+        $questionsAll = [];
+        $tags = explode(" ", $_GET['q']);
 
         $em = $this->getDoctrine()->getManager();
 
-        foreach ($tags as $tag)
-        {
+        foreach ($tags as $tag) {
             $questions = $em->getRepository('XTeamPlatformBundle:Question')
                 ->findQuestionsByTags($tag);
 
             $questionsAll = array_unique(array_merge($questionsAll, $questions));
         }
 
-        return $this->render(':question:search.html.twig', array('questions'=>$questionsAll));
+        return $this->render(':question:search.html.twig', array('questions' => $questionsAll));
     }
 
     /**
@@ -169,8 +168,7 @@ class QuestionController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('question_delete', array('id' => $question->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 
 }
