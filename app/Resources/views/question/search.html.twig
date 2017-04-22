@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="col s2">
                         {% if question.isResolved %}
-                            <i class="large material-icons">verified_user</i>
+                            <i class="small material-icons">verified_user</i>
                         {% endif %}
                     </div>
                     <div class="col s10">
@@ -28,7 +28,7 @@
                     </div>
                     <div class="col s10">
                         {% for tag in question.tags %}
-                            <em>{{ tag.tagname }} / </em>
+                            <em>{{ tag.tagname }}{% if not loop.last %} / {% endif %}</em>
                         {% endfor %}
                     </div>
                 </div>
