@@ -169,10 +169,14 @@
                                                     </div>
                                                 {% endfor %}
                                                 <div class="row">
-                                                    {#{% form_theme comment_form '::fields.html.twig' %}#}
                                                     {{ form_start(comment_form) }}
-                                                    {{ form_widget(comment_form) }}
-                                                    <input type="submit" value="Commenter" class="btn waves-effect waves-light"/>
+                                                        <div class="input-field">
+                                                            <i class="material-icons prefix">comment</i>
+                                                            {{ form_widget(comment_form.content, {'attr': {'class': 'validate'}}) }}
+                                                            <label for="xteam_platformbundle_comment_content">Commentaire</label>
+                                                            <input type="hidden" name="response_id" value="{{ response.id }}" />
+                                                            <input type="submit" value="Commenter" class="btn waves-effect waves-light"/>
+                                                        </div>
                                                     {{ form_end(comment_form) }}
                                                 </div>
                                             </div>

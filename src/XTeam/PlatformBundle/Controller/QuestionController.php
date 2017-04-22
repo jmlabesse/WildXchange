@@ -60,6 +60,7 @@ class QuestionController extends Controller
      */
     public function showAction(Question $question, Request $request)
     {
+
         $deleteForm = $this->createDeleteForm($question);
 
         $response = new Response();
@@ -81,8 +82,10 @@ class QuestionController extends Controller
         }
 
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
-            $comment->setUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
+            $responseId = $request->get('response_id');
+            $response = $em->getRepository('XTeamPlatformBundle:Response')->find($responseId);
+            $comment->setUser($this->getUser())->setResponse($response);
             $em->persist($comment);
             $em->flush();
 
