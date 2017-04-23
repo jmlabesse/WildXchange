@@ -12,9 +12,19 @@ main {
 }
 
 #avatar {
-    max-height: 100%;
-    height: 8em;
+    max-height: 70%;
+    height: 5em;
     margin-left: 1em;
+}
+
+#karmabtn {
+    margin: 1em 2em;
+}
+
+#counter {
+    height: 3em;
+    width: 3em;
+    margin-left: 10px;
 }
 
 .usrCol {
@@ -43,7 +53,7 @@ margin-top: 3em;
 }
 
 #commentaire {
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 #formSpacer {
@@ -62,8 +72,8 @@ margin-top: 3em;
 .infoCol {
     border:1px solid black;
     background-color: #FFDEA5;
-    position: relative;
     margin-top: 3em;
+    width: 20em !important;
 }
 
 /* PushPin Element Styling
