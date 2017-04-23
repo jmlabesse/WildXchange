@@ -3,8 +3,24 @@
 main {
     flex: 1 0 auto; /*For the sticky footer*/
 }
-.question_block
-{
-    background-color: var(--blue-light);
+
+.link_block{
+    color: #000;
+}
+
+.question_block{
+    border:1px solid #f7f0a3;
     border-radius: 10px;
+    background-color: #f7f0a3;
+    margin-bottom: 20px;
+}
+
+.question_block:first-child {
+    margin-top: 20px;
+}
+
+.question_block:hover {
+    background-color: #F9A02E;
+    border:1px solid #F9A02E;
+    transition: background-color 0.5s;
 }

@@ -18,12 +18,15 @@
                     </div>
                     <!--begin question input row -->
                     <!--begin user avatar column -->
-                    <div id="question" class="section qr">
+                    <div id="question" class="section question_block">
                         <div class="row">
                             <div class="col s2 m3">
-                                <img src="{{ asset('img/fosuser.jpg') }}" id="avatar" alt="User Avatar"
-                                     class="circle image-responsive">
-                                
+                                <img src="{% if question.user %}
+                                            {{ asset('uploads/avatars/' ~ question.user.avatar) }}
+                                          {% else %}
+                                            {{ asset('img/fosuser.jpg') }}
+                                          {% endif %}
+                                    " alt="User Avatar" class="avatar circle image-responsive">
                             </div>
                             <!--end user avatar column -->
                             <!--begin question column -->
@@ -109,11 +112,15 @@
 
                     <!--begin user avatar column -->
                     {% for response in question.responses %}
-                        <div id="response" class="section qr">
+                        <div id="response_{{ response.id }}" class="section response_block">
                             <div class="row">
                                 <div class="col s2 m3">
-                                    <img src="{{ asset('img/fosresponder.jpg') }}" id="avatar" alt="User Avatar"
-                                         class="image-responsive">
+                                    <img src="{% if response.user is null or response.user.avatar is null %}
+                                                {{ asset('img/fosuser.jpg') }}
+                                              {% else %}
+                                                {{ asset('uploads/avatars/' ~ response.user.avatar) }}
+                                              {% endif %}
+                                             " alt="User Avatar" class="avatar circle image-responsive">
                                 </div>
                                 <!--end user avatar column -->
                                 <!--begin question column -->

@@ -79,6 +79,7 @@ class Question
         $this->responses = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
         $this->setDate(new \DateTime('now'));
+        $this->isResolved=false;
     }
 
     public function __toString()
