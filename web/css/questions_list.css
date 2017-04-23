@@ -3,8 +3,20 @@
 main {
     flex: 1 0 auto; /*For the sticky footer*/
 }
-.question_block
+.question_row
 {
     background-color: var(--blue-light);
     border-radius: 10px;
+}
+
+#resultsTitle {
+    margin-top: 2em;
+}
+
+.bottomSpacer {
+    height: 2em;
+}
+
+.time {
+    margin-top: 20px;
 }
