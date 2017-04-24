@@ -8,7 +8,19 @@ class MainController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('XTeamPlatformBundle:Main:index.html.twig', array());
+        $countNoResponses = sizeof($this->findNoResponses());
+        return $this->render('XTeamPlatformBundle:Main:index.html.twig', array('countNoResponses' => $countNoResponses));
+    }
+    public function findNoResponses() {
+        $result = [];
+        $em = $this->getDoctrine()->getManager();
+        $allQuestions = $em->getRepository('XTeamPlatformBundle:Question')->findAll();
+        foreach ($allQuestions as $question) {
+            if (sizeof($question->getResponses()) == 0){
+                $result[] = $question;
+            }
+        }
+        return $result;
     }
     public function docsAction()
     {
