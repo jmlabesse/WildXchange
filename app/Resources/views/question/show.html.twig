@@ -13,7 +13,7 @@
     <div class='container'>
         <div class='row'>
             <!-- begin left content column -->
-            <div class="col s12 m12 l8 left usrCol">
+            <div class="col s12 m12 l8 left usrCol question_block">
                 <div class="currentQuestion">
                     <h4><span>{{ question.titre }}</span></h4>
                 </div>
@@ -101,7 +101,7 @@
 
                 <!--begin left column -->
                 {% for response in question.responses %}
-                    <div id="response" class="section qr">
+                    <div id="response" class="section qr response_block">
                         <div class="row">
                             <!--begin user avatar column -->
                             <div class="col s2" id="avatarCol">
@@ -143,37 +143,32 @@
                                                     </li>
                                                     <li><a class="btn-floating yellow darken-1 tooltipped" data-position="bottom" data-delay="50"
                                                            data-tooltip="Report this question as a duplicate"><i
-                                                                    class="material-icons">cached</i></a></li>
+                                                                    class="material-icons">cached</i></a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col s11">
-                                    <ul class="collapsible popout" data-collapsible="accordion" id="commentaire">
-                                        <li>
-                                            <div class="collapsible-header"><i
-                                                        class="material-icons">format_quote</i>{{ response.comments|length }}
-                                                Commentaires
-                                            </div>
-                                            <div class="collapsible-body">
-                                                <div class="row">
-                                                    <div class="col s12">
-                                                        {% for comment in response.comments %}
-                                                            <div class="row">
-                                                                <div class="card horizontal">
-                                                                    <p>{{ comment.user }}</p>
-                                                                    <div class="card-stacked">
-                                                                        <div class="card-content">
-                                                                            <p>{{ comment.content }}</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        {% endfor %}
+                                            <ul class="collapsible" data-collapsible="accordion" id="commentaire">
+                                                <li>
+                                                    <div class="collapsible-header"><i class="material-icons">format_quote</i>{{ response.comments|length }}  Commentaires
+                                                    </div>
+                                                    <div class="collapsible-body">
                                                         <div class="row">
                                                             <div class="col s12">
-                                                                {#{% form_theme comment_form '::fields.html.twig' %}#}
+                                                                {% for comment in response.comments %}
+                                                                <div class="card-panel">
+                                                                    <span>{{ comment.user }}</span><br>
+                                                                    <p id="comments">{{ comment.content }}</p>
+                                                                </div>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class= "col s10">
+                                                                {% form_theme comment_form '::fields.html.twig' %}
                                                                 {{ form_start(comment_form) }}
                                                                 {{ form_widget(comment_form) }}
                                                                 <input type="submit" value="Commenter" class="btn waves-effect waves-light"/>
@@ -181,13 +176,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
