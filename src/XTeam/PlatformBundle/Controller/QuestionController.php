@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use XTeam\PlatformBundle\Entity\Response;
 use XTeam\PlatformBundle\Entity\Tag;
+use XTeam\PlatformBundle\XTeamPlatformBundle;
 
 /**
  * Question controller.
@@ -156,6 +157,22 @@ class QuestionController extends Controller
         }
 
         return $this->render(':question:search.html.twig', array('questions' => $questionsAll));
+    }
+    public function showNoResponsesAction() {
+        $allNoResponses = $this->findNoResponses();
+        return $this->render('XTeamPlatformBundle:Main:responseLess.html.twig',
+            array('allNoResponses' => $allNoResponses));
+    }
+    public function findNoResponses() {
+        $result = [];
+        $em = $this->getDoctrine()->getManager();
+        $allQuestions = $em->getRepository('XTeamPlatformBundle:Question')->findAll();
+        foreach ($allQuestions as $question) {
+            if (sizeof($question->getResponses()) == 0){
+                $result[] = $question;
+            }
+        }
+        return $result;
     }
 
     /**
