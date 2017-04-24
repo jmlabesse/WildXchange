@@ -15,6 +15,10 @@ html {
     height: 14em;
 }
 
+#lvl4 {
+    height: 14em;
+}
+
 .nav-wrapper.search {
     background-color: #ffffff !important;
 }

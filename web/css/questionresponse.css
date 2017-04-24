@@ -11,20 +11,19 @@ main {
     }
 }
 
+#avatarRow {
+    min-height: 70px;
+}
+
 #avatar {
     max-height: 70%;
     height: 5em;
     margin-left: 1em;
 }
 
-#karmabtn {
-    margin: 1em 2em;
-}
-
 #counter {
     height: 3em;
     width: 3em;
-    margin-left: 10px;
 }
 
 .usrCol {
@@ -54,6 +53,10 @@ margin-top: 3em;
 
 #commentaire {
     margin-top: 50px;
+}
+
+p.comments {
+    font-size: 9px;
 }
 
 #formSpacer {
