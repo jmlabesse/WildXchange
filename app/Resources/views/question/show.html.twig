@@ -102,7 +102,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    <!--begin question input row -->
+                    <!--begin user avatar column -->
+                    <div id="question" class="section question_block">
 
                 <!--begin left column -->
                 {% for response in question.responses %}
@@ -110,12 +112,13 @@
                         <div class="row">
                             <!--begin user avatar column -->
                             <div class="col s2 m3">
-                                <div class="row">
-                                    <div class="col s12">
-                                        <img src="{{ asset('img/fosresponder.jpg') }}" id="avatar" alt="User Avatar"
-                                             class="image-responsive">
-                                    </div>
-                                </div>
+                                <img src="{% if question.user %}
+                                            {{ asset('uploads/avatars/' ~ question.user.avatar) }}
+                                          {% else %}
+                                            {{ asset('img/fosuser.jpg') }}
+                                          {% endif %}
+                                    " alt="User Avatar" class="avatar circle image-responsive">
+                              
                                 <div class="row">
                                     <div class="col s12">
                                         <a id='karmabtn' class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">add</i></a>
@@ -161,7 +164,87 @@
                                                             class="material-icons">format_quote</i>{{ response.comments|length }}
                                                     Commentaires
                                                 </div>
-                                                <div class="collapsible-body">
+                                            </div>
+                                            <div class="row">
+                                                <div class="card horizontal">
+                                                    <p>User2</p>
+                                                    <div class="card-stacked">
+                                                        <div class="card-content">
+                                                            <p>Contentcontentcontentcontentcontent</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="input-field col s12">
+                                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                    <label for="textarea1">Textarea</label>
+                                                </div>
+                                            </div>
+                                            <button class="btn" type="submit" name="commentSubmit">Comment
+                                                <i class="material-icons right">send</i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!--begin user avatar column -->
+                    {% for response in question.responses %}
+                        <div id="response_{{ response.id }}" class="section response_block">
+                            <div class="row">
+                                <div class="col s2 m3">
+                                    <img src="{% if response.user is null or response.user.avatar is null %}
+                                                {{ asset('img/fosuser.jpg') }}
+                                              {% else %}
+                                                {{ asset('uploads/avatars/' ~ response.user.avatar) }}
+                                              {% endif %}
+                                             " alt="User Avatar" class="avatar circle image-responsive">
+                                </div>
+                                <!--end user avatar column -->
+                                <!--begin question column -->
+                                <div class="col s10 m9 question">
+                                    <div class="col s9">
+                                        <p>{{ response.user }}</p>
+                                    </div>
+                                    <div class="col s3">
+                                        <small>Postée
+                                            le {% if response.date %}{{ response.date|date('d-m-Y à H:i') }}{% endif %}</small>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <p>{{ response.content }}</p>
+                                            <div class="fabbtn-wrapper" id="responder">
+                                                <div class="fixed-action-btn horizontal click-to-toggle" id="fabBtn">
+                                                    <a class="btn-floating btn-large teal">
+                                                        <i class="large material-icons">format_quote</i>
+                                                    </a>
+                                                    <ul>
+                                                        <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a>
+                                                        </li>
+                                                        <li><a class="btn-floating green"><i class="material-icons">publish</i></a>
+                                                        </li>
+                                                        <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="collapsible popout" data-collapsible="accordion" id="commentaire">
+                                <li>
+                                    <div class="collapsible-header"><i
+                                                class="material-icons">format_quote</i>{{ response.comments|length }}
+                                        Commentaires
+                                    </div>
+                                    <div class="collapsible-body">
+                                        <div class="row">
+                                            <div class="col s12">
+                                                {% for comment in response.comments %}
                                                     <div class="row">
                                                         <div class="col s12">
                                                             {% for comment in response.comments %}
@@ -187,6 +270,17 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                {% endfor %}
+                                                <div class="row">
+                                                    {{ form_start(comment_form) }}
+                                                        <div class="input-field">
+                                                            <i class="material-icons prefix">comment</i>
+                                                            {{ form_widget(comment_form.content, {'attr': {'class': 'validate'}}) }}
+                                                            <label for="xteam_platformbundle_comment_content">Commentaire</label>
+                                                            <input type="hidden" name="response_id" value="{{ response.id }}" />
+                                                            <input type="submit" value="Commenter" class="btn waves-effect waves-light"/>
+                                                        </div>
+                                                    {{ form_end(comment_form) }}
                                                 </div>
                                             </li>
                                         </ul>

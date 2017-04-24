@@ -38,11 +38,13 @@
                         <div class="col s10">
                             <div class="card-stacked">
                                 <div class="card-content">
-                                    <a  href="{{ path('question_show', { 'id': question.id }) }}"><p>{{ question.question }}</p></a>
+                                    <a  href="{{ path('question_show', { 'id': question.id }) }}"><p>{{ question.titre }}</p></a>
                                 </div>
                                 <div class="row">
                                         <div class="card-action col s8">
-                                            <em>Liste des tags (non-fonctionnel)</em>
+                                            {% for tag in question.tags %}
+                                              <em>{{ tag.tagname }}{% if not loop.last %} / {% endif %}</em>
+                                            {% endfor %}
                                         </div>
                                     <div class="col s4 time">
                                         <small>Postée
@@ -56,4 +58,9 @@
             </div>
         {% endfor %}
     </div>
+    <ul>
+       <li>
+          <a href="{{ path('question_new') }}">Poser une nouvelle question</a>
+       </li>
+    </ul>
 {% endblock %}

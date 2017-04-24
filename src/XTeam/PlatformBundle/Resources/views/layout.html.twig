@@ -23,12 +23,14 @@
 
 <nav>
     <div class="nav-wrapper">
-        <a href="{{ path('xteam_platform_accueil') }}" class="left brand-logo black-text" id="logo">
-            <img src="{{ asset('img/logo1.png') }}">
-        </a>
-        <a href="{{ path('xteam_platform_accueil') }}" class="center brand-logo white-text" id="title">
-            <h3>wild<span class="special-x">X</span>change</h3>
-        </a>
+        <div class="left brand-logo white-text">
+            <a href="{{ path('xteam_platform_accueil') }}" id="logo">
+                <img src="{{ asset('img/logo1.png') }}">
+            </a>
+            <a href="{{ path('xteam_platform_accueil') }}" id="title">
+                <h3>wild<span class="special-x">X</span>change</h3>
+            </a>
+        </div>
 
         <ul id="nav-mobile" class="right hide-on-med-and-down nav-link">
             <li><a href="{{ path('xteam_platform_docs') }}">Ressources</a></li>
@@ -59,7 +61,7 @@
 
 <footer class="page-footer">
     <div class="container">
-        <div class="row">
+        <div class="row footer-row">
             <div class="col s4 white-text">
                 <p>Copyright WCS
                     <br>

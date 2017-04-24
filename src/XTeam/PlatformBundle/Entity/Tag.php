@@ -42,6 +42,11 @@ class Tag
         $this->questions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->tagname;
+    }
+
     /**
      * Get id
      *
