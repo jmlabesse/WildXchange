@@ -40,8 +40,9 @@
 
             <div class='row lvl4'>
                 <div class="col s12 m8 l8 offset-s2">
-                    <a href="{{ path('xteam_platform_noresponses') }}">Si toi aussi tu veux apporter ta pierre à l'édifice, il reste actuellement {{ countNoResponses }} questions sans réponses !</a>
-
+                    <div id="noresp">
+                    <a class="noresponse" href="{{ path('xteam_platform_noresponses') }}">Si toi aussi tu veux apporter ta pierre à l'édifice, il reste actuellement {{ countNoResponses }} questions sans réponses !</a>
+                    </div>
             </div>
             </div>
             <!-- end page-content container -->
