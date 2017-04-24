@@ -12,36 +12,55 @@
 
 {% block content %}
     <div class="container">
+        <div class="row">
+            <div class="col s10" id="resultsTitle">
+                <h3>Results for: YOUR QUESTION HERE</h3>
+            </div>
+        </div>
         {% for question in questions %}
-            <a href="{{ path('question_show', { 'id': question.id }) }}" class="link_block">
-                <div class="question_block">
-                    <div class="row">
+            <div class="row question_row">
+                <div class="col s12">
+                    <div class="card horizontal">
                         <div class="col s2">
-                            {% if question.isResolved %}
-                                <i class="small material-icons">verified_user</i>
-                            {% endif %}
+                            <div class="row">
+                                <div class="col s12">
+                                    {% if question.isResolved %}
+                                        <i class="large material-icons">verified_user</i>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    {{ question.responses|length }} réponses
+                                </div>
+                            </div>
                         </div>
                         <div class="col s10">
-                            {{ question.titre }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s2">
-                            {{ question.responses|length }} réponses
-                        </div>
-                        <div class="col s10">
-                            {% for tag in question.tags %}
-                                <em>{{ tag.tagname }}{% if not loop.last %} / {% endif %}</em>
-                            {% endfor %}
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <a  href="{{ path('question_show', { 'id': question.id }) }}"><p>{{ question.titre }}</p></a>
+                                </div>
+                                <div class="row">
+                                        <div class="card-action col s8">
+                                            {% for tag in question.tags %}
+                                              <em>{{ tag.tagname }}{% if not loop.last %} / {% endif %}</em>
+                                            {% endfor %}
+                                        </div>
+                                    <div class="col s4 time">
+                                        <small>Postée
+                                            le {% if question.date %}{{ question.date|date('d-m-Y à H:i') }}{% endif %}</small>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </a>
+            </div>
         {% endfor %}
-        <ul>
-            <li>
-                <a href="{{ path('question_new') }}">Poser une nouvelle question</a>
-            </li>
-        </ul>
     </div>
+    <ul>
+       <li>
+          <a href="{{ path('question_new') }}">Poser une nouvelle question</a>
+       </li>
+    </ul>
 {% endblock %}
