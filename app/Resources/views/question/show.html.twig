@@ -24,7 +24,16 @@
                             <div class="row">
                                 <div class="col s12">
                                     <p class="center-align">
-                                        <img src="{{ asset('uploads/avatars/' ~ question.user.avatar) }}" alt="{{ question.user.username }}"
+                                        <img src="
+                                                  {% if question.user is null or question.user.avatar is null %}
+                                                    {{ asset('img/fosuser.jpg') }}
+                                                  {% else %}
+                                                    {{ asset('uploads/avatars/' ~ question.user.avatar) }}
+                                                  {% endif %}
+                                                   " alt="
+                                                    {% if question.user is not null %}
+                                                        {{ question.user.username }}
+                                                    {% endif %}"
                                              class="avatar circle image-responsive">
                                     </p>
                                 </div>
