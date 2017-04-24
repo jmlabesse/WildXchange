@@ -36,9 +36,9 @@ class User extends BaseUser
     /**
      * @var \DateTime
      *
-     * @ORM\Column(type="datetime", nullable=false)
+     * @ORM\Column(name="registration_date",type="datetime", nullable=false)
      */
-    private $registration_date;
+    protected $registrationDate;
 
     /**
      * @var string
@@ -200,7 +200,7 @@ class User extends BaseUser
      */
     public function setRegistrationDate($registrationDate)
     {
-        $this->registration_date = $registrationDate;
+        $this->registrationDate = $registrationDate;
 
         return $this;
     }
@@ -212,7 +212,7 @@ class User extends BaseUser
      */
     public function getRegistrationDate()
     {
-        return $this->registration_date;
+        return $this->registrationDate;
     }
 
     /**
