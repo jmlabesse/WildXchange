@@ -16,59 +16,77 @@
         <div class="col s9">
             <div class="row user">
 <div class="col s5">
-    <img src="../img/fosuser.jpg" id="avatar" alt="Qui est ton pot?" class="circle image-responsive">
+    <img class="avatar" src="{{ asset('uploads/avatars/' ~ app.user.avatar) }}" id="avatar" alt="Qui est ton pote?" class="circle image-responsive">
 </div>
                 <div class="col s7">
-                    <h1>UserName</h1>
+                    <h1>{{ app.user.username }}</h1>
                 </div>
             </div>
             <div class="row infos">
                 <div class="col s6">
                     <div class="card blue-grey darken-1">
                         <div class="card-content white-text">
-                            <span class="card-title">infos generales</span>
-                            <p><em>4</em>  questions posees</p>
-                            <p><em>4</em> reponses donnees</p>
-                            <p><em>4</em> meilleures reponses</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">This is a link</a>
-                            <a href="#">This is a link</a>
+                            <span class="card-title"><b>INFORMATIONS GÉNÉRALES</b></span>
+                            Nom : {{ app.user.nom }}<br>
+                            Prénom : {{ app.user.prenom }}<br>
+                            Email : {{ app.user.email }}<br>
+                            {% if app.user.profession|length > 0 %}
+                                Profession : {{ app.user.profession }}<br>
+                            {% endif %}
+                            {% if app.user.business|length > 0 %}
+                                Business : {{ app.user.business }}<br>
+                            {% endif %}
+                            Promotion : {{ app.user.promo }}<br>
                         </div>
                     </div>
                     <div class="card blue-grey darken-1">
                         <div class="card-content white-text">
-                            <span class="card-title">stats</span>
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                                I am convenient because I require little markup to use effectively.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">This is a link</a>
-                            <a href="#">This is a link</a>
+                            <span class="card-title"><b>STATISTIQUES</b></span>
+                            {% if app.user.questions | length <= 1 %}
+                                <p><em>{{ app.user.questions | length }} </em>  question posée</p>
+                            {% else  %}
+                                <p><em>{{ app.user.questions | length }} </em>  questions posées</p>
+                            {% endif %}
+                            {% if app.user.responses | length <= 1 %}
+                                <p><em>{{ app.user.responses | length }} </em>  réponse apportée</p>
+                            {% else  %}
+                                <p><em>{{ app.user.responses | length }} </em>  réponses apportées</p>
+                            {% endif %}
+                            {% if bestresponsecount | length <= 1 %}
+                                <p><em>{{ bestresponsecount | length }} </em>  bonne réponse</p>
+                            {% else  %}
+                                <p><em>{{ bestresponsecount | length }} </em>  bonnes réponses</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
                 <div class="col s6">
                     <div class="card blue-grey darken-1">
                         <div class="card-content white-text">
-                            <span class="card-title">competences</span>
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                                I am convenient because I require little markup to use effectively.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">This is a link</a>
-                            <a href="#">This is a link</a>
+                            <span class="card-title"><b>COMPÉTENCES ET SOCIAL</b></span>
+                            <span class="subtitle"><h6>Technologies maîtrisées</h6></span>
+                            <span class="subtitle"><h6>Réseaux sociaux</h6></span>
+                            <div id="dashicons">
+                                {% if app.user.git|length > 0 %}
+                                    <a href="{{ app.user.git }}"><i id="github" class="fa fa-github small"></i></a>
+                                {% endif %}
+                                {% if app.user.facebook|length > 0 %}
+                                    <a href="{{ app.user.facebook }}"><i id="facebook" class="fa fa-facebook small"></i></a>
+                                {% endif %}
+                                {% if app.user.twitter|length > 0 %}
+                                    <a href="{{ app.user.twitter }}"><i id="twitter" class="fa fa-twitter small"></i></a>
+                                {% endif %}
+                                {% if app.user.linkedin|length > 0 %}
+                                    <a href="{{ app.user.linkedin }}"><i id="linkedin" class="fa fa-linkedin small"></i></a>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                     <div class="card blue-grey darken-1">
                         <div class="card-content white-text">
-                            <span class="card-title">achievements</span>
+                            <span class="card-title"><b>SUCCÈS</b></span>
                             <p>I am a very simple card. I am good at containing small bits of information.
                                 I am convenient because I require little markup to use effectively.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">This is a link</a>
-                            <a href="#">This is a link</a>
                         </div>
                     </div>
                 </div>

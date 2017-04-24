@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Question
  *
  * @ORM\Table(name="question", indexes={@ORM\Index(name="IDX_B6F7494EA76ED395", columns={"user_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="XTeam\PlatformBundle\Repository\QuestionRepository")
  */
 class Question
 {
@@ -79,6 +79,7 @@ class Question
         $this->responses = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
         $this->setDate(new \DateTime('now'));
+        $this->isResolved=false;
     }
 
     public function __toString()

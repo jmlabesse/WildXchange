@@ -34,3 +34,13 @@ input#search{
 .chips {
     margin: 0 !important;
 }
+.noresponse {
+    color: #1FA597;
+    text-decoration: underline;
+    font-family: 'Source Sans Pro', Georgia, sans-serif;
+}
+#noresp {
+    background: white;
+    text-align: center;
+    border-radius: 5px;
+}

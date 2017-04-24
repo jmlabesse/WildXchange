@@ -31,8 +31,18 @@ main {
     padding-right:3em;
 }
 
-.qr{
-    border:1px solid black;
+.question_block{
+    border:1px solid #f7f0a3;
+    border-radius: 10px;
+    background-color: #f7f0a3;
+    margin-bottom: 20px;
+}
+
+.response_block{
+    border:1px solid #ccd3e8;
+    border-radius: 10px;
+    background-color: #ccd3e8;
+    margin-bottom: 20px;
 }
 
 .fabbtn-wrapper{

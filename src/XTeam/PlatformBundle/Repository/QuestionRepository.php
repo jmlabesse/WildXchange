@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class QuestionRepository extends EntityRepository
 {
+    public function findQuestionsByTags($tagName) {
+
+        return $this->createQueryBuilder('q')
+            ->join('q.tags', 't', 'WITH', 't.tagname=:tag')
+            ->setParameter('tag', $tagName)
+            ->getQuery()
+            ->getResult();
+
+    }
+
 }

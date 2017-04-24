@@ -1,0 +1,77 @@
+
+/* MAIN CONTENT
+=============== */
+main {
+    flex: 1 0 auto; /*For the sticky footer*/
+    /*background-image: url("../img/infographie_big.jpg");*/
+    /*background-size: cover;*/
+    background-repeat: no-repeat;
+    background-position-y: -53px;
+}
+
+#lvl1 {
+    height: 5em;
+}
+
+#lvl2 {
+    height: 22em;
+}
+
+.nav-wrapper.search {
+    background-color: #ffffff !important;
+}
+
+/* CONTACT
+===========*/
+
+.card {
+    margin:5px;
+    width:400px;
+    height:250px;
+    float:left;
+}
+
+.activator {
+    width:350px;
+    height:150px;
+}
+
+/* CHARTE
+===========*/
+
+h1 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color:var(--blue-intense);
+}
+
+h2 {
+    font-size: 18px;
+    margin-left:20px;
+    color:var(--orange-intense);
+}
+
+p {
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: justify;
+}
+
+strong {
+    color:var(--orange-intense);
+    text-decoration: underline;
+}
+
+.bold {
+    color:black;
+    font-weight: bolder;
+    text-decoration:none;
+}
+
+.name {
+    color: var(--blue-intense);
+    text-decoration:none;
+}
+
+

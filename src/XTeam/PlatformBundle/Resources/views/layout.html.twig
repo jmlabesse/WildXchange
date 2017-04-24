@@ -37,7 +37,7 @@
 
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <li>
-                    <a href="{{ path('xteam_platform_dashboard',{'user': app.user}) }}"><img style="width: 55px" src="{{ asset('img/deer2.fw.png') }}"></a>
+                    <a href="{{ path('xteam_platform_dashboard',{'user': app.user}) }}"><img class="layoutavatar" src="{{ asset('uploads/avatars/' ~ app.user.avatar) }}"></a>
                 </li>
             {% else %}
                 <li>
@@ -69,7 +69,7 @@
 
 <footer class="page-footer">
     <div class="container">
-        <div class="row">
+        <div class="row footer-row">
             <div class="col s4 white-text">
                 <p>Copyright WCS
                     <br>
@@ -78,7 +78,7 @@
             <div class="col s4 white-text">
                 <ul>
                     <li><a href="{{ path('x_team_platform_charte') }}">Charte collaborative</a></li>
-                    <li><a href="{{ path('xteam_platform_faq') }}">F.A.Q.</a></li>
+                    <li><a href="https://wildcodeschool.fr/faq/" target="_blank">F.A.Q.</a></li>
                     <li><a href="{{ path('xteam_platform_contact') }}">Nous contacter</a></li>
                 </ul>
             </div>

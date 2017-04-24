@@ -8,3 +8,12 @@ services:
         class: XTeam\PlatformBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: app_user_registration }
+    app.avatar_uploader:
+        class: XTeam\PlatformBundle\FileUploader
+        arguments: ['%avatars_directory%']
+    app.doctrine_avatar_listener:
+        class: XTeam\PlatformBundle\EventListener\AvatarUploadListener
+        arguments: ['@app.avatar_uploader']
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }

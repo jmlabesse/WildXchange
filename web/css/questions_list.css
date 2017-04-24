@@ -7,6 +7,12 @@ main {
 {
     background-color: var(--blue-light);
     border-radius: 10px;
+    background-color: #f7f0a3;
+    margin-bottom: 20px;
+}
+
+.question_block:first-child {
+    margin-top: 20px;
 }
 
 #resultsTitle {

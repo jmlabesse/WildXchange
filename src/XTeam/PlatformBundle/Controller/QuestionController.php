@@ -7,6 +7,8 @@ use XTeam\PlatformBundle\Entity\Question;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use XTeam\PlatformBundle\Entity\Response;
+use XTeam\PlatformBundle\Entity\Tag;
+use XTeam\PlatformBundle\XTeamPlatformBundle;
 
 /**
  * Question controller.
@@ -59,6 +61,7 @@ class QuestionController extends Controller
      */
     public function showAction(Question $question, Request $request)
     {
+
         $deleteForm = $this->createDeleteForm($question);
 
         $response = new Response();
@@ -80,8 +83,10 @@ class QuestionController extends Controller
         }
 
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
-            $comment->setUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
+            $responseId = $request->get('response_id');
+            $response = $em->getRepository('XTeamPlatformBundle:Response')->find($responseId);
+            $comment->setUser($this->getUser())->setResponse($response);
             $em->persist($comment);
             $em->flush();
 
@@ -137,11 +142,42 @@ class QuestionController extends Controller
         return $this->redirectToRoute('question_index');
     }
 
+    public function searchAction()
+    {
+        $questionsAll = [];
+        $tags = explode(" ", $_GET['q']);
+
+        $em = $this->getDoctrine()->getManager();
+
+        foreach ($tags as $tag) {
+            $questions = $em->getRepository('XTeamPlatformBundle:Question')
+                ->findQuestionsByTags($tag);
+
+            $questionsAll = array_unique(array_merge($questionsAll, $questions));
+        }
+
+        return $this->render(':question:search.html.twig', array('questions' => $questionsAll));
+    }
+    public function showNoResponsesAction() {
+        $allNoResponses = $this->findNoResponses();
+        return $this->render('XTeamPlatformBundle:Main:responseLess.html.twig',
+            array('allNoResponses' => $allNoResponses));
+    }
+    public function findNoResponses() {
+        $result = [];
+        $em = $this->getDoctrine()->getManager();
+        $allQuestions = $em->getRepository('XTeamPlatformBundle:Question')->findAll();
+        foreach ($allQuestions as $question) {
+            if (sizeof($question->getResponses()) == 0){
+                $result[] = $question;
+            }
+        }
+        return $result;
+    }
+
     /**
      * Creates a form to delete a question entity.
-     *
      * @param Question $question The question entity
-     *
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm(Question $question)
@@ -149,16 +185,7 @@ class QuestionController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('question_delete', array('id' => $question->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 
-    private function createAddResponseForm()
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('response_new'))
-            ->setMethod('POST')
-            ->getForm()
-            ;
-    }
 }
