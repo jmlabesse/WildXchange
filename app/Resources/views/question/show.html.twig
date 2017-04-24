@@ -12,126 +12,78 @@
     <!-- begin page-content container -->
     <div class='container'>
         <div class='row'>
-            <!-- begin left content column -->
+        <!-- begin left content column -->
             <div class="col s10 m7 l8 left usrCol">
+
                 <div class="currentQuestion"><h4><span>{{ question.titre }}</span></h4>
                 </div>
-                <!--begin question input row -->
-                <!--begin user avatar column -->
-                <div id="question" class="section qr">
+
+                <div id="question" class="section question_block">
                     <div class="row">
                         <div class="col s2 m3">
-                            <img src="{{ asset('img/fosuser.jpg') }}" id="avatar" alt="User Avatar"
-                                 class="circle image-responsive">
-                        </div>
-                        <!--end user avatar column -->
-                        <!--begin question column -->
-                        <div class="col s10 m9 question">
-                            <div class="col s9">
-                                <p>{{ question.user }}</p>
-                            </div>
-                            <div class="col s3">
-                                <small>Postée
-                                    le {% if question.date %}{{ question.date|date('d-m-Y à H:i') }}{% endif %}</small>
-                            </div>
                             <div class="row">
                                 <div class="col s12">
-                                    <p>{{ question.question }}</p>
-                                    <div class="fabbtn-wrapper" id="asker">
-                                        <a class="btn-floating btn-large teal tooltipped" href="#responseForm"
-                                           data-position="right" data-delay="50"
-                                           data-tooltip="Give an answer to this question">
-                                            <i class="large material-icons">reply</i>
-                                        </a>
-                                        <div class="fixed-action-btn horizontal click-to-toggle" id="fabBtn">
-                                            <a class="btn-floating btn-medium teal">
-                                                <i class="large material-icons">menu</i>
-                                            </a>
-                                            <ul>
-                                                <li><a class="btn-floating red tooltipped" data-position="bottom" data-delay="50"
-                                                       data-tooltip="Report this question as inappropriate"><i class="material-icons">report_problem</i></a>
-                                                </li>
-                                                <li><a class="btn-floating yellow darken-1 tooltipped" data-position="bottom" data-delay="50"
-                                                       data-tooltip="Report this question as a duplicate"><i
-                                                                class="material-icons">cached</i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <ul class="collapsible popout" data-collapsible="accordion" id="commentaire">
-                                        <li>
-                                            <div class="collapsible-header"><i class="material-icons">format_quote</i>2 Commentaires
-                                            </div>
-                                            <div class="collapsible-body">
-                                                <div class="row">
-                                                    <form class="col s12">
-                                                        <div class="row">
-                                                            <div class="card horizontal">
-                                                                <p>User1</p>
-                                                                <div class="card-stacked">
-                                                                    <div class="card-content">
-                                                                        <p>Contentcontentcontentcontentcontent</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="card horizontal">
-                                                                <p>User2</p>
-                                                                <div class="card-stacked">
-                                                                    <div class="card-content">
-                                                                        <p>Contentcontentcontentcontentcontent</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="input-field col s12">
-                                                                <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                                                <label for="textarea1">Textarea</label>
-                                                            </div>
-                                                        </div>
-                                                        <button class="btn" type="submit" name="commentSubmit">Comment
-                                                            <i class="material-icons right">send</i>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    <p class="center-align">
+                                        <img src="{{ asset('uploads/avatars/' ~ question.user.avatar) }}" alt="{{ question.user.username }}"
+                                             class="avatar circle image-responsive">
+                                    </p>
+                                </div>
+                                <div class="col s12">
+                                    <p class="center-align">{{ question.user }}</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--begin question input row -->
-                    <!--begin user avatar column -->
-                    <div id="question" class="section question_block">
-
-                <!--begin left column -->
-                {% for response in question.responses %}
-                    <div id="response" class="section qr">
-                        <div class="row">
-                            <!--begin user avatar column -->
-                            <div class="col s2 m3">
-                                <img src="{% if question.user %}
-                                            {{ asset('uploads/avatars/' ~ question.user.avatar) }}
-                                          {% else %}
-                                            {{ asset('img/fosuser.jpg') }}
-                                          {% endif %}
-                                    " alt="User Avatar" class="avatar circle image-responsive">
-                              
-                                <div class="row">
-                                    <div class="col s12">
-                                        <a id='karmabtn' class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">add</i></a>
-                                    </div>
+                        <div class="col s10 m9 question">
+                            <div class="row">
+                                <div class="col s10 m9 question">
+                                    <small>Postée le {% if question.date %}{{ question.date|date('d-m-Y à H:i') }}{% endif %}</small>
                                 </div>
-                                <div class="row">
-                                    <div class="col s12" id="counter">
-                                        <p class="z-depth-4 center-align">30</p>
+                            </div>
+                            <div class="row">
+                                <p>{{ question.question }}</p>
+                            </div>
+                            <div class="row">
+                                <div class="fabbtn-wrapper" id="asker">
+                                    <a class="btn-floating btn-large teal tooltipped" href="#responseForm"
+                                       data-position="right" data-delay="50"
+                                       data-tooltip="Nouvelle réponse">
+                                        <i class="large material-icons">reply</i>
+                                    </a>
+                                    <div class="fixed-action-btn horizontal click-to-toggle" id="fabBtn">
+                                        <a class="btn-floating btn-medium teal">
+                                            <i class="large material-icons">menu</i>
+                                        </a>
+                                        <ul>
+                                            <li><a class="btn-floating red tooltipped" data-position="bottom"
+                                                   data-delay="50"
+                                                   data-tooltip="Signaler une question inappropriée"><i
+                                                            class="material-icons">report_problem</i></a>
+                                            </li>
+                                            <li><a class="btn-floating yellow darken-1 tooltipped"
+                                                   data-position="bottom" data-delay="50"
+                                                   data-tooltip="Signaler une question dupliquée"><i
+                                                            class="material-icons">cached</i></a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                            <!--end user avatar column -->
-                            <!--begin response column -->
+
+                        </div>
+                    </div>
+
+                </div>
+
+                {% for response in question.responses %}
+                    <div id="response_{{ response.id }}" class="section response_block">
+                        <div class="row">
+                            <div class="col s2 m3">
+                                <img src="{% if response.user is null or response.user.avatar is null %}
+                                                            {{ asset('img/fosuser.jpg') }}
+                                                          {% else %}
+                                                            {{ asset('uploads/avatars/' ~ response.user.avatar) }}
+                                                          {% endif %}
+                                                         " alt="User Avatar" class="avatar circle image-responsive">
+                            </div>
                             <div class="col s10 m9 question">
                                 <div class="col s9">
                                     <p>{{ response.user }}</p>
@@ -140,173 +92,112 @@
                                     <small>Postée
                                         le {% if response.date %}{{ response.date|date('d-m-Y à H:i') }}{% endif %}</small>
                                 </div>
-                                <div class="row">
-                                    <div class="col s12">
-                                        <p>{{ response.content }}</p>
-                                        <div class="fabbtn-wrapper" id="asker">
-                                            <div class="fixed-action-btn horizontal click-to-toggle" id="fabBtn">
-                                                <a class="btn-floating btn-medium teal">
-                                                    <i class="large material-icons">menu</i>
-                                                </a>
-                                                <ul>
-                                                    <li><a class="btn-floating red tooltipped" data-position="bottom" data-delay="50"
-                                                           data-tooltip="Report this question as inappropriate"><i class="material-icons">report_problem</i></a>
-                                                    </li>
-                                                    <li><a class="btn-floating yellow darken-1 tooltipped" data-position="bottom" data-delay="50"
-                                                           data-tooltip="Report this question as a duplicate"><i
-                                                                    class="material-icons">cached</i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <ul class="collapsible popout" data-collapsible="accordion" id="commentaire">
-                                            <li>
-                                                <div class="collapsible-header"><i
-                                                            class="material-icons">format_quote</i>{{ response.comments|length }}
-                                                    Commentaires
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="card horizontal">
-                                                    <p>User2</p>
-                                                    <div class="card-stacked">
-                                                        <div class="card-content">
-                                                            <p>Contentcontentcontentcontentcontent</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="input-field col s12">
-                                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                                    <label for="textarea1">Textarea</label>
-                                                </div>
-                                            </div>
-                                            <button class="btn" type="submit" name="commentSubmit">Comment
-                                                <i class="material-icons right">send</i>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!--begin user avatar column -->
-                    {% for response in question.responses %}
-                        <div id="response_{{ response.id }}" class="section response_block">
-                            <div class="row">
-                                <div class="col s2 m3">
-                                    <img src="{% if response.user is null or response.user.avatar is null %}
-                                                {{ asset('img/fosuser.jpg') }}
-                                              {% else %}
-                                                {{ asset('uploads/avatars/' ~ response.user.avatar) }}
-                                              {% endif %}
-                                             " alt="User Avatar" class="avatar circle image-responsive">
-                                </div>
-                                <!--end user avatar column -->
-                                <!--begin question column -->
-                                <div class="col s10 m9 question">
-                                    <div class="col s9">
-                                        <p>{{ response.user }}</p>
-                                    </div>
-                                    <div class="col s3">
-                                        <small>Postée
-                                            le {% if response.date %}{{ response.date|date('d-m-Y à H:i') }}{% endif %}</small>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col s12">
-                                            <p>{{ response.content }}</p>
-                                            <div class="fabbtn-wrapper" id="responder">
-                                                <div class="fixed-action-btn horizontal click-to-toggle" id="fabBtn">
-                                                    <a class="btn-floating btn-large teal">
-                                                        <i class="large material-icons">format_quote</i>
-                                                    </a>
-                                                    <ul>
-                                                        <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a>
-                                                        </li>
-                                                        <li><a class="btn-floating green"><i class="material-icons">publish</i></a>
-                                                        </li>
-                                                        <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
-                            <ul class="collapsible popout" data-collapsible="accordion" id="commentaire">
-                                <li>
-                                    <div class="collapsible-header"><i
-                                                class="material-icons">format_quote</i>{{ response.comments|length }}
-                                        Commentaires
-                                    </div>
-                                    <div class="collapsible-body">
-                                        <div class="row">
-                                            <div class="col s12">
-                                                {% for comment in response.comments %}
-                                                    <div class="row">
-                                                        <div class="col s12">
-                                                            {% for comment in response.comments %}
-                                                                <div class="row">
-                                                                    <div class="card horizontal">
-                                                                        <p>{{ comment.user }}</p>
-                                                                        <div class="card-stacked">
-                                                                            <div class="card-content">
-                                                                                <p>{{ comment.content }}</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            {% endfor %}
-                                                            <div class="row">
-                                                                <div class="col s12">
-                                                                    {#{% form_theme comment_form '::fields.html.twig' %}#}
-                                                                    {{ form_start(comment_form) }}
-                                                                    {{ form_widget(comment_form) }}
-                                                                    <input type="submit" value="Commenter" class="btn waves-effect waves-light"/>
-                                                                    {{ form_end(comment_form) }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                {% endfor %}
-                                                <div class="row">
-                                                    {{ form_start(comment_form) }}
-                                                        <div class="input-field">
-                                                            <i class="material-icons prefix">comment</i>
-                                                            {{ form_widget(comment_form.content, {'attr': {'class': 'validate'}}) }}
-                                                            <label for="xteam_platformbundle_comment_content">Commentaire</label>
-                                                            <input type="hidden" name="response_id" value="{{ response.id }}" />
-                                                            <input type="submit" value="Commenter" class="btn waves-effect waves-light"/>
-                                                        </div>
-                                                    {{ form_end(comment_form) }}
-                                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s2">
+                                <a id='karmabtn' class="btn-floating btn-large waves-effect waves-light green"><i
+                                            class="material-icons">add</i></a>
+                            </div>
+                            <div class="col s1" id="counter">
+                                <p class="z-depth-4 center-align">30</p>
+                            </div>
+                            <div class="col s9">
+                                <p>{{ response.content }}</p>
+                                <div class="fabbtn-wrapper" id="responder">
+                                    <div class="fixed-action-btn horizontal click-to-toggle" id="fabBtn">
+                                        <a class="btn-floating btn-large teal">
+                                            <i class="large material-icons">format_quote</i>
+                                        </a>
+                                        <ul>
+                                            <li><a class="btn-floating red"><i
+                                                            class="material-icons">insert_chart</i></a>
+                                            </li>
+                                            <li><a class="btn-floating green"><i class="material-icons">publish</i></a>
+                                            </li>
+                                            <li><a class="btn-floating blue"><i
+                                                            class="material-icons">attach_file</i></a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <ul class="collapsible popout" data-collapsible="accordion" id="commentaire">
+                            <li>
+                                <div class="collapsible-header"><i
+                                            class="material-icons">format_quote</i>{{ response.comments|length }}
+                                    Commentaires
+                                </div>
+                                <div class="collapsible-body">
+                                    <div class="row">
+                                        <div class="col s12">
+                                            {% for comment in response.comments %}
+                                                <div class="row">
+                                                    <div class="col s12">
+                                                        {% for comment in response.comments %}
+                                                            <div class="row">
+                                                                <div class="card horizontal">
+                                                                    <p>{{ comment.user }}</p>
+                                                                    <div class="card-stacked">
+                                                                        <div class="card-content">
+                                                                            <p>{{ comment.content }}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                        <div class="row">
+                                                            <div class="col s12">
+                                                                {#{% form_theme comment_form '::fields.html.twig' %}#}
+                                                                {{ form_start(comment_form) }}
+                                                                {{ form_widget(comment_form) }}
+                                                                <input type="submit" value="Commenter"
+                                                                       class="btn waves-effect waves-light"/>
+                                                                {{ form_end(comment_form) }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                            <div class="row">
+                                                {{ form_start(comment_form) }}
+                                                <div class="input-field">
+                                                    <i class="material-icons prefix">comment</i>
+                                                    {{ form_widget(comment_form.content, {'attr': {'class': 'validate'}}) }}
+                                                    <label for="xteam_platformbundle_comment_content">Commentaire</label>
+                                                    <input type="hidden" name="response_id"
+                                                           value="{{ response.id }}"/>
+                                                    <input type="submit" value="Commenter"
+                                                           class="btn waves-effect waves-light"/>
+                                                </div>
+                                                {{ form_end(comment_form) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 {% endfor %}
 
-                <div class="divider dividerMargin" id="formSpacer"></div>
-                <h4>Apportez votre réponse</h4>
-                <div id="responseForm" class="section scrollspy">
-                    <div class="row">
-                        {% form_theme addResponse_form '::fields.html.twig' %}
-                        {{ form_start(addResponse_form) }}
-                        {{ form_widget(addResponse_form) }}
-                        <input type="submit" value="Poster" class="btn waves-effect waves-light"/>
-                        {{ form_end(addResponse_form) }}
+                <div class="new_question">
+                    <div class="divider dividerMargin" id="formSpacer"></div>
+                    <h4>Apportez votre réponse</h4>
+                    <div id="responseForm" class="section scrollspy">
+                        <div class="row">
+                            {% form_theme addResponse_form '::fields.html.twig' %}
+                            {{ form_start(addResponse_form) }}
+                            {{ form_widget(addResponse_form) }}
+                            <input type="submit" value="Poster" class="btn waves-effect waves-light"/>
+                            {{ form_end(addResponse_form) }}
+                        </div>
                     </div>
+                    <div class="divider dividerMargin"></div>
                 </div>
-                <div class="divider dividerMargin"></div>
+
             </div>
 
-            <!--end left content column-->
-            <!--begin user info column-->
             <div class="col s2 m4 l3 rightCol">
                 <div class="card blue-grey darken-1 infoCol">
                     <div class="card-content white-text">
@@ -325,9 +216,7 @@
                     </div>
                 </div>
             </div>
-            <!--end user info column-->
 
-            <!-- end page-content container -->
         </div>
     </div>
 {% endblock %}
