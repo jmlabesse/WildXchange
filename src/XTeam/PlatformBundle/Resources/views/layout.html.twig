@@ -23,28 +23,36 @@
 
 <nav>
     <div class="nav-wrapper">
-        <div class="left brand-logo white-text">
-            <a href="{{ path('xteam_platform_accueil') }}" id="logo">
-                <img src="{{ asset('img/logo1.png') }}">
-            </a>
-            <a href="{{ path('xteam_platform_accueil') }}" id="title">
-                <h3>wild<span class="special-x">X</span>change</h3>
-            </a>
-        </div>
+        <a href="{{ path('xteam_platform_accueil') }}" class="left brand-logo black-text hide-on-med-and-down" id="logo">
+            <img src="{{ asset('img/logo1.png') }}">
+        </a>
 
+        <a href="{{ path('xteam_platform_accueil') }}" class="center brand-logo white-text" id="title">
+            <h3>wild<span class="special-x">X</span>change</h3></a>
+
+        <a href="#" data-activates="hamburgerMenu" class="button-collapse right"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down nav-link">
             <li><a href="{{ path('xteam_platform_docs') }}">Ressources</a></li>
             <li><a href="{{ path('question_index') }}">Questions / Réponses</a></li>
+
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <li>
                     <a href="{{ path('xteam_platform_dashboard',{'user': app.user}) }}"><img class="layoutavatar" src="{{ asset('uploads/avatars/' ~ app.user.avatar) }}"></a>
                 </li>
             {% else %}
-                <li><a class="btn-floating button-collapse show-on-large waves-effect waves-light" href="#" data-activates="slide-out"><i class="material-icons">account_circle</i></a></li>
+                <li>
+                    <a class="btn-floating button-collapse show-on-large waves-effect waves-light" href="#" data-activates="slide-out"><i class="material-icons">account_circle</i></a>
+                </li>
             {% endif %}
         </ul>
     </div>
 </nav>
+
+<ul class="side-nav" id="hamburgerMenu">
+    <li><a href="{{ path('xteam_platform_docs') }}">Ressources</a></li>
+    <li><a href="{{ path('question_index') }}">Questions / Réponses</a></li>
+    <li><a href="">S'connecter/s'inscrire</a></li>
+</ul>
 
 <ul id="slide-out" class="side-nav">
     <li><div class="container">
