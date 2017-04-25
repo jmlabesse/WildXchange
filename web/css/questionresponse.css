@@ -105,3 +105,8 @@ p.comments {
 .pinned {
     position: fixed !important;
 }
+.chip {
+    background-color: #1FA597;
+    font-family: 'Source Sans Pro', Georgia, sans-serif;
+    color: white;
+}
