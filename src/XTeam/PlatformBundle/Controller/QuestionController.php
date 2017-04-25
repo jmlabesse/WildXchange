@@ -145,13 +145,13 @@ class QuestionController extends Controller
     public function searchAction()
     {
         $questionsAll = [];
-        $tags = explode(" ", $_GET['q']);
+        $keywords = explode(" ", $_GET['q']);
 
         $em = $this->getDoctrine()->getManager();
 
-        foreach ($tags as $tag) {
+        foreach ($keywords as $keyword) {
             $questions = $em->getRepository('XTeamPlatformBundle:Question')
-                ->findQuestionsByTags($tag);
+                ->findQuestionByKeywords($keyword);
 
             $questionsAll = array_unique(array_merge($questionsAll, $questions));
         }

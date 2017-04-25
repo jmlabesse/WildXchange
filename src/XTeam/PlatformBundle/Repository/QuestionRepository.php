@@ -22,4 +22,12 @@ class QuestionRepository extends EntityRepository
 
     }
 
+    public function findQuestionByKeywords($keyword) {
+        return $this->createQueryBuilder('q')
+            ->where('q.titre LIKE :keyword')
+            ->setParameter('keyword', '%'.$keyword.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
 }
