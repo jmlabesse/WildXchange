@@ -1,33 +1,97 @@
-
-/* MAIN CONTENT
+h2 {
+    margin: 5px 0;
+}
+/* ROW DASHBOARD
 =============== */
-main {
-    flex: 1 0 auto; /*For the sticky footer*/
+#row_dashboard {
+    margin: 0;
 }
 
-.user {
-    margin-top: 24px;
-}
-.avatar {
-    height:150px;
-    width: 150px;
-    border-radius: 50%;
-}
-.card-title {
-    text-align: center;
-    margin-top: -10px;
-}
-h6 {
-    text-align: center;
+/* COLUMN PROFILE
+=============== */
+
+#col_profile {
+    background-color: #f5f5f5;
+    padding: 20px;
 }
 
-#github, #linkedin, #twitter, #facebook {
+#row_edit {
+    margin: 0;
+}
+
+#row_user {
+    flex-wrap: wrap;
+}
+
+#row_infos_1 {
+    margin-bottom: 0;
+}
+
+#user_avatar {
+    min-width: 100px;
+    max-height:150px;
+}
+
+.block_info {
+    margin-top: 10px;
+    background-color: #FFFFFF;
+}
+.block_info_title {
+    margin: 0;
+    padding: 5px 10px;
+    background-color: var(--blue-intense);
+    color: #FFFFFF;
+}
+.list_infos {
+    margin: 0;
+    padding: 5px 10px !important;
+}
+.list_infos li {
+    font-size: 16px;
+}
+.count_stat {
+    color: var(--orange-intense);
+    font-weight: bold;
+}
+
+.list_logos {
+    margin: 0;
+    padding: 5px 10px !important;
+    text-align: center;
+    justify-content: center;
+}
+.list_logos li {
     color: white;
+    display: inline;
     margin-right: 35px;
-    margin-left: 35px;
 }
-#dashicons {
-    margin-top: 25px;
-    margin-left: 30px;
+.list_logos li:last-child {
+    margin-right: 0;
+}
+.list_logos li a{
+    color: #000000;
+}
+#list_badges {
+    flex-wrap: wrap;
+}
+#list_badges li{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.block_info p {
+    margin: 0;
+    padding: 5px 10px;
+    font-size: 16px;
 }
 
+.icon_techno, .icon_badge {
+    max-width: 40px;
+    max-height: 40px;
+}
+
+/* COLUMN JOURNAL
+=============== */
+
+#col_journal {
+    background-color: #718C00;
+}
