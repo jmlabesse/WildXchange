@@ -177,6 +177,7 @@
                                                             <div class= "col s10">
                                                                 {% form_theme comment_form '::fields.html.twig' %}
                                                                 {{ form_start(comment_form) }}
+                                                                <input type="hidden" name="response_id"value="{{ response.id }}">
                                                                 {{ form_widget(comment_form) }}
                                                                 <input type="submit" value="Commenter" class="btn waves-effect waves-light"/>
                                                                 {{ form_end(comment_form) }}
