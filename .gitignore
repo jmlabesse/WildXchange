@@ -13,3 +13,5 @@
 .DS_Store
 web/ .DS_Store
 /src/XTeam/PlatformBundle/Entity/*.php~
+web/uploads/avatars/8a28b311c238bde882765f8b8a4ffe.png
+web/uploads/avatars/8a28b311c238b6bde882765f8b8a4ffe.png
