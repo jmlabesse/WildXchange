@@ -44,7 +44,7 @@ class QuestionController extends Controller
      * Creates a new question entity.
      *
      */
-    public function newAction(Request $request, $question_id)
+    public function newAction(Request $request)
     {
         $question = new Question();
         $form = $this->createForm('XTeam\PlatformBundle\Form\QuestionType', $question);
