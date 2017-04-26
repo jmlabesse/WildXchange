@@ -70,9 +70,6 @@ class QuestionController extends Controller
      */
     public function showAction(Question $question, Request $request)
     {
-        $responseId = $request->get('responseId');
-        //var_dump($responseId);
-
         $deleteForm = $this->createDeleteForm($question);
 
         $response = new Response();
@@ -104,17 +101,23 @@ class QuestionController extends Controller
             return $this->redirectToRoute('question_show', array('id' => $question->getId()));
         }
 
-        $hasVoted = false;
+        if ($request->get('vote') == true) {
+            
+            $responseId = $request->get('responseId');
+            $hasVoted = false;
 
-        foreach ($this->getUser()->getVotes() as $vote){
-           if ($vote->getResponse()->getId() == $responseId ){
-               $hasVoted = true;
-           }
+            foreach ($this->getUser()->getVotes() as $vote){
+                if ($vote->getResponse()->getId() == $responseId ){
+                    $hasVoted = true;
+                }
+            }
+
+            if ($responseId != null && $hasVoted == false ){
+                $this->vote($responseId);
+            }
+
         }
 
-        if ($responseId != null && $hasVoted == false ){
-           $this->vote($responseId);
-        }
 
 
         return $this->render('question/show.html.twig', array(
