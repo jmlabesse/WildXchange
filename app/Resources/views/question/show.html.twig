@@ -77,26 +77,24 @@
                                 <div class="col s11">
                                     <ul class="collapsible" data-collapsible="accordion" id="commentaire">
                                         <li>
-                                            <div class="collapsible-header"><i class="material-icons">format_quote</i>Commentaires
+                                            <div class="collapsible-header"><i class="material-icons">format_quote</i>{{ question.comments|length }}  Commentaires
                                             </div>
                                             <div class="collapsible-body">
                                                 <div class="row">
                                                     <div class="col s12">
-                                                        <div class="card-panel">
-                                                            <span>usr1</span><br>
-                                                            <p id="comments"></p>
-                                                        </div>
+                                                        {% for comment in question.comments %}
+                                                            <div class="card-panel">
+                                                                <span>{{ comment.user }}</span><br>
+                                                                <p id="comments">{{ comment.content }}</p>
+                                                            </div>
+                                                        {% endfor %}
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="input-field col s10">
-                                                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                                        <label for="textarea1">Textarea</label>
+                                                    <div class= "col s10">
+                                                        {% render(controller('XTeamPlatformBundle:Comment:new', { 'question_id':question.id })) %}
                                                     </div>
                                                 </div>
-                                                <button class="btn" type="submit" name="commentSubmit">Comment
-                                                    <i class="material-icons right">send</i>
-                                                </button>
                                             </div>
                                         </li>
                                     </ul>
@@ -177,12 +175,7 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class= "col s10">
-                                                                {% form_theme comment_form '::fields.html.twig' %}
-                                                                {{ form_start(comment_form) }}
-                                                                <input type="hidden" name="response_id"value="{{ response.id }}">
-                                                                {{ form_widget(comment_form) }}
-                                                                <input type="submit" value="Commenter" class="btn waves-effect waves-light"/>
-                                                                {{ form_end(comment_form) }}
+                                                                {% render(controller('XTeamPlatformBundle:Comment:new', { 'response_id':response.id })) %}
                                                             </div>
                                                         </div>
                                                     </div>
