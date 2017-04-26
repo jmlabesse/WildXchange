@@ -1,10 +1,5 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
-
-{% block title %}
-    Profil {{ parent() }}
-{% endblock %}
+{% extends "@FOSUser/layout.html.twig" %}
 
 {% block fos_user_content %}
-    <h1>Profil</h1>
-{% include "FOSUserBundle:Profile:show_content.html.twig" %}
+{% include "@FOSUser/Profile/show_content.html.twig" %}
 {% endblock fos_user_content %}

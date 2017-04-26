@@ -5,12 +5,124 @@
 {% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dash.css') }}">
 {% endblock %}
 
 {% block content %}
-    <h1>Dashboard</h1>
+    <div id="row_dashboard" class="row">
 
-    <p>Bienvenue {{ app.user }}</p>
-    <p>Bienvenue {{ user }}</p>
+        <div id="col_profile" class="col s12 m9">
+
+            <div id="row_edit" class="row right-align">
+                <a href="{{ path('fos_user_profile_edit') }}">Editer le profil</a>
+            </div>
+
+            <div id="row_user" class="row valign-wrapper">
+                <div id="col_avatar" class="col s12 m3 offset-m1 center-align">
+                    <img src="{{ asset('uploads/avatars/' ~ app.user.avatar) }}" id="user_avatar"
+                         alt="Qui est ton pote?"
+                         class="center-align circle responsive-img">
+                </div>
+                <div id="col_username" class="col s12 m5 pull-m3 center-align">
+                    <h3>{{ app.user.username }}</h3>
+                    <em>Inscrit depuis le {{ app.user.registrationDate|date('d-m-Y') }}</em>
+                </div>
+
+            </div>
+
+
+            <div id="row_infos_1" class="row">
+
+                <div class="col s12 m6">
+                    <div class="block_info">
+                        {% set q_count = app.user.questions | length %}
+                        {% set r_count = app.user.responses | length %}
+                        {% set br_count = bestresponsecount %}
+                        <h5 class="block_info_title">Statistiques</h5>
+                        <ul class="list_infos">
+                            <li>
+                                <span class="count_stat">{{ q_count }}</span> {% if q_count > 1 %}questions posées{% else %}question posée{% endif %}
+                            </li>
+                            <li>
+                                <span class="count_stat">{{ r_count }}</span> {% if r_count > 1 %}réponses apportées{% else %}réponse apportée{% endif %}
+                            </li>
+                            <li>
+                                <span class="count_stat">{{ br_count }}</span> {% if br_count > 1 %}meilleures réponses{% else %}meilleure réponse{% endif %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col s12 m6">
+                    <div class="block_info">
+                        <h5 class="block_info_title">Succès</h5>
+                        <ul id="list_badges" class="list_logos valign-wrapper">
+                            {% for badge in app.user.badges %}
+                                <li><img class="icon_badge" src="{{ asset('img/badges/' ~ badge.icon) }}"></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="row_infos_2" class="row">
+
+                <div class="col s12 m6">
+                    <div class="block_info">
+                        {% set oldWilder = app.user.profession|length > 0 %}
+                        <h5 class="block_info_title">Informations générales</h5>
+                        <ul class="list_infos">
+                            <li><b>Nom :</b> {{ app.user.nom }}</li>
+                            <li><b>Prénom :</b> {{ app.user.prenom }}</li>
+                            <li><b>Email :</b> {{ app.user.email }}</li>
+                            {% if oldWilder %}
+                                <li><b>Profession :</b> {{ app.user.profession }}</li>
+                                <li><b>Société :</b> {{ app.user.business }}</li>
+                            {% endif %}
+                            <li><b>Promotion :</b> {{ app.user.promo }}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col s12 m6">
+                    <div class="block_info">
+                        <h5 class="block_info_title">Compétences & Réseaux</h5>
+                        <p><b>Technos maîtrisées :</b></p>
+                        <ul class="list_logos valign-wrapper">
+                            {% for techno in app.user.technos %}
+                                <li><img class="icon_techno" src="{{ asset('img/logo/' ~ techno.icon) }}"></li>
+                            {% endfor %}
+                        </ul>
+                        <p><b>Réseaux sociaux :</b></p>
+                        <ul class="list_logos valign-wrapper">
+                            {% if app.user.git|length > 0 %}
+                                <li><a href="{{ app.user.git }}" target="_blank"><i class="fa fa-github small"></i></a>
+                                </li>
+                            {% endif %}
+                            {% if app.user.facebook|length > 0 %}
+                                <li><a href="{{ app.user.facebook }}" target="_blank"><i
+                                                class="fa fa-facebook small"></i></a></li>
+                            {% endif %}
+                            {% if app.user.twitter|length > 0 %}
+                                <li><a href="{{ app.user.twitter }}" target="_blank"><i class="fa fa-twitter small"></i></a>
+                                </li>
+                            {% endif %}
+                            {% if app.user.linkedin|length > 0 %}
+                                <li><a href="{{ app.user.linkedin }}" target="_blank"><i
+                                                class="fa fa-linkedin small"></i></a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="col_journal" class="col m3 hide-on-small-only">
+            <p>JOURNAL D'ACTIVITES</p>
+        </div>
+
+    </div>
 {% endblock %}

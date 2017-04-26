@@ -8,7 +8,19 @@ class MainController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('XTeamPlatformBundle:Main:index.html.twig', array());
+        $countNoResponses = sizeof($this->findNoResponses());
+        return $this->render('XTeamPlatformBundle:Main:index.html.twig', array('countNoResponses' => $countNoResponses));
+    }
+    public function findNoResponses() {
+        $result = [];
+        $em = $this->getDoctrine()->getManager();
+        $allQuestions = $em->getRepository('XTeamPlatformBundle:Question')->findAll();
+        foreach ($allQuestions as $question) {
+            if (sizeof($question->getResponses()) == 0){
+                $result[] = $question;
+            }
+        }
+        return $result;
     }
     public function docsAction()
     {
@@ -39,9 +51,12 @@ class MainController extends Controller
         return $this->render('XTeamPlatformBundle:Main:contact.html.twig', array());
     }
 
-    public function showDashboardAction($user)
+    public function dashboardAction()
     {
-        return $this->render('XTeamPlatformBundle:Main:dashboard.html.twig', array('user'=>$user));
+        $em = $this->getDoctrine()->getManager();
+        $bestResponse = $em->getRepository('XTeamPlatformBundle:Response')->findBy(['user' => $this->getUser(), 'isCorrect' => 1]);
+        $bestResponseCount = sizeof($bestResponse);
+        return $this->render('XTeamPlatformBundle:Main:dashboard.html.twig', array('bestresponsecount' => $bestResponseCount));
     }
 
 }

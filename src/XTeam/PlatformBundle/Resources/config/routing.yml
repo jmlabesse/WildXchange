@@ -1,3 +1,11 @@
+xteam_platform_noresponses:
+    path: /responseless
+    defaults: {_controller: XTeamPlatformBundle:Question:showNoResponses}
+
+xteam_platform_dashboard:
+    path: /dashboard
+    defaults: {_controller: XTeamPlatformBundle:Main:dashboard}
+
 xteam_platform_docs:
     path:     /docs
     defaults: { _controller: XTeamPlatformBundle:Main:docs }
@@ -53,8 +61,3 @@ x_team_platform_tag:
 x_team_platform_techno:
         resource: "@XTeamPlatformBundle/Resources/config/routing/techno.yml"
         prefix:   /techno
-
-xteam_platform_dashboard:
-    path: /dashboard/{user}
-    defaults: {_controller: XTeamPlatformBundle:Main:showDashboard}
-

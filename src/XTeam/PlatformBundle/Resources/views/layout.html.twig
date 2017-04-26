@@ -6,6 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+    {# favicon #}
+    <link rel="icon" type="image/png" href="../../../img/logo1.png">
+
     {# Feuilles de style Materialize #}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
 
@@ -15,7 +18,7 @@
 
     {# Fonts de Font Awesome et de la charte graphique #}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     {% block stylesheets %}{% endblock %}
 </head>
 
@@ -23,40 +26,53 @@
 
 <nav>
     <div class="nav-wrapper">
-        <a href="{{ path('xteam_platform_accueil') }}" class="left brand-logo black-text" id="logo">
+        <a href="{{ path('xteam_platform_accueil') }}" class="left brand-logo black-text hide-on-med-and-down" id="logo">
             <img src="{{ asset('img/logo1.png') }}">
         </a>
-        <a href="{{ path('xteam_platform_accueil') }}" class="center brand-logo white-text" id="title">
-            <h3>wild<span class="special-x">X</span>change</h3>
-        </a>
 
-        <ul id="nav-mobile" class="right nav-link">
+        <a href="{{ path('xteam_platform_accueil') }}" class="center brand-logo white-text" id="title">
+            <h3>wild<span class="special-x">X</span>change</h3></a>
+
+        <a href="#" data-activates="hamburgerMenu" class="button-collapse right"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down nav-link">
             <li><a href="{{ path('xteam_platform_docs') }}">Ressources</a></li>
-            <li><a href="{{ path('xteam_platform_questionresponse') }}">Questions / Réponses</a></li>
+            <li><a href="{{ path('question_index') }}">Questions</a></li>
+
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <li><a href="{{ path('xteam_platform_dashboard',{'user': 'jmlabesse'}) }}"><img style="width: 55px" src="{{ asset('img/deer2.fw.png') }}"></a></li>
+                <li>
+                    <a href="{{ path('xteam_platform_dashboard',{'user': app.user}) }}"><img class="layoutavatar" src="{{ asset('uploads/avatars/' ~ app.user.avatar) }}"></a>
+                </li>
             {% else %}
-                <li><a href="#" class="btn button-collapse show-on-large waves-effect waves-light" data-activates="slide-out">Se connecter / S'inscrire</a></li>
+                <li>
+                    <a class="btn-floating button-collapse show-on-large waves-effect waves-light" href="#" data-activates="slide-out"><i class="material-icons">account_circle</i></a>
+                </li>
             {% endif %}
         </ul>
     </div>
 </nav>
 
-<ul id="slide-out" class="side-nav">
-    <li><div class="container">
-        <h4>Se connecter</h4>
-    {{ render(path('fos_user_security_login')) }}
-    <a class="section" href="{{ path('fos_user_registration_register') }}">Pas inscrire? Cliquer ici!</a>
-        </div>
-    </li>
+<ul class="side-nav" id="hamburgerMenu">
+    <li><a href="{{ path('xteam_platform_docs') }}">Ressources</a></li>
+    <li><a href="{{ path('question_index') }}">Questions / Réponses</a></li>
+    <li><a href="">S'connecter/s'inscrire</a></li>
 </ul>
 
+<ul id="slide-out" class="side-nav">
+    <li><div class="container">
+            <h4>Se connecter</h4>
+            {{ render(path('fos_user_security_login')) }}
+            <a href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
+        </div></li>
+</ul>
+
+<main>
 {% block content %}
 {% endblock %}
+</main>
 
 <footer class="page-footer">
     <div class="container">
-        <div class="row">
+        <div class="row footer-row">
             <div class="col s4 white-text">
                 <p>Copyright WCS
                     <br>
@@ -65,7 +81,7 @@
             <div class="col s4 white-text">
                 <ul>
                     <li><a href="{{ path('x_team_platform_charte') }}">Charte collaborative</a></li>
-                    <li><a href="{{ path('xteam_platform_faq') }}">F.A.Q.</a></li>
+                    <li><a href="https://wildcodeschool.fr/faq/" target="_blank">F.A.Q.</a></li>
                     <li><a href="{{ path('xteam_platform_contact') }}">Nous contacter</a></li>
                 </ul>
             </div>
@@ -92,7 +108,6 @@
 {% block scripts %}
     <script src={{ asset('JS/qr.js') }}></script>
     <script src={{ asset('JS/layout.js') }}></script>
-    <script src={{ asset('JS/index.js') }}></script>
 {% endblock %}
 
 </body>

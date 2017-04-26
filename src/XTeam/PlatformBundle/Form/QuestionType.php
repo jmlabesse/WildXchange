@@ -13,7 +13,15 @@ class QuestionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('date')->add('question')->add('isResolved')->add('titre')->add('user')->add('tags');
+        $builder
+            ->add('titre')
+            ->add('question')
+            ->add('tags', 'entity', array(
+                'class'    => 'XTeam\PlatformBundle\Entity\Tag',
+                'property' => 'tagname',
+                'multiple' => true,
+                'expanded' => true,
+            ));
     }
     
     /**

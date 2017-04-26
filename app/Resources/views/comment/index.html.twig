@@ -18,6 +18,7 @@
                 <td><a href="{{ path('comment_show', { 'id': comment.id }) }}">{{ comment.id }}</a></td>
                 <td>{% if comment.date %}{{ comment.date|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ comment.content }}</td>
+                <td>{{ comment.response }}</td>
                 <td>
                     <ul>
                         <li>

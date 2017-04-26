@@ -12,4 +12,31 @@ use Doctrine\ORM\EntityRepository;
  */
 class QuestionRepository extends EntityRepository
 {
+    public function findQuestionsByTags($tagName) {
+
+        return $this->createQueryBuilder('q')
+            ->join('q.tags', 't', 'WITH', 't.tagname=:tag')
+            ->setParameter('tag', $tagName)
+            ->getQuery()
+            ->getResult();
+
+    }
+
+    public function findQuestionByKeywords($keyword) {
+        return $this->createQueryBuilder('q')
+            ->where('q.titre LIKE :keyword')
+            ->setParameter('keyword', '%'.$keyword.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findQuestionByKeywordsSorted($keyword) {
+        return $this->createQueryBuilder('q')
+            ->where('q.titre LIKE :keyword')
+            ->orderBy('q.date','DESC')
+            ->setParameter('keyword', '%'.$keyword.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
 }

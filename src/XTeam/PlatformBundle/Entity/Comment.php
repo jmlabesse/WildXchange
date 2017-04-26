@@ -45,6 +45,19 @@ class Comment
      */
     private $response;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Question", inversedBy="comments")
+     */
+    private $question;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->setDate(new \DateTime('now'));
+    }
 
     /**
      * Get id
@@ -150,5 +163,29 @@ class Comment
     public function getResponse()
     {
         return $this->response;
+    }
+
+    /**
+     * Set question
+     *
+     * @param \XTeam\PlatformBundle\Entity\Question $question
+     *
+     * @return Comment
+     */
+    public function setQuestion(\XTeam\PlatformBundle\Entity\Question $question = null)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return \XTeam\PlatformBundle\Entity\Question
+     */
+    public function getQuestion()
+    {
+        return $this->question;
     }
 }

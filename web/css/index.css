@@ -1,0 +1,46 @@
+main {
+    flex: 1 0 auto; /*For the sticky footer*/
+}
+
+html {
+    background: url("../img/backgroundbw.png") no-repeat center center fixed; /*keeps background image the same size on all screens*/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position-y: 0px;
+}
+
+#lvl1 {
+    height: 14em;
+}
+
+#lvl4 {
+    height: 14em;
+}
+
+.nav-wrapper.search {
+    background-color: #ffffff !important;
+}
+
+input#search{
+    margin: 0 !important;
+}
+
+#chipBody {
+    background-color: white;
+}
+
+.chips {
+    margin: 0 !important;
+}
+.noresponse {
+    color: #1FA597;
+    text-decoration: underline;
+    font-family: 'Source Sans Pro', Georgia, sans-serif;
+}
+#noresp {
+    background: white;
+    text-align: center;
+    border-radius: 5px;
+}

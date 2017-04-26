@@ -1,24 +1,21 @@
 <?php
+// src/AppBundle/Entity/User.php
 
 namespace XTeam\PlatformBundle\Entity;
 
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Entity\User as BaseUser;
 
 /**
- * User
- *
- * @ORM\Table(name="fos_user")
  * @ORM\Entity
+ * @ORM\Table(name="`user`")
  */
 class User extends BaseUser
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
@@ -27,112 +24,124 @@ class User extends BaseUser
      *
      * @ORM\Column(name="nom", type="string", length=255, nullable=false)
      */
-    private $nom;
+    protected $nom;
 
     /**
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=255, nullable=false)
      */
-    private $prenom;
+    protected $prenom;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="registration_date",type="datetime", nullable=false)
+     */
+    protected $registrationDate;
 
     /**
      * @var string
      *
      * @ORM\Column(name="profession", type="string", length=255, nullable=true)
      */
-    private $profession;
+    protected $profession;
 
     /**
      * @var string
      *
      * @ORM\Column(name="business", type="string", length=255, nullable=true)
      */
-    private $business;
+    protected $business;
 
     /**
      * @var string
      *
      * @ORM\Column(name="statut", type="string", length=255, nullable=true)
      */
-    private $statut;
+    protected $statut;
 
     /**
      * @var string
      *
      * @ORM\Column(name="promo", type="string", length=255, nullable=true)
      */
-    private $promo;
+    protected $promo;
 
     /**
      * @var string
      *
      * @ORM\Column(name="git", type="string", length=255, nullable=true)
      */
-    private $git;
+    protected $git;
 
     /**
      * @var string
      *
      * @ORM\Column(name="twitter", type="string", length=255, nullable=true)
      */
-    private $twitter;
+    protected $twitter;
 
     /**
      * @var string
      *
      * @ORM\Column(name="facebook", type="string", length=255, nullable=true)
      */
-    private $facebook;
+    protected $facebook;
 
     /**
      * @var string
      *
      * @ORM\Column(name="linkedin", type="string", length=255, nullable=true)
      */
-    private $linkedin;
+    protected $linkedin;
 
     /**
      * @var string
      *
      * @ORM\Column(name="avatar", type="string", length=255, nullable=true)
      */
-    private $avatar;
+    protected $avatar;
 
     /**
      * @ORM\OneToMany(targetEntity="Stat", mappedBy="user")
      */
-    private $stats;
+    protected $stats;
 
     /**
      * @ORM\OneToMany(targetEntity="Question", mappedBy="user")
      */
-    private $questions;
+    protected $questions;
 
     /**
      * @ORM\OneToMany(targetEntity="Response", mappedBy="user")
      */
-    private $responses;
+    protected $responses;
 
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="user")
      */
-    private $comments;
+    protected $comments;
 
     /**
      * Many Users have Many Badges.
      * @ORM\ManyToMany(targetEntity="Badge", inversedBy="users")
      * @ORM\JoinTable(name="users_badges")
      */
-    private $badges;
+    protected $badges;
 
     /**
      * Many Users have Many Technos.
      * @ORM\ManyToMany(targetEntity="Techno", inversedBy="users")
      * @ORM\JoinTable(name="users_technos")
      */
-    private $technos;
+    protected $technos;
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->setRegistrationDate(new \DateTime('now'));
+    }
 
     /**
      * Set nom
@@ -180,6 +189,30 @@ class User extends BaseUser
     public function getPrenom()
     {
         return $this->prenom;
+    }
+
+    /**
+     * Set registrationDate
+     *
+     * @param \DateTime $registrationDate
+     *
+     * @return User
+     */
+    public function setRegistrationDate($registrationDate)
+    {
+        $this->registrationDate = $registrationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get registrationDate
+     *
+     * @return \DateTime
+     */
+    public function getRegistrationDate()
+    {
+        return $this->registrationDate;
     }
 
     /**
@@ -601,4 +634,5 @@ class User extends BaseUser
     {
         return $this->technos;
     }
+
 }

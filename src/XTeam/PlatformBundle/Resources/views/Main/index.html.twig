@@ -5,32 +5,45 @@
 {% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 {% endblock %}
 
 {% block content %}
-    <main>
+    <main id="accueil">
         <div class='container'>
             <div class='row' id='lvl1'>
             </div>
-            <div class='row' id='lvl2'>
-            </div>
             <!---Begin search bar-->
             <div class='row lvl3'>
-                <div class="col s12 m8 l8 offset-s2">
-                    <div class= 'nav-wrapper search hoverable'>
-                        <form>
-                            <div class="input-field">
-                                <input id="search" type="search" required>
+                <div class="col s10 m10 l10 offset-s1">
+                    <div class='nav-wrapper search hoverable'>
+                        <form method="get" action="{{ path('question_search') }}">
+                            <div class="input-field" id="search">
+                                <input id="search" type="search" name="q" required>
                                 <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                                 <i class="material-icons">close</i>
                             </div>
                         </form>
+                        <div class="section scrollspy">
+                            <ul class="collapsible popout" data-collapsible="accordion">
+                                <li><div class="collapsible-header"><i class="material-icons">filter_drama</i>Ajoute des tags?</div>
+                                    <div class="collapsible-body" id="chipBody">
+                                        <div class="chips chips-autocomplete"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!---endsearch bar-->
+            <!---end search bar-->
+            
             <div class='row lvl4'>
+                <div class="col s12 m8 l8 offset-s2">
+                    <div id="noresp">
+                    <a class="noresponse" href="{{ path('xteam_platform_noresponses') }}">Si toi aussi tu veux apporter ta pierre à l'édifice, il reste actuellement {{ countNoResponses }} questions sans réponses !</a>
+                    </div>
+            </div>
             </div>
             <!-- end page-content container -->
         </div>

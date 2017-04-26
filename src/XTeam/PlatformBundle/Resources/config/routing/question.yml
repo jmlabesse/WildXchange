@@ -3,10 +3,15 @@ question_index:
     defaults: { _controller: "XTeamPlatformBundle:Question:index" }
     methods:  GET
 
+question_search:
+    path:     /search
+    defaults: { _controller: "XTeamPlatformBundle:Question:search" }
+    methods:  GET
+
 question_show:
     path:     /{id}/show
     defaults: { _controller: "XTeamPlatformBundle:Question:show" }
-    methods:  GET
+    methods:  [GET, POST]
 
 question_new:
     path:     /new

@@ -85,9 +85,10 @@ nav {
     background-color: var(--orange-intense) !important;
 }
 
-nav.nav-wrapper {
+nav .nav-wrapper {
     position: relative;
     height: 100%;
+    padding: 0 20px 0 50px;
 }
 
 nav ul li a {
@@ -104,7 +105,7 @@ nav ul li a {
 }
 
 nav .brand-logo.center {
-    left: 29% !important;
+    left: 40% !important;
 }
 
 #title h3 {
@@ -134,28 +135,10 @@ span.nav-title {
 .nav-link {
     font-weight: bold;
 }
-
 /* MAIN CONTENT
 =============== */
-main {
 
-    flex: 1 0 auto; /*For the sticky footer*/
-    background-image: url("../img/backgroundbw.png");
-    background-size: cover;
-    background-position-y: -53px;
-}
 
-#lvl1 {
-    height: 5em;
-}
-
-#lvl2 {
-    height: 22em;
-}
-
-.nav-wrapper.search {
-    background-color: #ffffff !important;
-}
 
 /* FOOTER
 ========= */
@@ -168,6 +151,10 @@ footer {
     padding: 0 !important;
 }
 
+.page-footer a{
+    color: #FFF;
+}
+
 i {
    margin-left: 8px;
    margin-right: 8px;
@@ -177,6 +164,12 @@ i {
   margin-top: 25px;
 }
 
-#icons {
-    margin-top: 25px;
+.layoutavatar {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-top: 7px;
+}
+.footer-row {
+    margin-bottom: 0;
 }

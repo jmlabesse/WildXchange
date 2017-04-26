@@ -1,16 +1,35 @@
-{% extends 'base.html.twig' %}
+{% extends 'XTeamPlatformBundle::layout.html.twig' %}
 
-{% block body %}
-    <h1>Question creation</h1>
+{% block content %}
+    <div class="container">
+        <h3>Posez une nouvelle question à la communauté</h3>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        {{ form_start(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('question_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        {{ form_errors(form) }}
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">question_answer</i>
+                {{ form_widget(form.titre, {'attr': {'class': 'materialize-textarea'}}) }}
+                <label for="xteam_platformbundle_question_titre">Titre de la question</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">question_answer</i>
+                {{ form_widget(form.question, {'attr': {'class': 'materialize-textarea'}}) }}
+                <label for="xteam_platformbundle_question_question">Contenu de la question</label>
+            </div>
+            <div class="col s12">
+                <p>Ajoutez des tags :</p>
+                {{ form_widget(form.tags, {'attr': {'class': 'filled-in'}}) }}
+            </div>
+            <input type="submit" value="Poser la question" class="btn waves-effect waves-light"/>
+        </div>
+        {{ form_end(form) }}
+
+        <ul>
+            <li>
+                <a href="{{ path('question_index') }}">Retour à la liste</a>
+            </li>
+        </ul>
+    </div>
 {% endblock %}

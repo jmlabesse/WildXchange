@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Question
  *
  * @ORM\Table(name="question", indexes={@ORM\Index(name="IDX_B6F7494EA76ED395", columns={"user_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="XTeam\PlatformBundle\Repository\QuestionRepository")
  */
 class Question
 {
@@ -24,7 +24,7 @@ class Question
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime", nullable=false)
+     * @ORM\Column(name="date", type="datetime", nullable=true)
      */
     private $date;
 
@@ -67,12 +67,24 @@ class Question
     private $tags;
 
     /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="question")
+     */
+    private $comments;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->responses = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->setDate(new \DateTime('now'));
+        $this->isResolved=false;
+    }
+
+    public function __toString()
+    {
+        return $this->id . ' : ' . $this->titre;
     }
 
     /**
@@ -271,5 +283,39 @@ class Question
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \XTeam\PlatformBundle\Entity\Comment $comment
+     *
+     * @return Question
+     */
+    public function addComment(\XTeam\PlatformBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \XTeam\PlatformBundle\Entity\Comment $comment
+     */
+    public function removeComment(\XTeam\PlatformBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

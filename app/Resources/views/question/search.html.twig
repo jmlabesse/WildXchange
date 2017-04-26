@@ -1,0 +1,86 @@
+{% extends "XTeamPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+    Recherche {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/questions_list.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col s10" id="resultsTitle">
+                <h3>Results for:  </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs">
+                    <li class="tab col s3"><a href="#recent">Recent</a></li>
+                    <li class="tab col s3"><a href="#votes">Votes</a></li>
+                </ul>
+                <div class="row">
+                    <div class="s12" id="recent">
+                        {% for questionSortedAll in questionsSortedAll %}
+                            <div class="row question_row">
+                                <div class="col s12">
+                                    <div class="card horizontal">
+                                        <div class="col s2">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    {% if questionSortedAll.isResolved %}
+                                                        <i class="large material-icons">verified_user</i>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    {{ questionSortedAll.responses|length }} réponses
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s10">
+                                            <div class="card-stacked">
+                                                <div class="card-content">
+                                                    <a  href="{{ path('question_show', { 'id': questionSortedAll.id }) }}"><p>{{ questionSortedAll.titre }}</p></a>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="card-action col s8">
+                                                        {% for tag in questionSortedAll.tags %}
+                                                            <em>{{ tag.tagname }}{% if not loop.last %} / {% endif %}</em>
+                                                        {% endfor %}
+                                                    </div>
+                                                    <div class="col s4 time">
+                                                        <small>Postée
+                                                            le {% if questionSortedAll.date %}{{ questionSortedAll.date|date('d-m-Y à H:i') }}{% endif %}</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col s12" id="votes">
+                        <p>test</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('question_new') }}">Poser une nouvelle question</a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="{{ asset('JS/questionIndex.js') }}"></script>
+{% endblock %}
