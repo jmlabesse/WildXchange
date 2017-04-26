@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Vote
  *
+
  * @ORM\Table(name="vote")
  * @ORM\Entity(repositoryClass="XTeam\PlatformBundle\Repository\VoteRepository")
  */
@@ -23,17 +24,16 @@ class Vote
     private $id;
 
     /**
+
      * @ORM\ManyToOne(targetEntity="User")
      */
     private $user;
 
     /**
+
      * @ORM\ManyToOne(targetEntity="Response", inversedBy="votes")
      */
     private $responses;
-
-
-
 
     /**
      * Get id
