@@ -1,8 +1,109 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+
+<div class="row section_row">
+    <div class="section">
+        <h5>Informations générales</h5>
+        <div class="divider"></div>
+        <div class="input-field col s12 m6">
+            <i class="material-icons prefix">account_circle</i>
+            {{ form_widget(form.username) }}
+            {{ form_label(form.username) }}
+            {{ form_errors(form.username) }}
+        </div>
+
+        <div class="input-field col s12 m6">
+            <i class="material-icons prefix">email</i>
+            {{ form_widget(form.email) }}
+            {{ form_label(form.email) }}
+            {{ form_errors(form.email) }}
+        </div>
+
+        <div class="input-field col s12 m6">
+            <i class="material-icons prefix">supervisor_account</i>
+            {{ form_widget(form.nom) }}
+            {{ form_label(form.nom) }}
+            {{ form_errors(form.nom) }}
+        </div>
+
+        <div class="input-field col s12 m6">
+            <i class="material-icons prefix">perm_identity</i>
+            {{ form_widget(form.prenom) }}
+            {{ form_label(form.prenom) }}
+            {{ form_errors(form.prenom) }}
+        </div>
+
+        <div class="input-field col s12 m6">
+            <i class="material-icons prefix">store</i>
+            {{ form_widget(form.promo) }}
+            {{ form_label(form.promo) }}
+            {{ form_errors(form.promo) }}
+        </div>
+
     </div>
+</div>
+
+<div class="row section_row">
+    <div id="statut" class="section">
+        <h5>Statut</h5>
+        <div class="divider"></div>
+        <div class="col s12 center-align">
+            {{ form_widget(form.statut) }}
+            {{ form_errors(form.statut) }}
+        </div>
+
+        <div class="input-field col s12 m6 work_info">
+            <i class="material-icons prefix">work</i>
+            {{ form_widget(form.profession) }}
+            {{ form_label(form.profession) }}
+            {{ form_errors(form.profession) }}
+        </div>
+
+        <div class="input-field col s12 m6 work_info">
+            <i class="material-icons prefix">group_work</i>
+            {{ form_widget(form.business) }}
+            {{ form_label(form.business) }}
+            {{ form_errors(form.business) }}
+        </div>
+    </div>
+</div>
+
+<div class="row section_row">
+    <div class="section">
+        <h5>Réseaux sociaux</h5>
+        <div class="divider"></div>
+        <div class="input-field col s12 m6">
+            <i class="fa fa-github prefix"></i>
+            {{ form_widget(form.git) }}
+            {{ form_label(form.git) }}
+            {{ form_errors(form.git) }}
+        </div>
+
+        <div class="input-field col s12 m6">
+            <i class="fa fa-twitter prefix"></i>
+            {{ form_widget(form.twitter) }}
+            {{ form_label(form.twitter) }}
+            {{ form_errors(form.twitter) }}
+        </div>
+
+        <div class="input-field col s12 m6">
+            <i class="fa fa-facebook prefix"></i>
+            {{ form_widget(form.facebook) }}
+            {{ form_label(form.facebook) }}
+            {{ form_errors(form.facebook) }}
+        </div>
+
+        <div class="input-field col s12 m6">
+            <i class="fa fa-linkedin prefix"></i>
+            {{ form_widget(form.linkedin) }}
+            {{ form_label(form.linkedin) }}
+            {{ form_errors(form.linkedin) }}
+        </div>
+    </div>
+</div>
+
+<div class="input-field col s12 center-align">
+    <input type="submit" value="{{ 'profile.edit.submit'|trans }}" class="btn waves-effect waves-light"/>
+</div>
 {{ form_end(form) }}

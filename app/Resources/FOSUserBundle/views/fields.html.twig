@@ -4,164 +4,134 @@
 {% block _fos_user_registration_form_username_row %}
     <div class="input-field col s6">
         {{ form_errors(form) }}
-        <i class="material-icons prefix">account_circle</i>
-        <input id="username" type="text" class="validate" {{ block('widget_attributes') }}>
-        <label for="username">{{ 'Nom d\'utilisateur *'|trans }}</label>
+
+
     </div>
 {% endblock %}
-
 {{ form_row(form.username) }}
 
 {% block _fos_user_registration_form_email_row %}
     <div class="input-field col s6">
         {{ form_errors(form) }}
         <i class="material-icons prefix">email</i>
-        <input id="email" type="email" class="validate" {{ block('widget_attributes') }}>
-        <label for="email">{{ 'Adresse E-mail   *'|trans }}</label>
+
     </div>
 {% endblock %}
-
 {{ form_row(form.email) }}
 
 {% block _fos_user_registration_form_plainPassword_first_row %}
     <div class="input-field col s6">
         {{ form_errors(form) }}
         <i class="material-icons prefix">vpn_key</i>
-        <input id="password_first" type="password" class="validate" {{ block('widget_attributes') }}>
-        <label for="password_first">{{ 'Mot de passe   *'|trans }}</label>
     </div>
 {% endblock %}
+        {{ form_row(form.plainPassword_first) }}
 
-{{ form_row(form.plainPassword_first) }}
 
 {% block _fos_user_registration_form_plainPassword_second_row %}
     <div class="input-field col s6">
         {{ form_errors(form) }}
         <i class="material-icons prefix">verified_user</i>
-        <input id="password_second" type="password" class="validate" {{ block('widget_attributes') }}>
-        <label for="password_second">{{ 'Répéter le mot de passe *'|trans }}</label>
     </div>
 {% endblock %}
+        {{ form_row(form.plainPassword_second) }}
 
-{{ form_row(form.plainPassword_second) }}
 
 {% block _fos_user_registration_form_nom_row %}
     <div class="input-field col s6">
         {{ form_errors(form) }}
         <i class="material-icons prefix">supervisor_account</i>
-        <input id="lastname" type="text" class="validate" {{ block('widget_attributes') }}>
-        <label for="lastname">{{ 'Nom   *'|trans }}</label>
     </div>
 {% endblock %}
+        {{ form_row(form.nom) }}
 
-{{ form_row(form.nom) }}
 
 {% block _fos_user_registration_form_prenom_row %}
     <div class="input-field col s6">
         {{ form_errors(form) }}
         <i class="material-icons prefix">perm_identity</i>
-        <input id="firstname" type="text" class="validate" {{ block('widget_attributes') }}>
-        <label for="firstname">{{ 'Prénom   *'|trans }}</label>
     </div>
 {% endblock %}
+        {{ form_row(form.prenom) }}
 
-{{ form_row(form.prenom) }}
 
 {% block _fos_user_registration_form_avatar_row %}
     <div class="input-field col s6">
         {{ form_errors(form) }}
         <i class="material-icons prefix">perm_identity</i>
-        <input id="avatar" type="file" class="validate" {{ block('widget_attributes') }}>
-        <label for="avatar"></label>
     </div>
 {% endblock %}
+        {{ form_row(form.avatar) }}
 
-{{ form_row(form.avatar) }}
 
 {% block _fos_user_registration_form_profession_row %}
     <div class="input-field col s6">
         {{ form_errors(form) }}
         <i class="material-icons prefix">perm_identity</i>
-        <input id="firstname" type="text" class="validate" {{ block('widget_attributes') }}>
-        <label for="firstname">{{ 'Profession'|trans }}</label>
     </div>
 {% endblock %}
+        {{ form_row(profession) }}
 
-{{ form_row(profession) }}
 
 {% block _fos_user_registration_form_business_row %}
     <div class="input-field col s6">
         {{ form_errors(form) }}
         <i class="material-icons prefix">perm_identity</i>
-        <input id="firstname" type="text" class="validate" {{ block('widget_attributes') }}>
-        <label for="firstname">{{ 'Business'|trans }}</label>
     </div>
 {% endblock %}
+        {{ form_row(business) }}
 
-{{ form_row(business) }}
 
 {% block _fos_user_registration_form_statut_row %}
     <div class="input-field col s6">
         {{ form_errors(form) }}
         <i class="material-icons prefix">perm_identity</i>
-        <input id="firstname" type="text" class="validate" {{ block('widget_attributes') }}>
-        <label for="firstname">{{ 'Statut   *'|trans }}</label>
     </div>
 {% endblock %}
+        {{ form_row(statut) }}
 
-{{ form_row(statut) }}
 
 {% block _fos_user_registration_form_promo_row %}
     <div class="input-field col s6">
         {{ form_errors(form) }}
         <i class="material-icons prefix">perm_identity</i>
-        <input id="firstname" type="text" class="validate" {{ block('widget_attributes') }}>
-        <label for="firstname">{{ 'Promo    *'|trans }}</label>
     </div>
 {% endblock %}
+        {{ form_row(promo) }}
 
-{{ form_row(promo) }}
 
 {% block _fos_user_registration_form_git_row %}
     <div class="input-field col s6">
         {{ form_errors(form) }}
         <i class="material-icons prefix">perm_identity</i>
-        <input id="firstname" type="text" class="validate" {{ block('widget_attributes') }}>
-        <label for="firstname">{{ 'Compte GitHub    *'|trans }}</label>
     </div>
 {% endblock %}
+        {{ form_row(git) }}
 
-{{ form_row(git) }}
 
 {% block _fos_user_registration_form_twitter_row %}
     <div class="input-field col s6">
         {{ form_errors(form) }}
         <i class="material-icons prefix">perm_identity</i>
-        <input id="firstname" type="text" class="validate" {{ block('widget_attributes') }}>
-        <label for="firstname">{{ 'Compte Twitter'|trans }}</label>
     </div>
 {% endblock %}
+        {{ form_row(twitter) }}
 
-{{ form_row(twitter) }}
 
 {% block _fos_user_registration_form_facebook_row %}
     <div class="input-field col s6">
         {{ form_errors(form) }}
         <i class="material-icons prefix">perm_identity</i>
-        <input id="firstname" type="text" class="validate" {{ block('widget_attributes') }}>
-        <label for="firstname">{{ 'Compte Facebook'|trans }}</label>
     </div>
 {% endblock %}
+        {{ form_row(facebook) }}
 
-{{ form_row(facebook) }}
 
 {% block _fos_user_registration_form_linkedin_row %}
     <div class="input-field col s6">
         {{ form_errors(form) }}
         <i class="material-icons prefix">perm_identity</i>
-        <input id="firstname" type="text" class="validate" {{ block('widget_attributes') }}>
-        <label for="firstname">{{ 'Compte LinkedIn  *'|trans }}</label>
     </div>
 {% endblock %}
+        {{ form_row(linkedin) }}
 
-{{ form_row(linkedin) }}
