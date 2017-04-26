@@ -43,7 +43,7 @@ class QuestionController extends Controller
      * Creates a new question entity.
      *
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $question_id)
     {
         $question = new Question();
         $form = $this->createForm('XTeam\PlatformBundle\Form\QuestionType', $question);
@@ -80,7 +80,6 @@ class QuestionController extends Controller
         $commentForm = $this->createForm('XTeam\PlatformBundle\Form\CommentType', $comment);
         $commentForm->handleRequest($request);
 
-
         if ($addResponseForm->isSubmitted() && $addResponseForm->isValid()) {
             $response->setQuestion($question)->setUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
@@ -90,16 +89,17 @@ class QuestionController extends Controller
             return $this->redirectToRoute('question_show', array('id' => $question->getId()));
         }
 
-        if ($commentForm->isSubmitted() && $commentForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $responseId = $request->get('response_id');
-            $response = $em->getRepository('XTeamPlatformBundle:Response')->find($responseId);
-            $comment->setUser($this->getUser())->setResponse($response);
-            $em->persist($comment);
-            $em->flush();
+            if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $responseId = $request->get('response_id');
+                $response = $em->getRepository('XTeamPlatformBundle:Response')->find($responseId);
+                $comment->setUser($this->getUser())->setResponse($response);
+                $em->persist($comment);
+                $em->flush();
 
-            return $this->redirectToRoute('question_show', array('id' => $question->getId()));
-        }
+                return $this->redirectToRoute('question_show', array('id' => $question->getId()));
+            }
+
 
         return $this->render('question/show.html.twig', array(
             'question' => $question,

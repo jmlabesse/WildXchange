@@ -47,7 +47,7 @@ class Response
      *
      * @ORM\Column(name="vote", type="integer", nullable=true)
      */
-    private $vote;
+    private $votes;
 
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="response")
@@ -168,9 +168,9 @@ class Response
      *
      * @return Response
      */
-    public function setVote($vote)
+    public function setVotes($votes)
     {
-        $this->vote = $vote;
+        $this->votes = $votes;
 
         return $this;
     }
@@ -180,9 +180,9 @@ class Response
      *
      * @return integer
      */
-    public function getVote()
+    public function getVotes()
     {
-        return $this->vote;
+        return $this->votes;
     }
 
     /**
