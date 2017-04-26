@@ -56,4 +56,8 @@ $(document).ready(function(){
         image: '', //optional
         id: 1, //optional
     };
+    $('.karmabtn').on('click', 'upVote');
+    function upVote(event){
+        $(this)
+    }
 });

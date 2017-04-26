@@ -45,7 +45,8 @@ class Response
     /**
      * @var integer
      *
-     * @ORM\Column(name="vote", type="integer", nullable=true)
+     * @ORM\Column(name="votes", nullable=true)
+     * @ORM\OneToMany(targetEntity="Vote", mappedBy="responses")
      */
     private $votes;
 
@@ -60,9 +61,10 @@ class Response
     private $question;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="responses")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="response")
      */
     private $user;
+
 
     /**
      * Constructor
@@ -265,5 +267,29 @@ class Response
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set votes
+     *
+     * @param string $votes
+     *
+     * @return Response
+     */
+    public function setVotes($votes)
+    {
+        $this->votes = $votes;
+
+        return $this;
+    }
+
+    /**
+     * Get votes
+     *
+     * @return string
+     */
+    public function getVotes()
+    {
+        return $this->votes;
     }
 }

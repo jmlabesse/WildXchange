@@ -7,9 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Vote
  *
- * @ORM\Table(name="vote", indexes={@ORM\Index(name="IDX_5A108564A76ED395", columns={"user_id"}), @ORM\Index(name="IDX_5A108564FBF32840", columns={"response_id"})})
- * @ORM\Entity
+
+ * @ORM\Table(name="vote")
+ * @ORM\Entity(repositoryClass="XTeam\PlatformBundle\Repository\VoteRepository")
  */
+
 class Vote
 {
     /**
@@ -22,26 +24,16 @@ class Vote
     private $id;
 
     /**
-     * @var \User
-     *
+
      * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
      */
     private $user;
 
     /**
-     * @var \Response
-     *
-     * @ORM\ManyToOne(targetEntity="Response")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="response_id", referencedColumnName="id")
-     * })
+
+     * @ORM\ManyToOne(targetEntity="Response", inversedBy="votes")
      */
-    private $response;
-
-
+    private $responses;
 
     /**
      * Get id
@@ -99,5 +91,29 @@ class Vote
     public function getResponse()
     {
         return $this->response;
+    }
+
+    /**
+     * Set responses
+     *
+     * @param \XTeam\PlatformBundle\Entity\Response $responses
+     *
+     * @return Vote
+     */
+    public function setResponses(\XTeam\PlatformBundle\Entity\Response $responses = null)
+    {
+        $this->responses = $responses;
+
+        return $this;
+    }
+
+    /**
+     * Get responses
+     *
+     * @return \XTeam\PlatformBundle\Entity\Response
+     */
+    public function getResponses()
+    {
+        return $this->responses;
     }
 }

@@ -92,7 +92,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col s12 center-align">
-                                        <a id='karmabtn' class="btn-floating hoverable waves-effect waves-orange teal-light"><span>30</span></a>
+                                        <a id='karmabtn' class="btn-floating hoverable waves-effect waves-orange teal-light karmabtn">
+                                            <span>{% if response.votes %} {{ response.votes.count }} {% else %}0{% endif %}</span></a>
                                     </div>
                                 </div>
                             </div>
