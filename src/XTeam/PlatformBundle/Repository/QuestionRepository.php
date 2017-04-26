@@ -30,4 +30,13 @@ class QuestionRepository extends EntityRepository
             ->getResult();
     }
 
+    public function findQuestionByKeywordsSorted($keyword) {
+        return $this->createQueryBuilder('q')
+            ->where('q.titre LIKE :keyword')
+            ->orderBy('q.date','DESC')
+            ->setParameter('keyword', '%'.$keyword.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
 }
