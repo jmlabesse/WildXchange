@@ -22,3 +22,4 @@ response_delete:
     path:     /{id}/delete
     defaults: { _controller: "XTeamPlatformBundle:Response:delete" }
     methods:  DELETE
+

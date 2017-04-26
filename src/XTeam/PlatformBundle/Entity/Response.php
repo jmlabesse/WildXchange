@@ -45,8 +45,7 @@ class Response
     /**
      * @var integer
      *
-     * @ORM\Column(name="votes", nullable=true)
-     * @ORM\OneToMany(targetEntity="Vote", mappedBy="responses")
+     * @ORM\OneToMany(targetEntity="Vote", mappedBy="response")
      */
     private $votes;
 
@@ -61,7 +60,7 @@ class Response
     private $question;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="response")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="responses")
      */
     private $user;
 
@@ -291,5 +290,29 @@ class Response
     public function getVotes()
     {
         return $this->votes;
+    }
+
+    /**
+     * Add vote
+     *
+     * @param \XTeam\PlatformBundle\Entity\Vote $vote
+     *
+     * @return Response
+     */
+    public function addVote(\XTeam\PlatformBundle\Entity\Vote $vote)
+    {
+        $this->votes[] = $vote;
+
+        return $this;
+    }
+
+    /**
+     * Remove vote
+     *
+     * @param \XTeam\PlatformBundle\Entity\Vote $vote
+     */
+    public function removeVote(\XTeam\PlatformBundle\Entity\Vote $vote)
+    {
+        $this->votes->removeElement($vote);
     }
 }

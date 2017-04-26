@@ -23,14 +23,14 @@ class Vote
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="votes")
      */
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity="Response", inversedBy="votes")
      */
-    private $responses;
+    private $response;
 
 
 
