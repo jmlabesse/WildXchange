@@ -45,9 +45,9 @@ class Response
     /**
      * @var integer
      *
-     * @ORM\Column(name="vote", type="integer", nullable=true)
+     * @ORM\OneToMany(targetEntity="Vote", mappedBy="response")
      */
-    private $vote;
+    private $votes;
 
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="response")
@@ -63,6 +63,7 @@ class Response
      * @ORM\ManyToOne(targetEntity="User", inversedBy="responses")
      */
     private $user;
+
 
     /**
      * Constructor
@@ -265,5 +266,53 @@ class Response
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set votes
+     *
+     * @param string $votes
+     *
+     * @return Response
+     */
+    public function setVotes($votes)
+    {
+        $this->votes = $votes;
+
+        return $this;
+    }
+
+    /**
+     * Get votes
+     *
+     * @return string
+     */
+    public function getVotes()
+    {
+        return $this->votes;
+    }
+
+    /**
+     * Add vote
+     *
+     * @param \XTeam\PlatformBundle\Entity\Vote $vote
+     *
+     * @return Response
+     */
+    public function addVote(\XTeam\PlatformBundle\Entity\Vote $vote)
+    {
+        $this->votes[] = $vote;
+
+        return $this;
+    }
+
+    /**
+     * Remove vote
+     *
+     * @param \XTeam\PlatformBundle\Entity\Vote $vote
+     */
+    public function removeVote(\XTeam\PlatformBundle\Entity\Vote $vote)
+    {
+        $this->votes->removeElement($vote);
     }
 }

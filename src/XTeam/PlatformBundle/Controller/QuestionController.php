@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use XTeam\PlatformBundle\Entity\Response;
 use XTeam\PlatformBundle\Entity\Tag;
+use XTeam\PlatformBundle\Entity\Vote;
 use XTeam\PlatformBundle\XTeamPlatformBundle;
 
 /**
@@ -43,7 +44,7 @@ class QuestionController extends Controller
      * Creates a new question entity.
      *
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $question_id)
     {
         $question = new Question();
         $form = $this->createForm('XTeam\PlatformBundle\Form\QuestionType', $question);
@@ -69,6 +70,8 @@ class QuestionController extends Controller
      */
     public function showAction(Question $question, Request $request)
     {
+        $responseId = $request->get('responseId');
+        //var_dump($responseId);
 
         $deleteForm = $this->createDeleteForm($question);
 
@@ -80,7 +83,6 @@ class QuestionController extends Controller
         $commentForm = $this->createForm('XTeam\PlatformBundle\Form\CommentType', $comment);
         $commentForm->handleRequest($request);
 
-
         if ($addResponseForm->isSubmitted() && $addResponseForm->isValid()) {
             $response->setQuestion($question)->setUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
@@ -90,16 +92,30 @@ class QuestionController extends Controller
             return $this->redirectToRoute('question_show', array('id' => $question->getId()));
         }
 
-        if ($commentForm->isSubmitted() && $commentForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $responseId = $request->get('response_id');
-            $response = $em->getRepository('XTeamPlatformBundle:Response')->find($responseId);
-            $comment->setUser($this->getUser())->setResponse($response);
-            $em->persist($comment);
-            $em->flush();
+            if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $responseId = $request->get('response_id');
+                $response = $em->getRepository('XTeamPlatformBundle:Response')->find($responseId);
+                $comment->setUser($this->getUser())->setResponse($response)->setQuestion($question);
+                $em->persist($comment);
+                $em->flush();
 
-            return $this->redirectToRoute('question_show', array('id' => $question->getId()));
+                return $this->redirectToRoute('question_show', array('id' => $question->getId()));
+            }
+
+
+        $hasVoted = false;
+
+        foreach ($this->getUser()->getVotes() as $vote){
+           if ($vote->getResponse()->getId() == $responseId ){
+               $hasVoted = true;
+           }
         }
+
+        if ($responseId != null && $hasVoted == false ){
+           $this->vote($responseId);
+        }
+
 
         return $this->render('question/show.html.twig', array(
             'question' => $question,
@@ -107,6 +123,7 @@ class QuestionController extends Controller
             'addResponse_form' => $addResponseForm->createView(),
             'comment_form' => $commentForm->createView(),
         ));
+
     }
 
     /**
@@ -214,6 +231,21 @@ class QuestionController extends Controller
             ->setAction($this->generateUrl('question_delete', array('id' => $question->getId())))
             ->setMethod('DELETE')
             ->getForm();
+    }
+
+    public function vote($response_id){
+
+        $user=$this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $response = $em->getRepository('XTeamPlatformBundle:Response')->find($response_id);
+
+        $vote= new Vote();
+        $vote->setResponse($response)->setUser($user);
+        $em->persist($vote);
+        $em->flush();
+
+        // recup new valeur vote
+
     }
 
 }

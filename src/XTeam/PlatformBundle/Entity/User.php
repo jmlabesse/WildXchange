@@ -137,6 +137,13 @@ class User extends BaseUser
      */
     protected $technos;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Vote", mappedBy="user")
+     */
+    private $votes;
+
+
+
     public function __construct()
     {
         parent::__construct();
@@ -635,4 +642,38 @@ class User extends BaseUser
         return $this->technos;
     }
 
+
+    /**
+     * Add vote
+     *
+     * @param \XTeam\PlatformBundle\Entity\Vote $vote
+     *
+     * @return User
+     */
+    public function addVote(\XTeam\PlatformBundle\Entity\Vote $vote)
+    {
+        $this->votes[] = $vote;
+
+        return $this;
+    }
+
+    /**
+     * Remove vote
+     *
+     * @param \XTeam\PlatformBundle\Entity\Vote $vote
+     */
+    public function removeVote(\XTeam\PlatformBundle\Entity\Vote $vote)
+    {
+        $this->votes->removeElement($vote);
+    }
+
+    /**
+     * Get votes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVotes()
+    {
+        return $this->votes;
+    }
 }

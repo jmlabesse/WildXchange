@@ -31,7 +31,7 @@ class CommentController extends Controller
      * Creates a new comment entity.
      *
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $response_id = null, $question_id = null)
     {
         $comment = new Comment();
         $form = $this->createForm('XTeam\PlatformBundle\Form\CommentType', $comment);
@@ -47,6 +47,8 @@ class CommentController extends Controller
 
         return $this->render('comment/new.html.twig', array(
             'comment' => $comment,
+            'response_id' => $response_id,
+            'question_id' => $question_id,
             'form' => $form->createView(),
         ));
     }

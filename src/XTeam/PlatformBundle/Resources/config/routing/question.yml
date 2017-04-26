@@ -9,8 +9,9 @@ question_search:
     methods:  GET
 
 question_show:
-    path:     /{id}/show
-    defaults: { _controller: "XTeamPlatformBundle:Question:show" }
+    path:     /{id}/show/
+    defaults:
+        _controller: "XTeamPlatformBundle:Question:show"
     methods:  [GET, POST]
 
 question_new:
@@ -27,3 +28,4 @@ question_delete:
     path:     /{id}/delete
     defaults: { _controller: "XTeamPlatformBundle:Question:delete" }
     methods:  DELETE
+
