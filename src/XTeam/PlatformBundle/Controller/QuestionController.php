@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use XTeam\PlatformBundle\Entity\Response;
 use XTeam\PlatformBundle\Entity\Tag;
+use XTeam\PlatformBundle\Entity\Vote;
 use XTeam\PlatformBundle\XTeamPlatformBundle;
 
 /**
@@ -69,6 +70,8 @@ class QuestionController extends Controller
      */
     public function showAction(Question $question, Request $request)
     {
+        $responseId = $request->get('responseId');
+        //var_dump($responseId);
 
         $deleteForm = $this->createDeleteForm($question);
 
@@ -101,12 +104,26 @@ class QuestionController extends Controller
             }
 
 
+        $hasVoted = false;
+
+        foreach ($this->getUser()->getVotes() as $vote){
+           if ($vote->getResponse()->getId() == $responseId ){
+               $hasVoted = true;
+           }
+        }
+
+        if ($responseId != null && $hasVoted == false ){
+           $this->vote($responseId);
+        }
+
+
         return $this->render('question/show.html.twig', array(
             'question' => $question,
             'delete_form' => $deleteForm->createView(),
             'addResponse_form' => $addResponseForm->createView(),
             'comment_form' => $commentForm->createView(),
         ));
+
     }
 
     /**
@@ -214,6 +231,21 @@ class QuestionController extends Controller
             ->setAction($this->generateUrl('question_delete', array('id' => $question->getId())))
             ->setMethod('DELETE')
             ->getForm();
+    }
+
+    public function vote($response_id){
+
+        $user=$this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $response = $em->getRepository('XTeamPlatformBundle:Response')->find($response_id);
+
+        $vote= new Vote();
+        $vote->setResponse($response)->setUser($user);
+        $em->persist($vote);
+        $em->flush();
+
+        // recup new valeur vote
+
     }
 
 }

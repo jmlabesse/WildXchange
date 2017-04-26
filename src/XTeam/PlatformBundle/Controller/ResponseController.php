@@ -121,4 +121,17 @@ class ResponseController extends Controller
             ->getForm()
         ;
     }
+
+    public function voteAction(){
+        //recup id user
+        $user=$this->getUser()->getId();
+        //recup id response
+
+        $em = $this->getDoctrine()->getManager();
+        $response= $this->getResponse();
+        $response= $em->getRepository('XTeamPlatformBundle:Vote')->findBy();
+        //update bdd av new entree ds vote
+        // recup new valeur vote
+        //retour json
+    }
 }
