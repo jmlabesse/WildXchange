@@ -93,7 +93,7 @@ class QuestionController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $responseId = $request->get('response_id');
                 $response = $em->getRepository('XTeamPlatformBundle:Response')->find($responseId);
-                $comment->setUser($this->getUser())->setResponse($response);
+                $comment->setUser($this->getUser())->setResponse($response)->setQuestion($question);
                 $em->persist($comment);
                 $em->flush();
 

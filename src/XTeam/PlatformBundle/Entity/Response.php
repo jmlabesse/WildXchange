@@ -166,8 +166,6 @@ class Response
     /**
      * Set vote
      *
-     * @param integer $vote
-     *
      * @return Response
      */
     public function setVotes($votes)
@@ -276,20 +274,4 @@ class Response
      *
      * @return Response
      */
-    public function setVotes($votes)
-    {
-        $this->votes = $votes;
-
-        return $this;
-    }
-
-    /**
-     * Get votes
-     *
-     * @return string
-     */
-    public function getVotes()
-    {
-        return $this->votes;
-    }
 }

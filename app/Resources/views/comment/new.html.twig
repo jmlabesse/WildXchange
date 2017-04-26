@@ -6,6 +6,7 @@
     {{ form_start(form) }}
         {{ form_widget(form) }}
         <input type="hidden" name="response_id" value="{{ response_id }}"/>
+        <input type="hidden" name="question_id" value="{{ question_id }}"/>
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 

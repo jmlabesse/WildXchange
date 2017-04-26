@@ -74,7 +74,31 @@
                                 </div>
                             </div>
                             <div class="row">
-                                {% render(controller('XTeamPlatformBundle:Comment:new', { 'question_id':question.id })) %}
+                                <div class="col s11">
+                                    <ul class="collapsible" data-collapsible="accordion" id="commentaire">
+                                        <li>
+                                            <div class="collapsible-header"><i class="material-icons">format_quote</i>{{ question.comments|length }}  Commentaires
+                                            </div>
+                                            <div class="collapsible-body">
+                                                <div class="row">
+                                                    <div class="col s12">
+                                                        {% for comment in question.comments %}
+                                                            <div class="card-panel">
+                                                                <span>{{ comment.user }}</span><br>
+                                                                <p id="comments">{{ comment.content }}</p>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class= "col s10">
+                                                        {% render(controller('XTeamPlatformBundle:Comment:new', { 'question_id':question.id })) %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
