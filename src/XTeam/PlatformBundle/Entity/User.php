@@ -137,6 +137,8 @@ class User extends BaseUser
      */
     protected $technos;
 
+
+
     public function __construct()
     {
         parent::__construct();

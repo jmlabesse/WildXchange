@@ -26,8 +26,16 @@ class QuestionController extends Controller
 
         $questions = $em->getRepository('XTeamPlatformBundle:Question')->findAll();
 
+        /**
+         * sort by date variable
+         *
+         */
+        $questionsDates= $em->getRepository('XTeamPlatformBundle:Question')->findBy(array(),
+            array('date'=>'DESC'));
+
         return $this->render('question/index.html.twig', array(
             'questions' => $questions,
+            'questionsDates' => $questionsDates,
         ));
     }
 
@@ -142,27 +150,47 @@ class QuestionController extends Controller
         return $this->redirectToRoute('question_index');
     }
 
+    /**
+     * searches for a question.
+     *
+     */
+
     public function searchAction()
     {
+        $questionsSortedAll=[];
         $questionsAll = [];
-        $tags = explode(" ", $_GET['q']);
+        $questionPose=$_GET['q'];
+        $keywords = explode(" ", $_GET['q']);
 
         $em = $this->getDoctrine()->getManager();
 
-        foreach ($tags as $tag) {
+        foreach ($keywords as $keyword) {
             $questions = $em->getRepository('XTeamPlatformBundle:Question')
-                ->findQuestionsByTags($tag);
+                ->findQuestionByKeywords($keyword);
+
+            $questionsSorted = $em->getRepository('XTeamPlatformBundle:Question')
+                ->findQuestionByKeywordsSorted($keyword);
 
             $questionsAll = array_unique(array_merge($questionsAll, $questions));
+
+            $questionsSortedAll = array_unique(array_merge($questionsSortedAll, $questionsSorted));
         }
 
-        return $this->render(':question:search.html.twig', array('questions' => $questionsAll));
+        return $this->render(':question:search.html.twig', array(
+            'questions' => $questionsAll,
+            'questionsSortedAll'=>$questionsSortedAll,
+            'questionPose'=>$questionPose,
+        ));
     }
+
+
+
     public function showNoResponsesAction() {
         $allNoResponses = $this->findNoResponses();
         return $this->render('XTeamPlatformBundle:Main:responseLess.html.twig',
             array('allNoResponses' => $allNoResponses));
     }
+
     public function findNoResponses() {
         $result = [];
         $em = $this->getDoctrine()->getManager();

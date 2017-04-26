@@ -41,6 +41,13 @@
                                 <div class="col s12">
                                     <p>{{ question.question }}</p>
                                 </div>
+                                {% if question.tags | length > 0 %}
+                                <div class="chip">
+                                    {% for tag in question.tags %}
+                                            <em>{{ tag.tagname }}{% if not loop.last %} / {% endif %}</em>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
                             </div>
                             <div class="row">
                                 <div class="col s6">
@@ -77,7 +84,7 @@
                                                     <div class="col s12">
                                                         <div class="card-panel">
                                                             <span>usr1</span><br>
-                                                            <p id="comments">conten tcontent fdlkjsa;l dkjf;l sad jf;lsa jfd; lsa kjfd ;ljds;flkds ;lfkjs ;al kg ja;ldskj;alskjg</p>
+                                                            <p id="comments"></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -111,7 +118,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col s12 center-align">
-                                        <a id='karmabtn' class="btn-floating hoverable waves-effect waves-orange teal-light"><span>30</span></a>
+                                        <a id='karmabtn' class="btn-floating hoverable waves-effect waves-orange teal-light karmabtn">
+                                            <span>{% if response.votes %} {{ response.votes.count }} {% else %}0{% endif %}</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -170,6 +178,7 @@
                                                             <div class= "col s10">
                                                                 {% form_theme comment_form '::fields.html.twig' %}
                                                                 {{ form_start(comment_form) }}
+                                                                <input type="hidden" name="response_id"value="{{ response.id }}">
                                                                 {{ form_widget(comment_form) }}
                                                                 <input type="submit" value="Commenter" class="btn waves-effect waves-light"/>
                                                                 {{ form_end(comment_form) }}
@@ -211,8 +220,6 @@
                             <i class="material-icons">close</i>
                         </div>
                         <span class="card-title">{{ app.user }}</span>
-                        <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
                     </div>
                     <div class="card-action">
                         <a href="#">This is a link</a>
