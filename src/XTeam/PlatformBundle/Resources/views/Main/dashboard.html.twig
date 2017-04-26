@@ -9,6 +9,14 @@
 {% endblock %}
 
 {% block content %}
+
+    <script>
+        var messages = [];
+    </script>
+    {% for message in  app.session.flashbag.get('success') %}
+        <script>messages.push('{{ message }}');</script>
+    {% endfor %}
+
     <div id="row_dashboard" class="row">
 
         <div id="col_profile" class="col s12 m12">
@@ -98,7 +106,8 @@
                         <p><b>Réseaux sociaux :</b></p>
                         <ul class="list_logos valign-wrapper">
                             {% if app.user.git|length > 0 %}
-                                <li><a href="https://github.com/{{ app.user.git }}" target="_blank"><i class="fa fa-github small"></i></a>
+                                <li><a href="https://github.com/{{ app.user.git }}" target="_blank"><i
+                                                class="fa fa-github small"></i></a>
                                 </li>
                             {% endif %}
                             {% if app.user.facebook|length > 0 %}
@@ -106,7 +115,8 @@
                                                 class="fa fa-facebook small"></i></a></li>
                             {% endif %}
                             {% if app.user.twitter|length > 0 %}
-                                <li><a href="https://twitter.com/{{ app.user.twitter }}" target="_blank"><i class="fa fa-twitter small"></i></a>
+                                <li><a href="https://twitter.com/{{ app.user.twitter }}" target="_blank"><i
+                                                class="fa fa-twitter small"></i></a>
                                 </li>
                             {% endif %}
                             {% if app.user.linkedin|length > 0 %}
@@ -122,4 +132,9 @@
         </div>
 
     </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="{{ asset('JS/dashboard.js') }}"></script>
 {% endblock %}

@@ -21,3 +21,8 @@ services:
         tags:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
+    app.profile.edit:
+        class: XTeam\PlatformBundle\EventListener\ProfileEditListener
+        arguments: ['@router','@session']
+        tags:
+            - { name: kernel.event_subscriber }

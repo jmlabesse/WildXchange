@@ -93,9 +93,11 @@ h2 {
     max-height: 40px;
 }
 
-/* COLUMN JOURNAL
+/* FLASH MESSAGES
 =============== */
 
-#col_journal {
-    background-color: #718C00;
+.flash-message {
+    top: 100px;
+    right: 0;
+    text-align: center;
 }
