@@ -1,5 +1,23 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
+{% block title %}
+    Edition {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/registration.css') }}"
+{% endblock %}
+
 {% block fos_user_content %}
-{% include "@FOSUser/Profile/edit_content.html.twig" %}
+    <div class="container">
+        <h4 class="center-align">Editez votre profil</h4>
+        <div class="row">
+            {% include "@FOSUser/Profile/edit_content.html.twig" %}
+        </div>
+    </div>
 {% endblock fos_user_content %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="{{ asset('JS/edit_profile.js') }}"></script>
+{% endblock %}

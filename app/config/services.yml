@@ -8,6 +8,10 @@ services:
         class: XTeam\PlatformBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: app_user_registration }
+    app.form.profile:
+        class: XTeam\PlatformBundle\Form\ProfileType
+        tags:
+            - { name: form.type, alias: app_user_registration }
     app.avatar_uploader:
         class: XTeam\PlatformBundle\FileUploader
         arguments: ['%avatars_directory%']
@@ -17,3 +21,15 @@ services:
         tags:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
+    app.profile.edit:
+        class: XTeam\PlatformBundle\EventListener\ProfileEditListener
+        arguments: ['@router','@session']
+        tags:
+            - { name: kernel.event_subscriber }
+
+    # authentication event listener
+    app.security.authentication_event_listener:
+        class: XTeam\PlatformBundle\EventListener\AuthenticationListener
+        arguments: ['@router']
+        tags:
+            - { name: kernel.event_subscriber }

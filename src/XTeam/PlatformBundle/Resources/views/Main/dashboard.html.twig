@@ -9,9 +9,17 @@
 {% endblock %}
 
 {% block content %}
+
+    <script>
+        var messages = [];
+    </script>
+    {% for message in  app.session.flashbag.get('success') %}
+        <script>messages.push('{{ message }}');</script>
+    {% endfor %}
+
     <div id="row_dashboard" class="row">
 
-        <div id="col_profile" class="col s12 m9">
+        <div id="col_profile" class="col s12 m12">
 
             <div id="row_edit" class="row right-align">
                 <a href="{{ path('fos_user_profile_edit') }}">Editer le profil</a>
@@ -20,11 +28,12 @@
             <div id="row_user" class="row valign-wrapper">
                 <div id="col_avatar" class="col s12 m3 offset-m1 center-align">
                     <img src="{{ asset('uploads/avatars/' ~ app.user.avatar) }}" id="user_avatar"
-                         alt="Qui est ton pote?"
+                         alt="{{ app.user.username }}"
                          class="center-align circle responsive-img">
                 </div>
                 <div id="col_username" class="col s12 m5 pull-m3 center-align">
                     <h3>{{ app.user.username }}</h3>
+                    <h5>{{ app.user.statut }}</h5>
                     <em>Inscrit depuis le {{ app.user.registrationDate|date('d-m-Y') }}</em>
                 </div>
 
@@ -70,13 +79,13 @@
 
                 <div class="col s12 m6">
                     <div class="block_info">
-                        {% set oldWilder = app.user.profession|length > 0 %}
+                        {% set actualWilder = (app.user.statut == 'Wilder') %}
                         <h5 class="block_info_title">Informations générales</h5>
                         <ul class="list_infos">
                             <li><b>Nom :</b> {{ app.user.nom }}</li>
                             <li><b>Prénom :</b> {{ app.user.prenom }}</li>
                             <li><b>Email :</b> {{ app.user.email }}</li>
-                            {% if oldWilder %}
+                            {% if not actualWilder %}
                                 <li><b>Profession :</b> {{ app.user.profession }}</li>
                                 <li><b>Société :</b> {{ app.user.business }}</li>
                             {% endif %}
@@ -97,15 +106,17 @@
                         <p><b>Réseaux sociaux :</b></p>
                         <ul class="list_logos valign-wrapper">
                             {% if app.user.git|length > 0 %}
-                                <li><a href="{{ app.user.git }}" target="_blank"><i class="fa fa-github small"></i></a>
+                                <li><a href="https://github.com/{{ app.user.git }}" target="_blank"><i
+                                                class="fa fa-github small"></i></a>
                                 </li>
                             {% endif %}
                             {% if app.user.facebook|length > 0 %}
-                                <li><a href="{{ app.user.facebook }}" target="_blank"><i
+                                <li><a href="https://www.facebook.com/{{ app.user.facebook }}" target="_blank"><i
                                                 class="fa fa-facebook small"></i></a></li>
                             {% endif %}
                             {% if app.user.twitter|length > 0 %}
-                                <li><a href="{{ app.user.twitter }}" target="_blank"><i class="fa fa-twitter small"></i></a>
+                                <li><a href="https://twitter.com/{{ app.user.twitter }}" target="_blank"><i
+                                                class="fa fa-twitter small"></i></a>
                                 </li>
                             {% endif %}
                             {% if app.user.linkedin|length > 0 %}
@@ -120,9 +131,10 @@
 
         </div>
 
-        <div id="col_journal" class="col m3 hide-on-small-only">
-            <p>JOURNAL D'ACTIVITES</p>
-        </div>
-
     </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="{{ asset('JS/dashboard.js') }}"></script>
 {% endblock %}

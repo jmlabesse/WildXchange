@@ -77,3 +77,6 @@ fos_user:
     registration:
         form:
             type: XTeam\PlatformBundle\Form\RegistrationType
+    profile:
+        form:
+            type: XTeam\PlatformBundle\Form\ProfileType
