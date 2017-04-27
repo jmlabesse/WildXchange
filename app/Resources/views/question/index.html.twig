@@ -11,10 +11,9 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="row topSpacer"></div>
-        <div class="row">
-            <div class="col s12 m12 l8 left usrCol question_block">
+
+        <div class="row block_content">
+            <div class="col s12 m8 l8 left usrCol question_block">
                 <ul class="tabs">
                     <li class="tab col s3"><a href="#recent">Recent</a></li>
                     <li class="tab col s3"><a href="#votes">Votes</a></li>
@@ -29,7 +28,7 @@
                                             <div class="row">
                                                 <div class="col s12">
                                                     {% if question.isResolved %}
-                                                        <i class="large material-icons">verified_user</i>
+                                                        <img src="{{ asset('img/pouce_vert.png') }}">
                                                     {% endif %}
                                                 </div>
                                             </div>
@@ -90,7 +89,6 @@
             <!--end user info column-->
             <!-- end page-content container -->
         </div>
-    </div>
 {% endblock %}
 
 
