@@ -19,15 +19,22 @@ html {
     height: 14em;
 }
 
-.nav-wrapper.search {
+input#search{
+    height: 50px;
+    margin: 0 !important;
     background-color: #ffffff !important;
 }
 
-input#search{
-    margin: 0 !important;
+#srchBtn{
+    margin-left: 44.666667% !important;
+}
+
+ul#tagField li {
+    opacity: 0;
 }
 
 #chipBody {
+    height: 45px;
     background-color: white;
 }
 
