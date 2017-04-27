@@ -100,33 +100,41 @@ class QuestionController extends Controller
                 return $this->redirectToRoute('question_show', array('id' => $question->getId()));
             }
 
+        if ($request->get('resolved') == true) {
 
+            $question->setIsResolved(true);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($question);
+            $em->flush();
+        }
+
+        $info = null;
         if ($request->get('vote') == true) {
             
             $responseId = $request->get('responseId');
             $hasVoted = false;
 
             foreach ($this->getUser()->getVotes() as $vote){
-                if ($vote->getResponse()->getId() == $responseId ){
+                if ($vote->getResponse()->getId() == $responseId){
                     $hasVoted = true;
+                    $info = 'Votre avez déjà voté pour cette réponse !';
                 }
             }
 
             if ($responseId != null && $hasVoted == false ){
                 $this->vote($responseId);
+                $info = 'Votre vote a bien été pris en compte.';
             }
-
         }
-
-
 
         return $this->render('question/show.html.twig', array(
             'question' => $question,
             'delete_form' => $deleteForm->createView(),
             'addResponse_form' => $addResponseForm->createView(),
             'comment_form' => $commentForm->createView(),
+            'info' => $info,
         ));
-
     }
 
     /**

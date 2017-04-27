@@ -121,3 +121,12 @@ p.comments {
 #showcard {
     text-align: center;
 }
+
+/* FLASH MESSAGES
+=============== */
+
+.flash-message {
+    top: 100px;
+    right: 50%;
+    text-align: center;
+}

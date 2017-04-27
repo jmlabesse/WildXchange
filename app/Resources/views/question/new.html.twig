@@ -6,30 +6,39 @@
 
         {{ form_start(form) }}
 
-        {{ form_errors(form) }}
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">question_answer</i>
-                {{ form_widget(form.titre, {'attr': {'class': 'materialize-textarea'}}) }}
-                <label for="xteam_platformbundle_question_titre">Titre de la question</label>
+        <div class="row section_row">
+            <div class="section">
+                <h5>Informations générales</h5>
+                <div class="divider"></div>
+
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">question_answer</i>
+                    {{ form_widget(form.titre) }}
+                    {{ form_label(form.titre) }}
+                    {{ form_errors(form.titre) }}
+                </div>
+
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">question_answer</i>
+                    {{ form_widget(form.question) }}
+                    {{ form_label(form.question) }}
+                    {{ form_errors(form.question) }}
+                </div>
             </div>
-            <div class="input-field col s12">
-                <i class="material-icons prefix">question_answer</i>
-                {{ form_widget(form.question, {'attr': {'class': 'materialize-textarea'}}) }}
-                <label for="xteam_platformbundle_question_question">Contenu de la question</label>
+            <div class="section">
+                <h5>Ajoutez des tags à votre question</h5>
+                <div class="divider"></div>
+
+                <div class="col s12 tags_list">
+                    {{ form_widget(form.tags) }}
+                </div>
             </div>
-            <div class="col s12">
-                <p>Ajoutez des tags :</p>
-                {{ form_widget(form.tags, {'attr': {'class': 'filled-in'}}) }}
-            </div>
+        </div>
+
+        <div class="input-field col s12 center-align">
             <input type="submit" value="Poser la question" class="btn waves-effect waves-light"/>
         </div>
-        {{ form_end(form) }}
-
-        <ul>
-            <li>
-                <a href="{{ path('question_index') }}">Retour à la liste</a>
-            </li>
-        </ul>
     </div>
+    {{ form_end(form) }}
+
 {% endblock %}
