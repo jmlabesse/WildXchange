@@ -34,6 +34,7 @@ h2 {
 #user_avatar {
     min-width: 100px;
     max-height:150px;
+    max-width: 150px;
 }
 
 .block_info {
