@@ -110,3 +110,12 @@ p.comments {
     font-family: 'Source Sans Pro', Georgia, sans-serif;
     color: white;
 }
+
+/* FLASH MESSAGES
+=============== */
+
+.flash-message {
+    top: 100px;
+    right: 50%;
+    text-align: center;
+}
