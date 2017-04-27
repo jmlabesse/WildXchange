@@ -40,7 +40,7 @@
 
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <li>
-                    <a class="btn-floating button-collapse show-on-large waves-effect waves-light" data-activates="slide-out-connected"> <img class="layoutavatar" src="{{ asset('uploads/avatars/' ~ app.user.avatar) }}"></a>
+                    <a data-activates="slide-out-connected"> <img class="layoutavatar" src="{{ asset('uploads/avatars/' ~ app.user.avatar) }}"></a>
                 </li>
             {% else %}
                 <li>

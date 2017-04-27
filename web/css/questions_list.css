@@ -3,6 +3,11 @@
 main {
     flex: 1 0 auto; /*For the sticky footer*/
 }
+
+.topSpacer {
+    height: 1em;
+}
+
 .question_row
 {
     background-color: var(--blue-light);
@@ -25,4 +30,33 @@ main {
 
 .time {
     margin-top: 20px;
+}
+
+.rightCol {
+    padding-top: 3em;
+    float: right  !important;
+}
+
+.infoCol {
+    border:1px solid black;
+    background-color: #FFDEA5;
+    margin-top: 3em;
+    width: 20em !important;
+}
+
+/* PushPin Element Styling
+========= */
+/*Class for when element is above threshold*/
+.pin-top {
+    position: relative;
+}
+
+/* Class for when element is below threshold */
+.pin-bottom {
+    position: relative;
+}
+
+/* Class for when element is pinned*/
+.pinned {
+    position: fixed !important;
 }
