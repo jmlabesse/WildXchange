@@ -57,8 +57,6 @@ $(document).ready(function(){
         id: 1, //optional
     };
 
-   // $('.karmabtn').on('click', 'upVote');
-   // function upVote(event){
-   //     $(this)
-    //}
+    $('.scrollspy').scrollSpy();
+
 });
