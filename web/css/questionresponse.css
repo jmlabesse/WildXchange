@@ -110,3 +110,16 @@ p.comments {
     font-family: 'Source Sans Pro', Georgia, sans-serif;
     color: white;
 }
+
+#searchBtnshow {
+    height: 25px;
+    width: 100px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#showcard {
+    text-align: center;
+}
+
+
