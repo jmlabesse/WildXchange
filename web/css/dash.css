@@ -34,6 +34,7 @@ h2 {
 #user_avatar {
     min-width: 100px;
     max-height:150px;
+    max-width: 150px;
 }
 
 .block_info {
@@ -93,9 +94,11 @@ h2 {
     max-height: 40px;
 }
 
-/* COLUMN JOURNAL
+/* FLASH MESSAGES
 =============== */
 
-#col_journal {
-    background-color: #718C00;
+.flash-message {
+    top: 100px;
+    right: 0;
+    text-align: center;
 }
