@@ -70,7 +70,6 @@ class QuestionController extends Controller
      */
     public function showAction(Question $question, Request $request)
     {
-        $session = $request->getSession();
         $deleteForm = $this->createDeleteForm($question);
 
         $response = new Response();
@@ -101,6 +100,16 @@ class QuestionController extends Controller
                 return $this->redirectToRoute('question_show', array('id' => $question->getId()));
             }
 
+        if ($request->get('resolved') == true) {
+
+            $question->setIsResolved(true);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($question);
+            $em->flush();
+        }
+
+        $info = null;
         if ($request->get('vote') == true) {
             
             $responseId = $request->get('responseId');
