@@ -7,16 +7,6 @@
     }
 }
 
-#avatarRow {
-    min-height: 70px;
-}
-
-#avatar {
-    max-height: 70%;
-    height: 5em;
-    margin-left: 1em;
-}
-
 #counter {
     height: 3em;
     width: 3em;
@@ -149,11 +139,16 @@ p.comments {
 .question_block a {
     color: var(--text-main);
 }
-.question_block img {
+#poucevert {
     width: 30px;
     margin-top: 10px;
 }
 .question_block h6 {
     margin-top: 15px;
     font-size: 16px;
+}
+
+#avatar {
+    margin-top: 10px;
+    width: 60px;
 }
