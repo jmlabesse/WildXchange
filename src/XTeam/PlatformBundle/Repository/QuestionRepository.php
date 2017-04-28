@@ -31,8 +31,26 @@ class QuestionRepository extends EntityRepository
             ->getResult();
     }
 
+    public function findQuestionsResolved($keyword) {
+        return $this->createQueryBuilder('q')
+            ->where('q.titre LIKE :keyword')
+            ->andWhere('q.isResolved = true')
+            ->orderBy('q.date','DESC')
+            ->setParameter('keyword', '%'.$keyword.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
     public function findallQuestions() {
         return $this->createQueryBuilder('q')
+            ->orderBy('q.date','DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findallResolvedQuestions() {
+        return $this->createQueryBuilder('q')
+            ->where('q.isResolved = true')
             ->orderBy('q.date','DESC')
             ->getQuery()
             ->getResult();

@@ -186,26 +186,42 @@ class QuestionController extends Controller
     public function searchAction()
     {
         $questionsByDate=[];
+        $questionsResolved=[];
         $recherche=$_GET['q'];
         $keywords = explode(" ", $_GET['q']);
 
         $em = $this->getDoctrine()->getManager();
 
-
         foreach ($keywords as $keyword) {
             if ($keyword == 'all') {
                 $questionsByDate = $em->getRepository('XTeamPlatformBundle:Question')
                         ->findallQuestions();
-            } else {
+                $questionsResolved = $em->getRepository('XTeamPlatformBundle:Question')
+                        ->findallResolvedQuestions();
+            } if ($keyword == 'noresponse') {
+                $questionsByDate = $em->getRepository('XTeamPlatformBundle:Question')
+                    ->findallQuestions();
+                foreach ($questionsByDate as $indice => $question) {
+                    if (sizeof($question->getResponses()) != 0){
+                        unset($questionsByDate[$indice]);
+                    }
+                }
+            }else {
                 $questionsByDate = array_merge(
                     $questionsByDate,
                     $em->getRepository('XTeamPlatformBundle:Question')
                         ->findQuestionsByKeyword($keyword));
+
+                $questionsResolved = array_merge(
+                    $questionsResolved,
+                    $em->getRepository('XTeamPlatformBundle:Question')
+                        ->findQuestionsResolved($keyword));
             }
         }
 
         return $this->render(':question:search.html.twig', array(
             'questionsByDate'=>array_unique($questionsByDate),
+            'questionsResolved'=>array_unique($questionsResolved),
             'recherche'=>$recherche,
         ));
     }
