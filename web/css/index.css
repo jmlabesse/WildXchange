@@ -26,16 +26,14 @@ input#search{
 }
 
 #tagBtn{
-    margin-top: 13px;
+    margin-top: 15px;
 }
 
-#srchBtn{
-    /*margin-left: 44.666667% !important;*/
-}
 
-ul#tagField li {
-    opacity: 0;
-}
+ul#tagField li{
+     opacity: 0;
+     color: black !important;
+ }
 
 #chipBody {
     height: 45px;

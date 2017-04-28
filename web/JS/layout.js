@@ -11,51 +11,56 @@ $(document).ready(function(){
     $('.collapsible').collapsible();
 
 // js for chips\tags
-     $('.chips-autocomplete').material_chip({
-        autocompleteOptions: {
-            data: {
-                'Apple': null,
-                'Microsoft': null,
-                'Google': null,
-                'Javascript': null,
-                'PHP': null,
-                'JQuery': null,
-                'Git': null,
-                'Symfony': null,
-                'AngularJS': null,
-                'NodeJS': null,
-                'CSS': null,
-                'HTML': null,
-                'Bootstrap': null,
-                'Materialize': null,
-                'Doctrine': null,
-                'Sonata': null,
-                'Apache': null,
-                'Agile Development': null,
-                'SCRUM': null,
-                'MySQL':null,
-                'SQLi':null,
-                'MongoDB':null,
-                'PHPStorm': null,
-                'PHPMyAdmin': null,
-                'GitHub': null,
-                'GitKraken': null,
-                'MacBook': null,
-                'Linux': null,
-                'Ubuntu': null,
-                'Windows': null,
-                'CLI': null
-            },
-            limit: Infinity,
-            minLength: 1
-        }
-    });
+//      $('.chips-autocomplete').material_chip({
+//         autocompleteOptions: {
+//             data: {
+//                 'Apple': null,
+//                 'Microsoft': null,
+//                 'Google': null,
+//                 'Javascript': null,
+//                 'PHP': null,
+//                 'JQuery': null,
+//                 'Git': null,
+//                 'Symfony': null,
+//                 'AngularJS': null,
+//                 'NodeJS': null,
+//                 'CSS': null,
+//                 'HTML': null,
+//                 'Bootstrap': null,
+//                 'Materialize': null,
+//                 'Doctrine': null,
+//                 'Sonata': null,
+//                 'Apache': null,
+//                 'Agile Development': null,
+//                 'SCRUM': null,
+//                 'MySQL':null,
+//                 'SQLi':null,
+//                 'MongoDB':null,
+//                 'PHPStorm': null,
+//                 'PHPMyAdmin': null,
+//                 'GitHub': null,
+//                 'GitKraken': null,
+//                 'MacBook': null,
+//                 'Linux': null,
+//                 'Ubuntu': null,
+//                 'Windows': null,
+//                 'CLI': null
+//             },
+//             limit: Infinity,
+//             minLength: 1
+//         }
+//     });
     // js data object for tags
     var chip = {
         tag: 'chip content',
         image: '', //optional
         id: 1, //optional
     };
+
+    $('.chips').material_chip({
+        placeholder: 'Tags?',
+        secondaryPlaceholder: '+Tag',
+    });
 
     $('.scrollspy').scrollSpy();
 
