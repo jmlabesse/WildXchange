@@ -27,7 +27,8 @@
 <nav>
     <div class="nav-wrapper">
         <a href="{{ path('xteam_platform_accueil') }}" class="brand-logo black-text hide-on-med-and-down" id="logo">
-            <img src="{{ asset('img/logo_blanc_pastille.png') }}"><h3>wild<span class="special-x">X</span>change</h3>
+            <img src="{{ asset('img/logo_blanc_pastille.png') }}">
+            <h3>wild<span class="special-x">X</span>change</h3>
         </a>
 
         <a href="https://wildcodeschool.fr" class="left brand-logo black-text hide-on-med-and-down" id="logo_baby">
@@ -37,7 +38,7 @@
         <a href="#" data-activates="hamburgerMenu" class="button-collapse right"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down nav-link">
             <li><a href="{{ path('xteam_platform_docs') }}">Ressources</a></li>
-            <li><a href="{{ path('question_index') }}">Questions</a></li>
+            <li><a href="{{ path('question_search', {'q':'all'}) }}">Questions</a></li>
 
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <li>

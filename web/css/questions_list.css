@@ -1,10 +1,45 @@
 /* STYLES PERSONNALISES
 *********************** */
-main {
-    flex: 1 0 auto; /*For the sticky footer*/
+#research {
+    color: var(--orange-intense);
+}
+#categories li a{
+    color: var(--orange-intense);
+}
+.indicator {
+    background-color: var(--orange-intense) !important;
+}
+.question_block {
+    border: 1px solid var(--orange-intense);
+    border-radius: 3px;
+    box-shadow: 2px 2px 1px var(--orange-light);
+}
+.question_block:hover {
+    background-color: var(--orange-light);
+}
+.question_block .row {
+    margin: 0
+}
+.question_block .chip {
+    margin: 5px 5px 5px 0;
+    background-color: var(--blue-light);
+    color: var(--text-main);
+}
+.question_block a {
+    color: var(--text-main);
+}
+.question_block img {
+    width: 30px;
+    margin-top: 10px;
+}
+.question_block h6 {
+    margin-top: 15px;
+    font-size: 16px;
 }
 
-.block_content {
+
+
+/*.block_content {
     background-color: #f5f5f5;
 }
 .topSpacer {
@@ -48,7 +83,7 @@ main {
     background-color: #FFDEA5;
     margin-top: 3em;
     width: 20em !important;
-}
+}*/
 
 /* PushPin Element Styling
 ========= */
