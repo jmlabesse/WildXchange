@@ -23,6 +23,10 @@ h2 {
     flex-wrap: wrap;
 }
 
+.userdash {
+    color: var(--orange-intense);
+}
+
 #col_username h5 {
     color: var(--blue-intense);
 }
