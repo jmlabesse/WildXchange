@@ -25,8 +25,12 @@ input#search{
     background-color: #ffffff !important;
 }
 
+#tagBtn{
+    margin-top: 13px;
+}
+
 #srchBtn{
-    margin-left: 44.666667% !important;
+    /*margin-left: 44.666667% !important;*/
 }
 
 ul#tagField li {
