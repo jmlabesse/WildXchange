@@ -103,6 +103,17 @@
     </div>
 </div>
 
+<div class="row section_row">
+    <div id="technos" class="section">
+        <h5>Technologies</h5>
+        <div class="divider"></div>
+        <div class="input-field col s12 m12 center-align">
+            {{ form_widget(form.technos) }}
+            {{ form_errors(form.technos) }}
+        </div>
+    </div>
+</div>
+
 <div class="input-field col s12 center-align">
     <input type="submit" value="{{ 'profile.edit.submit'|trans }}" class="btn waves-effect waves-light"/>
 </div>

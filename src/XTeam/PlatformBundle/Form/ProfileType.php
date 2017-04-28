@@ -75,6 +75,13 @@ class ProfileType extends AbstractType
                 'required' => false,
                 'attr' => array('class' => 'validate'),
             ))
+            ->add('technos', 'entity', array(
+                'class'    => 'XTeam\PlatformBundle\Entity\Techno',
+                'property' => 'nom',
+                'multiple' => true,
+                'expanded' => true,
+                'attr' => array('class'=> 'filled-in'),
+            ))
             ;
     }
 

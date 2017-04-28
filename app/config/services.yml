@@ -26,10 +26,8 @@ services:
         arguments: ['@router','@session']
         tags:
             - { name: kernel.event_subscriber }
-
-    # authentication event listener
-    app.security.authentication_event_listener:
-        class: XTeam\PlatformBundle\EventListener\AuthenticationListener
-        arguments: ['@router']
+    app.registration.success:
+        class: XTeam\PlatformBundle\EventListener\RegistrationSuccessListener
+        arguments: ['@router','@session']
         tags:
             - { name: kernel.event_subscriber }
