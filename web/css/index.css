@@ -43,11 +43,22 @@ ul#tagField li {
 }
 .noresponse {
     color: #1FA597;
-    text-decoration: underline;
+    text-decoration: none;
     font-family: 'Source Sans Pro', Georgia, sans-serif;
+    opacity: 1;
+    font-weight: bold;
 }
+
 #noresp {
     background: white;
+    opacity: 0.7;
     text-align: center;
     border-radius: 5px;
+}
+#noresp:hover {
+    box-shadow: 0 0 15px var(--blue-intense);
+}
+#count {
+    color: var(--orange-intense);
+    font-size: larger;
 }

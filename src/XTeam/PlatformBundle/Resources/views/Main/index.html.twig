@@ -52,12 +52,13 @@
             <!---end search bar-->
 
             <div class='row lvl4'>
-                <div class="col s12 m8 l8 offset-s2">
-                    <div id="noresp">
-                        <a class="noresponse" href="{{ path('question_search', {'q':'noresponse'}) }}">Si toi aussi tu veux apporter ta pierre à l'édifice, il reste actuellement {{ countNoResponses }} questions sans réponses !</a>
-                    </div>
+                <div id="noresp" class="col s12 m8 l8 offset-s2">
+                    <a class="noresponse" href="{{ path('question_search', {'q':'noresponse'}) }}">
+                        Si toi aussi tu veux apporter ta pierre à l'édifice,<br> il reste actuellement <span id="count">{{ countNoResponses }}</span> questions sans réponses !
+                    </a>
                 </div>
             </div>
+
             <!-- end page-content container -->
         </div>
     </main>

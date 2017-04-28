@@ -1,9 +1,5 @@
 /* MAIN CONTENT
 =============== */
-main {
-    flex: 1 0 auto; /*For the sticky footer*/
-    width: 100%;
-}
 
 @media only screen and (min-width: 993px){
     .container {
@@ -31,18 +27,15 @@ main {
     padding-right:3em;
 }
 
-.question_block{
-    border:1px solid #f7f0a3;
-    border-radius: 10px;
-    background-color: #f7f0a3;
-    margin-bottom: 20px;
-}
 
 .response_block{
     border:1px solid #ccd3e8;
     border-radius: 10px;
-    background-color: #ccd3e8;
+    background-color: var(--blue-light);
     margin-bottom: 20px;
+    border: 1px solid var(--blue-intense);
+    box-shadow: 2px 2px 1px var(--blue-light);
+
 }
 
 .fabbtn-wrapper{
@@ -129,4 +122,38 @@ p.comments {
     top: 100px;
     right: 50%;
     text-align: center;
+}
+
+#categories li a{
+    color: var(--orange-intense);
+}
+.indicator {
+    background-color: var(--orange-intense) !important;
+}
+.question_block {
+    margin-top: 20px;
+    border: 1px solid var(--orange-intense);
+    border-radius: 3px;
+    box-shadow: 2px 2px 1px var(--orange-light);
+    background-color: var(--orange-light);
+}
+
+.question_block .row {
+    margin: 0
+}
+.question_block .chip {
+    margin: 5px 5px 5px 0;
+    background-color: var(--blue-light);
+    color: var(--text-main);
+}
+.question_block a {
+    color: var(--text-main);
+}
+.question_block img {
+    width: 30px;
+    margin-top: 10px;
+}
+.question_block h6 {
+    margin-top: 15px;
+    font-size: 16px;
 }
