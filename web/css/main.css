@@ -99,9 +99,13 @@ nav ul li a {
     left: 2%;
 }
 
+#logoText {
+    left: 6.2%;
+}
+
 #logo img{
     width: 1.7em;
-    margin-bottom: -4px;
+    margin-bottom: -15px;
 }
 #logo_baby img{
     width: 0.6em;
@@ -115,7 +119,7 @@ nav ul li a {
 }
 
 h3 {
-    /*margin: 0.46rem 0 1.168rem 0 !important;*/
+    margin: 0.46rem 0 1.168rem 0 !important;
 }
 
 .special-x {
