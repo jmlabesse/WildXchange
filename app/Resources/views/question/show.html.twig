@@ -39,8 +39,10 @@
                 <div id="question" class="section qr">
                     <div class="row">
                         <div>
+                            {% if question.user %}
                             <img src="{{ asset('uploads/avatars/' ~ question.user.avatar) }}" id="avatar" alt="User Avatar"
                                  class="col s2 image-responsive  hide-on-med-and-down">
+                            {% endif %}
                         </div>
                         <!--end user avatar column -->
                         <!--begin question column -->
@@ -143,8 +145,10 @@
                             <!--begin user avatar column -->
                             <div class="col s2" id="avatarCol">
                                 <div class="row" id="avatarRow">
+                                    {% if response.user %}
                                     <img src="{{ asset('uploads/avatars/' ~ response.user.avatar) }}" id="avatar" alt="User Avatar"
                                          class="image-responsive hide-on-med-and-down">
+                                    {% endif %}
                                 </div>
                                 <div class="row">
                                     <div class="col s12 center-align">
