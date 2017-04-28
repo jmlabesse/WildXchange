@@ -104,6 +104,12 @@ nav ul li a {
     left: 6.2%;
 }
 
+@media only screen and (max-width: 992px){
+    #logoText {
+        left: 38%;
+    }
+}
+
 #logo img{
     width: 1.7em;
     margin-bottom: -15px;
@@ -115,8 +121,9 @@ nav ul li a {
 }
 
 #title h3 {
-    color: white;
     display: inline-block;
+    color: #FFFFFF;
+
 }
 
 h3 {
