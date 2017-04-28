@@ -125,7 +125,9 @@ nav ul li a {
     color: #FFFFFF;
 
 }
-
+.titreques {
+    color: black;
+}
 h3 {
     margin: 0.46rem 0 1.168rem 0 !important;
     color: white;
