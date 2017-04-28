@@ -137,7 +137,6 @@
 
 
             <div class="col l3 rightCol hide-on-med-and-down" id="showcard">
-
                 <div class="card blue-grey darken-1 infoCol">
                     <div class="card-content white-text">
                         <form method="get" action="{{ path('question_search') }}">
@@ -146,11 +145,6 @@
                                 <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                                 <i class="material-icons">close</i>
                             </div>
-                            <div class="card-action">
-                                <a href="{{ path('question_new') }}"
-                                   class="btn-floating btn waves-effect waves-light red"><i
-                                            class="material-icons">add</i></a>
-                            </div>
                             <div class="input-field col s2 offset-s9">
                                 <input value="Rechercher" type="submit" id="searchBtnshow"
                                        class="btn waves-effect waves-light right">
@@ -158,14 +152,8 @@
                         </form>
                     </div>
                 </div>
-
             </div>
-
-
         </div>
-
-
-
     </div>
 {% endblock %}
 

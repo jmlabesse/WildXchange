@@ -83,6 +83,7 @@ i {
 ====================== */
 nav {
     background-color: var(--orange-intense) !important;
+    height: 70px;
 }
 
 nav .nav-wrapper {
@@ -114,12 +115,13 @@ nav ul li a {
 }
 
 #title h3 {
-    color: #FFFFFF;
+    color: white;
     display: inline-block;
 }
 
 h3 {
     margin: 0.46rem 0 1.168rem 0 !important;
+    color: white;
 }
 
 .special-x {
@@ -128,6 +130,7 @@ h3 {
 
 #nav-mobile {
     margin-left: 0em;
+    margin-top: 5px;
 }
 
 #nav-mobile li {
@@ -161,8 +164,8 @@ footer {
 }
 
 i {
-   margin-left: 8px;
-   margin-right: 8px;
+   margin-left: 22px;
+   margin-right: 22px;
 }
 
 #icons {
