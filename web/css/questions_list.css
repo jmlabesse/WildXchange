@@ -37,7 +37,13 @@
     font-size: 16px;
 }
 
-
+.phrase_ajout {
+    color: var(--blue-intense);
+    font-weight: bold;
+}
+#bouton_ajout {
+    background-color: var(--blue-intense);
+}
 
 /*.block_content {
     background-color: #f5f5f5;
