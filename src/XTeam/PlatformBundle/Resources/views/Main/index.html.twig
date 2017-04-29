@@ -21,17 +21,17 @@
                             <div class="col s12">
                                 <form method="get" action="{{ path('question_search') }}">
                                     <div class="input-field hoverable" id="search">
-                                        <input id="search" type="search" name="q" required placeholder="C'est quoi votre question?">
+                                        <input id="search" type="search" name="q" required placeholder="Tapez vos mot-clès ici">
                                         <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                                         <i class="material-icons">close</i>
                                     </div>
 <div class="row">
                                     <div class="col s2 center" id="tagBtn">
-                                        <a href="#!" class="btn" onclick="Materialize.showStaggeredList('#tagField')">Tags?</a>
+                                        <a href="#!" class="btn" onclick="Materialize.showStaggeredList('#tagField')">Tags</a>
                                     </div>
 
                                     <div class="input-field col s1 offset-s9 center" id="srchBtn">
-                                        <input type="submit" id="searchBtn" class="btn waves-effect waves-light right">
+                                        <input value="Rechercher" type="submit" id="searchBtn" class="btn waves-effect waves-light right">
                                     </div>
 </div>
                                 </form>
@@ -52,7 +52,7 @@
             <div class='row lvl4'>
                 <div id="noresp" class="col s12 m8 l8 offset-s2">
                     <a class="noresponse" href="{{ path('question_search', {'q':'noresponse'}) }}">
-                        Si toi aussi tu veux apporter ta pierre à l'édifice,<br> il reste actuellement <span id="count">{{ countNoResponses }}</span> questions sans réponses !
+                        Si toi aussi tu veux apporter ta pierre à l'édifice,<br> il reste actuellement <span id="count">{{ countNoResponses }}</span>{% if countNoResponses > 1 %} questions{% else %} question{% endif %} sans réponses !
                     </a>
                 </div>
             </div>

@@ -1,7 +1,12 @@
 /* STYLES PERSONNALISES
 *********************** */
 main {
-    background-color: #F5F5F5;
+    flex: 1 0 auto; /*For the sticky footer*/
+    /*background-image: url("../img/infographie_big.jpg");*/
+    /*background-size: cover;*/
+    background-color: #f5f5f5;
+    background-repeat: no-repeat;
+    background-position-y: -53px;
 }
 #research {
     color: var(--orange-intense);
